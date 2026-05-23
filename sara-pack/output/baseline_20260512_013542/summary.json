@@ -1,0 +1,14 @@
+{
+  "label": "baseline_20260512_013542",
+  "n_cases": 1,
+  "n_completed": 1,
+  "avg_elapsed_s": 11.99,
+  "case_results": [
+    {
+      "case_id": "SARA-S151-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.99,
+      "status": "ok"
+    }
+  ]
+}

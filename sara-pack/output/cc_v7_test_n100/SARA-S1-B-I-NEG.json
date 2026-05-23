@@ -1,0 +1,618 @@
+{
+  "case_id": "SARA-S1-B-I-NEG",
+  "source_id": "s1_b_i_neg",
+  "instance_id": "wf_9974e66d5286",
+  "status": "completed",
+  "error": null,
+  "elapsed_total_s": 142.8,
+  "tier_applied": "auto",
+  "determination": "CONTRADICTION",
+  "ground_truth": "Contradiction",
+  "step_records": [
+    {
+      "step_name": "retrieve_question_structure",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 4452.3351192474365,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `question_text` source was successfully queried as per the retrieval specification. All required fields for the question's logical structure were extracted completely and accurately from the provided text. The `governing_section` was normalized to include '\u00a7' as per common practice for IRC sections. The `asserted_value` was converted to a numeric type.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "Extracted the subject, tax year, governing section, asserted predicate, asserted value, polarity, and claim type from the question text."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "question_text": {
+            "value": "Alice has to pay $442985 in taxes for the year 2017 under section 1(b)(i)"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "question_text",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.001430511474609375,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "statute_corpus",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_statute",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 18318.494081497192,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `statute_corpus` was successfully retrieved and contains all necessary sections and their cross-references to fulfill the retrieval specification. The primary section, relevant subsections, and all cross-referenced sections, along with their governing topics, have been identified. The applicability of sections like \u00a768 and \u00a7151 for the 2017 tax year has been confirmed based on their effective dates.",
+        "evidence_used": [
+          {
+            "source": "statute_corpus",
+            "description": "Full text of relevant IRC sections (\u00a71, \u00a72, \u00a763, \u00a768, \u00a7151, \u00a7152, \u00a77703) was retrieved, allowing for identification of primary and cross-referenced sections and their content."
+          },
+          {
+            "source": "question_text",
+            "description": "Used to identify the primary section '\u00a71(b)(i)' and the tax year '2017'."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Used to identify Alice's filing status ('head of household') and taxable income ('$1172980'), which helps determine the applicable subsection within \u00a71(b) and the relevance of other sections."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "statute_corpus": {
+            "value": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "statute_corpus",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0019073486328125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_case_facts",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 6256.99257850647,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `case_narrative` was successfully retrieved and is structurally complete, ending with a terminal punctuation mark. All specified categories for extraction were processed, and relevant facts were extracted as structured data. No facts were inferred, and original wording was preserved in quotes. The narrative is not incomplete, and no completeness warning is needed.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Extracted case facts from the narrative: 'Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $1172980.'"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "case_narrative": {
+            "value": "Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $1172980."
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "case_narrative",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0019073486328125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "statute_corpus",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "investigate_rule_application",
+      "primitive": "investigate",
+      "confidence": 1.0,
+      "elapsed_ms": 30085.453987121582,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "STEP 1: EXTRACT KEY DATA POINTS\n- Taxpayer: Alice\n- Taxable Year: 2017\n- Filing Status: Head of household\n- Taxable Income: $1,172,980\n- Asserted Tax Liability: $442,985\n- Asserted Authority: Section 1(b)(i)\n\nSTEP 2: FORM HYPOTHESES\n- Hypothesis 1: The taxpayer's filing status is \"head of household\", making the tax schedule under \u00a71(b) applicable.\n- Hypothesis 2: The taxpayer's taxable income of $1,172,980 falls into the tax bracket defined in \u00a71(b)(v).\n- Hypothesis 3: The tax liability can be calculated using the formula provided in \u00a71(b)(v).\n\nSTEP 3: TEST EACH HYPOTHESIS AGAINST THE EXTRACTED DATA\n- Hypothesis 1: The case narrative explicitly states, \"Alice is a head of household for the year 2017.\" The authority in \u00a71(b) is titled \"Heads of households\". This hypothesis is supported.\n- Hypothesis 2: The tax brackets for a head of household under \u00a71(b) are evaluated against the taxable income of $1,172,980. Section \u00a71(b)(v) applies to taxable income \"over $250,000\". Since $1,172,980 is greater than $250,000, this hypothesis is supported. The claim's citation of \u00a71(b)(i) is incorrect, as that section applies only to taxable income not over $29,600.\n- Hypothesis 3: The formula in \u00a71(b)(v) is: \"$77,485, plus 39.6% of the excess over $250,000\".\n  - Excess income: $1,172,980 - $250,000 = $922,980\n  - Tax on excess: 0.396 * $922,980 = $365,500.08\n  - Total tax: $77,485 + $365,500.08 = $442,985.08\n  The calculation yields a tax liability of $442,985.08. This hypothesis is supported.\n\nSTEP 4: STATE YOUR FINDING\nBased on the successful validation of all hypotheses, the correct tax liability (the rule-output) is $442,985.08. This is derived by applying the tax schedule for a head of household (\u00a71(b)) to the given taxable income, which falls into the highest bracket, \u00a71(b)(v). The amount asserted in the claim ($442,985) appears to be the calculated amount rounded to the nearest dollar, but the legal citation in the claim (\u00a71(b)(i)) is incorrect.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $1172980."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "\u00a71(b) Heads of households: There is hereby imposed on the taxable income of every head of a household... a tax determined in accordance with the following: ... (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000."
+          },
+          {
+            "source": "question_text",
+            "description": "Alice has to pay $442985 in taxes for the year 2017 under section 1(b)(i)"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "finding": "The rule-output for the tax imposed on Alice is $442,985.08. This is calculated under \u00a71(b)(v) based on her status as a head of household and her taxable income of $1,172,980 for the year 2017.",
+        "hypotheses_tested": [
+          {
+            "hypothesis": "The taxpayer's filing status is \"head of household\", making the tax schedule under \u00a71(b) applicable.",
+            "status": "supported",
+            "evidence_for": [
+              "Case narrative states: 'Alice is a head of household for the year 2017.'",
+              "Statute corpus \u00a71(b) is titled 'Heads of households'."
+            ],
+            "evidence_against": [],
+            "reasoning": "The case facts directly state the filing status, which corresponds to the title and applicability of \u00a71(b) of the provided authority."
+          },
+          {
+            "hypothesis": "The taxpayer's taxable income of $1,172,980 falls into the tax bracket defined in \u00a71(b)(v).",
+            "status": "supported",
+            "evidence_for": [
+              "Case narrative states taxable income is $1,172,980.",
+              "Statute corpus \u00a71(b)(v) applies to taxable income 'over $250,000'."
+            ],
+            "evidence_against": [
+              "The claim cites \u00a71(b)(i), which applies to income 'not over $29,600'."
+            ],
+            "reasoning": "The taxpayer's income of $1,172,980 is greater than the $250,000 threshold for \u00a71(b)(v), making it the applicable bracket. The citation in the claim is incorrect."
+          },
+          {
+            "hypothesis": "The tax liability calculated using the formula in \u00a71(b)(v) is $442,985.08.",
+            "status": "supported",
+            "evidence_for": [
+              "Formula from \u00a71(b)(v): '$77,485, plus 39.6% of the excess over $250,000'.",
+              "Calculation: $77,485 + (0.396 * ($1,172,980 - $250,000)) = $442,985.08."
+            ],
+            "evidence_against": [],
+            "reasoning": "Direct application of the statutory formula to the case facts yields a precise tax liability of $442,985.08."
+          }
+        ],
+        "recommended_actions": [],
+        "evidence_flags": [
+          "incorrect_statutory_citation"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "verify_claim_comparison",
+      "primitive": "verify",
+      "confidence": 1.0,
+      "elapsed_ms": 19814.351797103882,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The verification process confirmed that the reasoning from the 'investigate_rule_application' step is sound and well-grounded. All rules were checked and passed.\n\nR1 (TYPE MATCH): The claim is a NUMERIC_VALUE claim, and the rule-output from the investigation, '$442,985.08', is a numeric value. This rule passes.\n\nR2 (VALUE/STATE MATCH): The derived rule-output of $442,985.08 is a near-exact match to the claimed value of $442,985. The investigation correctly identified that the applicable statute is \u00a71(b)(v), not \u00a71(b)(i) as stated in the question. This is a legitimate contradiction finding, not a verification failure.\n\nR3 (STATUTE GROUNDING): The reasoning cites \u00a71(b)(v). This subsection is present in the provided RAW AUTHORITY under '\u00a71. Tax imposed', '(b) Heads of households'. This rule passes.\n\nR4 (FACT GROUNDING): The reasoning relies on the taxpayer's status as 'head of household' and taxable income of '$1,172,980'. Both facts are explicitly stated in the RAW CASE NARRATIVE. This rule passes.\n\nR5 (INDETERMINACY DISCLOSURE): The investigation did not mark any hypotheses as 'indeterminate', so this rule is not applicable and passes by default.",
+        "evidence_used": [
+          {
+            "source": "SUBJECT TO VERIFY",
+            "description": "investigate.reasoning cites rule-output '$442,985.08' and statute '\u00a71(b)(v)'."
+          },
+          {
+            "source": "RAW AUTHORITY",
+            "description": "\u00a71(b)(v) states the tax is '$77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000'."
+          },
+          {
+            "source": "RAW CASE NARRATIVE",
+            "description": "The narrative states 'Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $1172980.'"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "conforms": true,
+        "violations": [],
+        "rules_checked": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "deliberate_disposition",
+      "primitive": "deliberate",
+      "confidence": 0.95,
+      "elapsed_ms": 12997.399806976318,
+      "output": {
+        "confidence": 0.95,
+        "reasoning": "The deliberation followed Rule 2 for numeric value claims, comparing both the value and the governing subsection from the claim against the rule-output. A clear mismatch in the subsection, despite a numeric match after rounding, led directly to the CONTRADICTION disposition.",
+        "evidence_used": [
+          {
+            "source": "investigate_rule_application.finding",
+            "description": "Established the calculated tax amount ($442,985.08) and the governing statutory subsection (\u00a71(b)(v))."
+          },
+          {
+            "source": "question_text",
+            "description": "Provided the claim's asserted tax amount ($442,985) and statutory subsection (\u00a71(b)(i))."
+          },
+          {
+            "source": "investigate_rule_application.evidence_flags",
+            "description": "Indicated an 'incorrect_statutory_citation', confirming the discrepancy in subsections."
+          },
+          {
+            "source": "verify_claim_comparison.conforms",
+            "description": "Confirmed the claim's structural validity for comparison."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "situation_summary": "The claim states that Alice has to pay $442,985 in taxes for the year 2017 under section 1(b)(i). Alice is a head of household for 2017 with a taxable income of $1,172,980. The `investigate_rule_application` step determined that the tax imposed on Alice is $442,985.08, calculated under \u00a71(b)(v) based on her filing status and taxable income. The `investigate_rule_application` step also raised an 'incorrect_statutory_citation' flag, indicating a discrepancy between the claimed section and the calculated section. The `verify_claim_comparison` step confirmed that the claim conforms to the expected structure.",
+        "evaluation_criteria": "For numeric value claims, both the value (after rounding to whole units) and the governing subsection must match for ENTAILMENT. If either the value or the subsection differs, the disposition is CONTRADICTION. Numeric tolerance allows for rounding to whole units, meaning $442,984.08 matches a claim of $442,985.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": false,
+            "rationale": "While the numeric value of the claim ($442,985) matches the rule-output value ($442,985.08, rounded to $442,985), the statutory subsection cited in the claim (\u00a71(b)(i)) does not match the subsection under which the tax was calculated by `investigate_rule_application` (\u00a71(b)(v)). According to Rule 2, a mismatch in the governing subsection prevents entailment."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": true,
+            "rationale": "The rule-output for Alice's tax liability is $442,985.08 under \u00a71(b)(v). The claim asserts a tax liability of $442,985 under section 1(b)(i). Although the numeric values match after rounding, the governing subsection in the claim (\u00a71(b)(i)) differs from the subsection used for calculation (\u00a71(b)(v)). This subsection mismatch is sufficient to establish a contradiction under Rule 2."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "The `investigate_rule_application` step successfully derived a rule-output ($442,985.08 under \u00a71(b)(v)), meaning there were no missing facts or structural defects preventing a determination. Therefore, the case is not indeterminate."
+          }
+        ],
+        "recommended_action": "CONTRADICTION",
+        "warrant": "Investigate's rule-output is $442,985.08 under \u00a71(b)(v). The claim asserts $442,985 in taxes under section 1(b)(i). While the numeric values match after rounding ($442,985.08 rounds to $442,985), the governing subsections differ (\u00a71(b)(v) vs. \u00a71(b)(i)). According to Rule 2 for numeric value claims, if either the value or the subsection differs, the disposition is CONTRADICTION. Therefore the disposition is CONTRADICTION.",
+        "confidence_basis": "The `investigate_rule_application.finding` explicitly states the calculated tax amount and the governing subsection. The `investigate_rule_application.evidence_flags` include 'incorrect_statutory_citation', which directly highlights the subsection mismatch. The `verify_claim_comparison.conforms` field is true, indicating the claim was well-formed for comparison.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "generate_determination",
+      "primitive": "generate",
+      "confidence": 1.0,
+      "elapsed_ms": 12068.807601928711,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The artifact was generated by extracting the disposition verbatim from `deliberate_disposition.recommended_action`. The primary reasoning was constructed based on `deliberate_disposition.warrant`, incorporating specific case facts about Alice's filing status and taxable income, and citing the relevant statutory subsections from the `investigate_rule_application` finding and the `question_text`. The claim comparison explicitly states the rule-output versus the asserted value. Subsections and case facts cited were directly sourced from `investigate_rule_application` and `case_narrative`/`question_text`. No verify violations were found as `verify_claim_comparison.Conforms` was True.",
+        "evidence_used": [
+          {
+            "source": "deliberate_disposition",
+            "description": "recommended_action: CONTRADICTION"
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "warrant: Investigate's rule-output is $442,985.08 under \u00a71(b)(v). The claim asserts $442,985 in taxes under section 1(b)(i). While the numeric values match aft"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The rule-output for the tax imposed on Alice is $442,985.08. This is calculated under \u00a71(b)(v) based on her status as a head of household and her taxable income of $1,172,980 for the year 2017."
+          },
+          {
+            "source": "question_text",
+            "description": "Alice has to pay $442985 in taxes for the year 2017 under section 1(b)(i)"
+          },
+          {
+            "source": "case_narrative",
+            "description": "Alice is a head of household for the year 2017."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Alice's taxable income for the year 2017 is $1172980."
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Hypothesis: The taxpayer's filing status is \"head of household\""
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Hypothesis: The taxpayer's taxable income of $1,172,980"
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Conforms: True"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "artifact": {
+          "disposition": "CONTRADICTION",
+          "primary_reasoning": "The claim asserts that Alice has to pay $442,985 in taxes for the year 2017 under section 1(b)(i). Alice is identified as a head of household for 2017 with a taxable income of $1,172,980. However, the investigation determined that Alice's tax liability, based on her status as a head of household and her taxable income, is $442,985.08, which is calculated under \u00a71(b)(v). While the numerical tax amount is nearly identical, the statutory citation in the claim (section 1(b)(i)) is incorrect, as the appropriate section for a head of household is \u00a71(b)(v).",
+          "claim_comparison": "The claim asserts a tax liability of $442,985. The rule-output from the investigation is $442,985.08.",
+          "subsections_cited": [
+            "\u00a71(b)(v)",
+            "section 1(b)(i)"
+          ],
+          "case_facts_cited": [
+            "Alice is a head of household for the year 2017.",
+            "Alice's taxable income for the year 2017 is $1172980."
+          ],
+          "verify_violations": []
+        },
+        "format": "json",
+        "constraints_checked": [
+          {
+            "constraint": "disposition is exactly \"ENTAILMENT\", \"CONTRADICTION\", or \"INDETERMINATE\"",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "disposition MUST equal deliberate_disposition.recommended_action verbatim",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "every identifier in subsections_cited must have been cited in investigate, verify, or deliberate step outputs",
+            "satisfied": true,
+            "notes": "\u00a71(b)(v) from investigate, section 1(b)(i) from question_text (retrieved and used in investigate/deliberate context)"
+          },
+          {
+            "constraint": "every fact in case_facts_cited must have been cited in retrieve_case_facts or investigate",
+            "satisfied": true,
+            "notes": "Facts from case_narrative and confirmed by investigate hypotheses."
+          },
+          {
+            "constraint": "primary_reasoning references at least one subsection identifier and at least one case fact, and reflects deliberate's warrant",
+            "satisfied": true,
+            "notes": "References \u00a71(b)(v), section 1(b)(i), Alice's head of household status, and taxable income."
+          },
+          {
+            "constraint": "confidence reflects how cleanly the artifact tracks the upstream findings",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "Artifact must be a JSON object with specified fields",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "No challenge step outputs are present in the context",
+            "satisfied": true,
+            "notes": "No vulnerabilities to address."
+          }
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "challenge_exception_check",
+      "primitive": "challenge",
+      "confidence": 1.0,
+      "elapsed_ms": 28161.235809326172,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "FACT-CHECK: The claims in the prior reasoning are factually correct. The case narrative states Alice is a 'head of household' with '$1172980' in taxable income for 2017. The question text claims the tax is '$442985' under 'section 1(b)(i)'. The `investigate` step correctly calculated the tax as $442,985.08 under \u00a71(b)(v), which is arithmetically correct based on the statute. The `deliberate` step correctly identified the contradiction between the claim's statutory citation (\u00a71(b)(i)) and the correct one (\u00a71(b)(v)). All claims are CONFIRMED against the provided context. TREND-CHECK: No trend claims were made. ADVERSARIAL: I conducted a thorough review of the provided statutory authority, including \u00a71, \u00a72, \u00a763, \u00a768, \u00a7151, and \u00a77703, searching for exceptions or special rules that could alter the tax calculation. The tax year is 2017, so the special rules for 2018-2025 under \u00a768(f) and \u00a7151(d)(5) do not apply. The case narrative provides the final 'taxable income' and 'head of household' status, so any rules affecting the determination of those values (e.g., \u00a768 limitations, \u00a72(b) definitions) are presumed to have been applied correctly to arrive at the given facts. There are no other provisions in the provided authority that would change the tax calculation based on the given facts. DETERMINATION: The prior analysis correctly applied the law to the facts, and no overlooked exceptions or provisions were found that would change the outcome. The input survives the challenge.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Confirmed Alice's filing status ('head of household'), tax year (2017), and taxable income ($1,172,980)."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "Reviewed \u00a71, \u00a72, \u00a763, \u00a768, \u00a7151, and \u00a77703 to search for applicable exceptions or special rules. Confirmed that \u00a71(b)(v) is the correct provision and that no special rules for tax year 2017 apply to alter the calculation."
+          },
+          {
+            "source": "question_text",
+            "description": "Confirmed the claim being evaluated, which asserts a tax of $442,985 under section 1(b)(i)."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "survives": true,
+        "vulnerabilities": [],
+        "strengths": [
+          "The prior analysis correctly identified the applicable tax schedule, \u00a71(b) for a 'head of household'.",
+          "The analysis correctly identified the specific tax bracket, \u00a71(b)(v), based on a taxable income of $1,172,980 being over the $250,000 threshold.",
+          "The arithmetic calculation of the tax liability ($442,985.08) is correct.",
+          "The final disposition correctly identified the contradiction based on the incorrect statutory citation in the claim."
+        ],
+        "overall_assessment": "The prior determination is robust. The tax calculation is correct based on the provided facts and statutory authority. A thorough review for exceptions related to the tax year, filing status, or income level revealed no applicable provisions that would alter the outcome. The determination of 'CONTRADICTION' is well-supported.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "govern_disposition",
+      "primitive": "govern",
+      "confidence": 1.0,
+      "elapsed_ms": 9841.233968734741,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The workflow state shows high confidence across all relevant steps: investigate (1.0), deliberate (0.95), and generate (1.0). The `challenge_survives` flag is True, indicating the determination is robust. No critical or substantive escalation conditions (HOLD or GATE) are met, as `verify_conforms` is True, `deliberate_warrant` is present, and all confidence scores are above their respective thresholds. The conditions for SPOT_CHECK are also not met, as `deliberate_confidence` (0.95) is not in the [0.55, 0.75] range and the disposition is not INDETERMINATE. Therefore, the AUTO tier is appropriate, leading to a 'proceed' disposition.",
+        "evidence_used": [
+          {
+            "source": "verify_conforms",
+            "description": "Established that the reasoning chain is well-grounded."
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "Determined the final disposition as CONTRADICTION."
+          },
+          {
+            "source": "deliberate_warrant",
+            "description": "Provided the justification for the CONTRADICTION disposition, noting the differing statutory subsections despite similar numeric values."
+          },
+          {
+            "source": "deliberate_confidence",
+            "description": "Indicated high confidence in the deliberate step's output (0.95)."
+          },
+          {
+            "source": "generate_confidence",
+            "description": "Indicated high confidence in the generation step's output (1.0)."
+          },
+          {
+            "source": "challenge_survives",
+            "description": "Confirmed the robustness of the prior determination (True)."
+          },
+          {
+            "source": "investigate_confidence",
+            "description": "Indicated high confidence in the investigation step's output (1.0)."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "tier_applied": "auto",
+        "tier_rationale": "All confidence scores are high, no critical or substantive escalation conditions are met, and the challenge step confirmed the robustness of the determination. The deliberate step provided a clear warrant for the CONTRADICTION disposition.",
+        "disposition": "proceed",
+        "work_order": null,
+        "escalation_target": null,
+        "resumption_condition": null,
+        "accountability_chain": {
+          "decision_instance_id": "SARA-S1-B-I-NEG-govern-20260512",
+          "governance_decisions": [
+            {
+              "step": "govern",
+              "tier": "auto",
+              "rationale": "All conditions for AUTO tier are met: high confidence, clear warrant, and challenge survived.",
+              "timestamp": "2026-05-12T00:00:00Z"
+            }
+          ],
+          "final_tier": "auto",
+          "audit_timestamp": "2026-05-12T00:00:00Z"
+        }
+      }
+    }
+  ],
+  "result_summary": {
+    "step_count": 9,
+    "steps": [
+      {
+        "step_name": "retrieve_question_structure",
+        "primitive": "retrieve",
+        "sources": [
+          "question_text"
+        ]
+      },
+      {
+        "step_name": "retrieve_statute",
+        "primitive": "retrieve",
+        "sources": [
+          "statute_corpus"
+        ]
+      },
+      {
+        "step_name": "retrieve_case_facts",
+        "primitive": "retrieve",
+        "sources": [
+          "case_narrative"
+        ]
+      },
+      {
+        "step_name": "investigate_rule_application",
+        "primitive": "investigate",
+        "finding": "The rule-output for the tax imposed on Alice is $442,985.08. This is calculated under \u00a71(b)(v) based on her status as a head of household and her taxable income of $1,172,980 for the year 2017.",
+        "confidence": 1.0,
+        "evidence_flags": [
+          "incorrect_statutory_citation"
+        ],
+        "missing_evidence": []
+      },
+      {
+        "step_name": "verify_claim_comparison",
+        "primitive": "verify",
+        "conforms": true,
+        "violations": 0
+      },
+      {
+        "step_name": "deliberate_disposition",
+        "primitive": "deliberate",
+        "recommended_action": "CONTRADICTION",
+        "warrant": "Investigate's rule-output is $442,985.08 under \u00a71(b)(v). The claim asserts $442,985 in taxes under section 1(b)(i). While the numeric values match after rounding ($442,985.08 rounds to $442,985), the governing subsections differ (\u00a71(b)(v) vs. \u00a71(b)(i)). According to Rule 2 for numeric value claims, if either the value or the subsection differs, the disposition is CONTRADICTION. Therefore the disposition is CONTRADICTION.",
+        "situation_summary": "The claim states that Alice has to pay $442,985 in taxes for the year 2017 under section 1(b)(i). Alice is a head of household for 2017 with a taxable income of $1,172,980. The `investigate_rule_application` step determined that the tax imposed on Alice is $442,985.08, calculated under \u00a71(b)(v) based on her filing status and taxable income. The `investigate_rule_application` step also raised an 'incorrect_statutory_citation' flag, indicating a discrepancy between the claimed section and the calc",
+        "confidence_basis": "The `investigate_rule_application.finding` explicitly states the calculated tax amount and the governing subsection. The `investigate_rule_application.evidence_flags` include 'incorrect_statutory_citation', which directly highlights the subsection mismatch. The `verify_claim_comparison.conforms` field is true, indicating the claim was well-formed for comparison.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": false,
+            "rationale": "While the numeric value of the claim ($442,985) matches the rule-output value ($442,985.08, rounded to $442,985), the statutory subsection cited in the claim (\u00a71(b)(i)) does not match the subsection under which the tax was calculated by `investigate_rule_application` (\u00a71(b)(v)). According to Rule 2, a mismatch in the governing subsection prevents entailment."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": true,
+            "rationale": "The rule-output for Alice's tax liability is $442,985.08 under \u00a71(b)(v). The claim asserts a tax liability of $442,985 under section 1(b)(i). Although the numeric values match after rounding, the governing subsection in the claim (\u00a71(b)(i)) differs from the subsection used for calculation (\u00a71(b)(v)). This subsection mismatch is sufficient to establish a contradiction under Rule 2."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "The `investigate_rule_application` step successfully derived a rule-output ($442,985.08 under \u00a71(b)(v)), meaning there were no missing facts or structural defects preventing a determination. Therefore, the case is not indeterminate."
+          }
+        ],
+        "confidence": 0.95
+      },
+      {
+        "step_name": "generate_determination",
+        "primitive": "generate",
+        "artifact_preview": "{'disposition': 'CONTRADICTION', 'primary_reasoning': \"The claim asserts that Alice has to pay $442,985 in taxes for the year 2017 under section 1(b)(i). Alice is identified as a head of household for 2017 with a taxable income of $1,172,980. However, the investigation determined that Alice's tax li",
+        "artifact": {
+          "disposition": "CONTRADICTION",
+          "primary_reasoning": "The claim asserts that Alice has to pay $442,985 in taxes for the year 2017 under section 1(b)(i). Alice is identified as a head of household for 2017 with a taxable income of $1,172,980. However, the investigation determined that Alice's tax liability, based on her status as a head of household and her taxable income, is $442,985.08, which is calculated under \u00a71(b)(v). While the numerical tax amount is nearly identical, the statutory citation in the claim (section 1(b)(i)) is incorrect, as the appropriate section for a head of household is \u00a71(b)(v).",
+          "claim_comparison": "The claim asserts a tax liability of $442,985. The rule-output from the investigation is $442,985.08.",
+          "subsections_cited": [
+            "\u00a71(b)(v)",
+            "section 1(b)(i)"
+          ],
+          "case_facts_cited": [
+            "Alice is a head of household for the year 2017.",
+            "Alice's taxable income for the year 2017 is $1172980."
+          ],
+          "verify_violations": []
+        },
+        "confidence": 1.0
+      },
+      {
+        "step_name": "challenge_exception_check",
+        "primitive": "challenge",
+        "survives": true,
+        "vulnerabilities": 0
+      },
+      {
+        "step_name": "govern_disposition",
+        "primitive": "govern",
+        "tier_applied": "auto",
+        "disposition": "proceed",
+        "tier_rationale": "All confidence scores are high, no critical or substantive escalation conditions are met, and the challenge step confirmed the robustness of the determination. The deliberate step provided a clear warrant for the CONTRADICTION disposition.",
+        "has_work_order": false,
+        "escalation_target": null,
+        "confidence": 1.0
+      }
+    ],
+    "input": {
+      "case_id": "SARA-S1-B-I-NEG",
+      "question_text": "Alice has to pay $442985 in taxes for the year 2017 under section 1(b)(i)",
+      "statute_corpus": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n",
+      "case_narrative": "Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $1172980."
+    },
+    "disposition": "CONTRADICTION",
+    "determination": "{'disposition': 'CONTRADICTION', 'primary_reasoning': \"The claim asserts that Alice has to pay $442,985 in taxes for the year 2017 under section 1(b)(i). Alice is identified as a head of household for 2017 with a taxable income of $1,172,980. However, the investigation determined that Alice's tax liability, based on her status as a head of household and her taxable income, is $442,985.08, which is calculated under \u00a71(b)(v). While the numerical tax amount is nearly identical, the statutory citation in the claim (section 1(b)(i)) is incorrect, as the appropriate section for a head of household is \u00a71(b)(v).\", 'claim_comparison': 'The claim asserts a tax liability of $442,985. The rule-output from the investigation is $442,985.08.', 'subsections_cited': ['\u00a71(b)(v)', 'section 1(b)(i)'], 'case_facts_cited': ['Alice is a head of household for the year 2017.', \"Alice's taxable income for the year 2017 is $1172980.\"], 'verify_violations': []}"
+  }
+}

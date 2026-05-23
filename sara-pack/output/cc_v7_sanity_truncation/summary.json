@@ -1,0 +1,19 @@
+{
+  "label": "cc_v7_sanity_truncation",
+  "started_at": "cc_v7_sanity_truncation",
+  "n_cases": 1,
+  "n_completed": 0,
+  "tier_distribution": {
+    "gate": 1
+  },
+  "avg_elapsed_s": 184.07,
+  "case_results": [
+    {
+      "case_id": "SARA-S3306-A-1-B-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 184.07,
+      "status": "suspended"
+    }
+  ]
+}

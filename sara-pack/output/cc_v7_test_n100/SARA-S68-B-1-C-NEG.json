@@ -1,0 +1,559 @@
+{
+  "case_id": "SARA-S68-B-1-C-NEG",
+  "source_id": "s68_b_1_C_neg",
+  "instance_id": "wf_4f7df6782b04",
+  "status": "completed",
+  "error": null,
+  "elapsed_total_s": 115.14,
+  "tier_applied": "auto",
+  "determination": "CONTRADICTION",
+  "ground_truth": "Contradiction",
+  "step_records": [
+    {
+      "step_name": "retrieve_question_structure",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 5093.374967575073,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The 'question_text' source was successfully retrieved and contained the full question. All required fields for the logical structure extraction were successfully parsed from the question text according to the specification. No data is missing or incomplete for this step.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The full question text 'Section 68(b)(1)(C) applies to Alice in 2016' was retrieved, allowing for complete extraction of its logical structure."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "question_text": {
+            "value": "Section 68(b)(1)(C) applies to Alice in 2016"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "question_text",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0030994415283203125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "statute_corpus",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": "The retrieval plan was deterministic. Only the 'question_text' source was required by the specification to extract the question's logical structure. All other available sources were skipped as they were not needed for this specific task."
+      }
+    },
+    {
+      "step_name": "retrieve_statute",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 15308.806896209717,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "All required information for identifying the relevant authority and its cross-reference closure per the specification has been successfully retrieved from the `statute_corpus`. The primary section, specific subsections bearing on the claim, and all directly and indirectly referenced sections necessary for the correct application of \u00a768(b)(1)(C) have been identified. The notes provide a brief summary of the section's governance.",
+        "evidence_used": [
+          {
+            "source": "statute_corpus",
+            "description": "The full text of the relevant IRC sections (\u00a71, \u00a72, \u00a763, \u00a768, \u00a7151, \u00a7152, \u00a73301, \u00a73306, \u00a77703) was retrieved, allowing for the identification of the primary section, its relevant subsections, and all cross-referenced sections that form the closure for \u00a768(b)(1)(C)."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "statute_corpus": {
+            "value": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "statute_corpus",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0030994415283203125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_case_facts",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 5169.20804977417,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The case narrative was successfully retrieved and is structurally complete, ending with terminal punctuation. All specified facts were extracted as structured data according to the provided categories, preserving original wording in quotes. No inferences were made.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Extracted structured facts including persons, financial details, temporal information, and filing status for Alice in 2016."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "case_narrative": {
+            "value": "In 2016, Alice's income was $567192. Alice is a head of household for the year 2016."
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "case_narrative",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.001430511474609375,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "statute_corpus",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "investigate_rule_application",
+      "primitive": "investigate",
+      "confidence": 1.0,
+      "elapsed_ms": 23454.206466674805,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "STEP 1: EXTRACT KEY DATA POINTS\n- Taxpayer: Alice\n- Tax Year: 2016\n- Filing Status: Head of household\n- Cited Authority: Section 68(b)(1)(C)\n- Text of \u00a768(b)(1)(C): The term 'applicable amount' means '$250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household'.\n\nSTEP 2: FORM HYPOTHESES\nBased on the statutory requirements of \u00a768(b)(1)(C), the following hypotheses must be tested to determine if the section applies to Alice:\n- Hypothesis 1: Alice is an individual who is not married.\n- Hypothesis 2: Alice is an individual who is not a surviving spouse.\n- Hypothesis 3: Alice is an individual who is not a head of household.\n- Overall Hypothesis: Section 68(b)(1)(C) applies to Alice in 2016.\n\nSTEP 3: TEST EACH HYPOTHESIS AGAINST THE EXTRACTED DATA\n- Hypothesis 1: Supported. The definition of 'head of household' in \u00a72(b)(1) requires that the individual 'is not married at the close of his taxable year'. Since the case narrative states Alice is a head of household, she must be considered not married.\n- Hypothesis 2: Supported. The definition of 'head of household' in \u00a72(b)(1) also requires that the individual 'is not a surviving spouse'. Since the case narrative states Alice is a head of household, she must not be a surviving spouse.\n- Hypothesis 3: Rejected. The predicate requires the individual to *not* be a head of household. The case narrative explicitly states, 'Alice is a head of household for the year 2016.' This is a direct contradiction.\n- Overall Hypothesis: Rejected. For \u00a768(b)(1)(C) to apply, all of its predicates must be met. Since the third predicate ('not a head of household') fails, the section does not apply.\n\nSTEP 4: STATE YOUR FINDING\nAll predicates of \u00a768(b)(1)(C) must hold for it to apply. The predicate that the individual is 'not... head of household' fails, as the case facts state 'Alice is a head of household'. Therefore, the claim that \u00a768(b)(1)(C) applies is false, and the rule-output is `false`.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Alice is a head of household for the year 2016."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "\u00a768(b)(1)(C): 'applicable amount' means '$250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household'"
+          },
+          {
+            "source": "statute_corpus",
+            "description": "\u00a72(b)(1): 'An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse...'"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "finding": "The rule-output for the predicate 'applies' is `false`. Section 68(b)(1)(C) does not apply to Alice because one of its necessary conditions\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.'",
+        "hypotheses_tested": [
+          {
+            "hypothesis": "The taxpayer is an individual who is not a head of household.",
+            "status": "rejected",
+            "evidence_for": [],
+            "evidence_against": [
+              "case_narrative: 'Alice is a head of household for the year 2016.'"
+            ],
+            "reasoning": "The predicate requires the taxpayer to not be a head of household. The case narrative explicitly states that Alice is a head of household, directly contradicting the predicate."
+          },
+          {
+            "hypothesis": "Section 68(b)(1)(C) applies to Alice.",
+            "status": "rejected",
+            "evidence_for": [],
+            "evidence_against": [
+              "case_narrative: 'Alice is a head of household for the year 2016.'"
+            ],
+            "reasoning": "For \u00a768(b)(1)(C) to apply, the taxpayer must satisfy all conditions, including not being a head of household. Since Alice is a head of household, this section does not apply. The relevant section for her filing status is \u00a768(b)(1)(B), which specifies an applicable amount for a head of household."
+          }
+        ],
+        "recommended_actions": [],
+        "evidence_flags": [],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "verify_claim_comparison",
+      "primitive": "verify",
+      "confidence": 1.0,
+      "elapsed_ms": 12817.609548568726,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The verification process confirmed that the reasoning from the 'investigate_rule_application' step is sound and well-grounded. R1 passes because the boolean output 'false' is appropriate for an applicability claim. R2 passes as the contradiction between the claim (applies) and the finding (does not apply) is a valid outcome, not a verification failure. R3 passes because the implicitly cited statute, \u00a768(b)(1)(C), is present in the provided authority. R4 passes because the cited case fact, 'Alice is a head of household for the year 2016,' is directly stated in the case narrative. R5 passes as there were no indeterminate hypotheses requiring disclosure of missing evidence. All rules were checked and no violations were found.",
+        "evidence_used": [
+          {
+            "source": "SUBJECT TO VERIFY",
+            "description": "Finding: The rule-output for the predicate 'applies' is `false`. Section 68(b)(1)(C) does not apply to Alice because one of its necessary conditions\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.'"
+          },
+          {
+            "source": "RAW AUTHORITY",
+            "description": "\u00a768(b)(1)(C) ... in the case of an individual who is not married and who is not a surviving spouse or head of household..."
+          },
+          {
+            "source": "RAW CASE NARRATIVE",
+            "description": "Alice is a head of household for the year 2016."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "conforms": true,
+        "violations": [],
+        "rules_checked": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "deliberate_disposition",
+      "primitive": "deliberate",
+      "confidence": 1.0,
+      "elapsed_ms": 6880.780220031738,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The deliberation followed a direct application of the decision rule for applicability claims. The `investigate_rule_application` step provided a definitive 'false' output for the claim's predicate, leading directly to a CONTRADICTION disposition.",
+        "evidence_used": [
+          {
+            "source": "investigate_rule_application.finding",
+            "description": "Established that the rule-output for the predicate 'applies' is `false` for Section 68(b)(1)(C) to Alice, due to Alice being a head of household."
+          },
+          {
+            "source": "question_text",
+            "description": "Provided the claim: 'Section 68(b)(1)(C) applies to Alice in 2016'."
+          },
+          {
+            "source": "verify_claim_comparison.conforms",
+            "description": "Confirmed that the comparison of the rule-output to the claim conformed to expectations."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "situation_summary": "The claim states that Section 68(b)(1)(C) applies to Alice in 2016. The `investigate_rule_application` step determined that Section 68(b)(1)(C) does not apply to Alice because a necessary condition for its applicability, specifically that the individual is not a head of household, is contradicted by the case fact that Alice is a head of household for 2016. The rule-output for the predicate 'applies' is `false`. The `verify_claim_comparison` step confirmed that the comparison conforms to expectations.",
+        "evaluation_criteria": "According to RULE 1 \u2014 APPLICABILITY/STATUS/RELATIONAL CLAIMS, if a claim asserts '\u00a7X applies' and the rule-output value is FALSE, then the recommended action is CONTRADICTION.",
+        "options_considered": [
+          {
+            "action": "CONTRADICTION",
+            "viable": true,
+            "rationale": "This option is viable because the `investigate_rule_application` step produced a definitive rule-output of `false` for the applicability of Section 68(b)(1)(C). This directly contradicts the claim that the section applies, aligning with RULE 1."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "This option is not viable because `investigate_rule_application` successfully derived a clear rule-output (`false`). INDETERMINATE is reserved for cases where the system could not derive a rule-output due to genuinely ambiguous or missing facts, which is not the case here."
+          }
+        ],
+        "recommended_action": "CONTRADICTION",
+        "warrant": "Investigate's rule-output for the applicability of Section 68(b)(1)(C) is `false`. The claim asserts that Section 68(b)(1)(C) applies to Alice in 2016. The rule-output directly contradicts the claim. Therefore, the disposition is CONTRADICTION.",
+        "confidence_basis": "The confidence is based on the clear and unambiguous finding from `investigate_rule_application.finding` that the rule-output for 'applies' is `false`, and the `verify_claim_comparison.conforms` being `True`.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "generate_determination",
+      "primitive": "generate",
+      "confidence": 1.0,
+      "elapsed_ms": 9218.14250946045,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The artifact was generated by extracting the disposition verbatim from `deliberate_disposition.recommended_action`. The primary reasoning was constructed from `deliberate_disposition.warrant` and `investigate_rule_application.Finding`, ensuring citation of the relevant subsection and case fact. Claim comparison, subsections cited, case facts cited, and verify violations were directly extracted from the respective prior steps as per instructions.",
+        "evidence_used": [
+          {
+            "source": "deliberate_disposition",
+            "description": "recommended_action: CONTRADICTION"
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "warrant: Investigate's rule-output for the applicability of Section 68(b)(1)(C) is `false`. The claim asserts that Section 68(b)(1)(C) applies to Alice in 2016"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The rule-output for the predicate 'applies' is `false`. Section 68(b)(1)(C) does not apply to Alice because one of its necessary conditions\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.'"
+          },
+          {
+            "source": "question_text",
+            "description": "Section 68(b)(1)(C) applies to Alice in 2016"
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Conforms: True"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "artifact": {
+          "disposition": "CONTRADICTION",
+          "primary_reasoning": "The `investigate_rule_application` step determined that Section 68(b)(1)(C) does not apply to Alice in 2016. This is because a necessary condition for the applicability of Section 68(b)(1)(C)\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.' Therefore, the claim that Section 68(b)(1)(C) applies to Alice in 2016 is a contradiction.",
+          "claim_comparison": "The claim asserts that Section 68(b)(1)(C) applies to Alice (true), but the rule-output from the investigation determined that it does not apply (false).",
+          "subsections_cited": [
+            "Section 68(b)(1)(C)"
+          ],
+          "case_facts_cited": [
+            "Alice is a head of household for the year 2016."
+          ],
+          "verify_violations": []
+        },
+        "format": "json",
+        "constraints_checked": [
+          {
+            "constraint": "disposition is exactly \"ENTAILMENT\", \"CONTRADICTION\", or \"INDETERMINATE\"",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "disposition MUST equal deliberate_disposition.recommended_action verbatim",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "every identifier in subsections_cited must have been cited in investigate, verify, or deliberate step outputs",
+            "satisfied": true,
+            "notes": "Section 68(b)(1)(C) cited in investigate and deliberate."
+          },
+          {
+            "constraint": "every fact in case_facts_cited must have been cited in retrieve_case_facts or investigate",
+            "satisfied": true,
+            "notes": "Alice is a head of household for the year 2016. cited in investigate."
+          },
+          {
+            "constraint": "primary_reasoning references at least one subsection identifier and at least one case fact, and reflects deliberate's warrant",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "confidence reflects how cleanly the artifact tracks the upstream findings",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "Artifact must be a JSON object with specified fields",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "No DYNAMIC SPEC FROM REFLECT or challenge outputs present",
+            "satisfied": true,
+            "notes": ""
+          }
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "challenge_exception_check",
+      "primitive": "challenge",
+      "confidence": 1.0,
+      "elapsed_ms": 28489.238500595093,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "FACT-CHECK: All factual claims in the input are confirmed against the source data. Claim: case_id is 'SARA-S68-B-1-C-NEG'. Source: INPUT TO CHALLENGE. CONFIRMED. Claim: question_text is 'Section 68(b)(1)(C) applies to Alice in 2016'. Source: INPUT TO CHALLENGE. CONFIRMED. Claim: Alice's income in 2016 was $567192. Source: case_narrative. CONFIRMED. Claim: Alice is a head of household for 2016. Source: case_narrative. CONFIRMED. TREND-CHECK: No trend claims were made. ADVERSARIAL: The original determination correctly concluded that Section 68(b)(1)(C) does not apply. The statute at \u00a768(b)(1) establishes mutually exclusive categories for the 'applicable amount' based on filing status. Subparagraph (C) applies to an individual who is 'not a ... head of household,' while subparagraph (B) applies specifically to a 'head of household.' The case narrative explicitly states 'Alice is a head of household for the year 2016.' This fact places her squarely under \u00a768(b)(1)(B) and excludes her from \u00a768(b)(1)(C). A thorough review of the provided authority, including \u00a72(b) (Definition of head of household) and \u00a77703 (Determination of marital status), reveals no exceptions or special rules that would treat a person who is a head of household as 'not a head of household' for the purposes of \u00a768. Furthermore, the tax year is 2016, so the suspension of \u00a768 by \u00a768(f) for years 2018-2025 is not applicable. The initial reasoning is sound and has not overlooked any relevant provisions. DETERMINATION: The original determination survives this challenge as no vulnerabilities were found.",
+        "evidence_used": [
+          {
+            "source": "\u00a768(b)(1)",
+            "description": "This section provides the definitions of 'applicable amount' for different filing statuses, establishing mutually exclusive categories. \u00a768(b)(1)(C) explicitly excludes a 'head of household'."
+          },
+          {
+            "source": "case_narrative",
+            "description": "This source provides the critical fact that 'Alice is a head of household for the year 2016,' which triggers the exclusion from \u00a768(b)(1)(C)."
+          },
+          {
+            "source": "\u00a768(f)",
+            "description": "This section was checked to confirm that its suspension of \u00a768 does not apply to the 2016 tax year."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "survives": true,
+        "vulnerabilities": [],
+        "strengths": [
+          "The original reasoning is logically sound and directly supported by the statutory text. It correctly identifies the direct contradiction between the case fact ('Alice is a head of household') and a necessary condition of the rule in \u00a768(b)(1)(C) ('not a ... head of household')."
+        ],
+        "overall_assessment": "The input survives the challenge. The fact-check confirmed all claims. The adversarial analysis found no overlooked exceptions, cross-references, or other provisions in the provided legal authority that would alter the original, correct determination that \u00a768(b)(1)(C) does not apply to Alice.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "govern_disposition",
+      "primitive": "govern",
+      "confidence": 1.0,
+      "elapsed_ms": 7655.956268310547,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The workflow state indicates a clean run. Investigate, deliberate, and generate steps all reported a confidence of 1.0. The `verify_conforms` flag is True, confirming the reasoning's grounding. The `deliberate_warrant` is present and clearly justifies the 'CONTRADICTION' disposition. The `challenge_survives` flag is True, indicating no vulnerabilities were found. No epistemic flags were raised. Based on the tier policy, these conditions lead to an 'auto' tier. With an 'auto' tier and high confidence, the appropriate disposition is 'proceed'.",
+        "evidence_used": [
+          {
+            "source": "verify_conforms",
+            "description": "Established that the reasoning chain is well-grounded."
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "Determined the recommended action is CONTRADICTION."
+          },
+          {
+            "source": "deliberate_warrant",
+            "description": "Provided the justification for the recommended action."
+          },
+          {
+            "source": "deliberate_confidence",
+            "description": "Indicated high confidence in the deliberate step's output."
+          },
+          {
+            "source": "generate_confidence",
+            "description": "Indicated high confidence in the generation step's output."
+          },
+          {
+            "source": "challenge_survives",
+            "description": "Confirmed no vulnerabilities were found in the epistemic basis."
+          },
+          {
+            "source": "investigate_confidence",
+            "description": "Indicated high confidence in the investigation step's output."
+          },
+          {
+            "source": "Workflow epistemic overall",
+            "description": "Overall assessment of the workflow's epistemic state, showing no critical issues."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "tier_applied": "auto",
+        "tier_rationale": "All confidence scores are high (1.0), the deliberate warrant is present and clear, verify_conforms is true, and the challenge step confirmed no vulnerabilities. No conditions for higher tiers (HOLD, GATE, SPOT_CHECK) were met.",
+        "disposition": "proceed",
+        "work_order": null,
+        "escalation_target": null,
+        "resumption_condition": null,
+        "accountability_chain": {
+          "decision_instance_id": "SARA-S68-B-1-C-NEG-govern-2026-05-12",
+          "governance_decisions": [
+            {
+              "step": "govern",
+              "tier": "auto",
+              "rationale": "All confidence scores are high, warrant is clear, and no issues were identified by challenge or epistemic flags.",
+              "timestamp": "2026-05-12T00:00:00Z"
+            }
+          ],
+          "final_tier": "auto",
+          "audit_timestamp": "2026-05-12T00:00:00Z"
+        }
+      }
+    }
+  ],
+  "result_summary": {
+    "step_count": 9,
+    "steps": [
+      {
+        "step_name": "retrieve_question_structure",
+        "primitive": "retrieve",
+        "sources": [
+          "question_text"
+        ]
+      },
+      {
+        "step_name": "retrieve_statute",
+        "primitive": "retrieve",
+        "sources": [
+          "statute_corpus"
+        ]
+      },
+      {
+        "step_name": "retrieve_case_facts",
+        "primitive": "retrieve",
+        "sources": [
+          "case_narrative"
+        ]
+      },
+      {
+        "step_name": "investigate_rule_application",
+        "primitive": "investigate",
+        "finding": "The rule-output for the predicate 'applies' is `false`. Section 68(b)(1)(C) does not apply to Alice because one of its necessary conditions\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.'",
+        "confidence": 1.0,
+        "evidence_flags": [],
+        "missing_evidence": []
+      },
+      {
+        "step_name": "verify_claim_comparison",
+        "primitive": "verify",
+        "conforms": true,
+        "violations": 0
+      },
+      {
+        "step_name": "deliberate_disposition",
+        "primitive": "deliberate",
+        "recommended_action": "CONTRADICTION",
+        "warrant": "Investigate's rule-output for the applicability of Section 68(b)(1)(C) is `false`. The claim asserts that Section 68(b)(1)(C) applies to Alice in 2016. The rule-output directly contradicts the claim. Therefore, the disposition is CONTRADICTION.",
+        "situation_summary": "The claim states that Section 68(b)(1)(C) applies to Alice in 2016. The `investigate_rule_application` step determined that Section 68(b)(1)(C) does not apply to Alice because a necessary condition for its applicability, specifically that the individual is not a head of household, is contradicted by the case fact that Alice is a head of household for 2016. The rule-output for the predicate 'applies' is `false`. The `verify_claim_comparison` step confirmed that the comparison conforms to expectat",
+        "confidence_basis": "The confidence is based on the clear and unambiguous finding from `investigate_rule_application.finding` that the rule-output for 'applies' is `false`, and the `verify_claim_comparison.conforms` being `True`.",
+        "options_considered": [
+          {
+            "action": "CONTRADICTION",
+            "viable": true,
+            "rationale": "This option is viable because the `investigate_rule_application` step produced a definitive rule-output of `false` for the applicability of Section 68(b)(1)(C). This directly contradicts the claim that the section applies, aligning with RULE 1."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "This option is not viable because `investigate_rule_application` successfully derived a clear rule-output (`false`). INDETERMINATE is reserved for cases where the system could not derive a rule-output due to genuinely ambiguous or missing facts, which is not the case here."
+          }
+        ],
+        "confidence": 1.0
+      },
+      {
+        "step_name": "generate_determination",
+        "primitive": "generate",
+        "artifact_preview": "{'disposition': 'CONTRADICTION', 'primary_reasoning': \"The `investigate_rule_application` step determined that Section 68(b)(1)(C) does not apply to Alice in 2016. This is because a necessary condition for the applicability of Section 68(b)(1)(C)\u2014that the individual is not a head of household\u2014is dir",
+        "artifact": {
+          "disposition": "CONTRADICTION",
+          "primary_reasoning": "The `investigate_rule_application` step determined that Section 68(b)(1)(C) does not apply to Alice in 2016. This is because a necessary condition for the applicability of Section 68(b)(1)(C)\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.' Therefore, the claim that Section 68(b)(1)(C) applies to Alice in 2016 is a contradiction.",
+          "claim_comparison": "The claim asserts that Section 68(b)(1)(C) applies to Alice (true), but the rule-output from the investigation determined that it does not apply (false).",
+          "subsections_cited": [
+            "Section 68(b)(1)(C)"
+          ],
+          "case_facts_cited": [
+            "Alice is a head of household for the year 2016."
+          ],
+          "verify_violations": []
+        },
+        "confidence": 1.0
+      },
+      {
+        "step_name": "challenge_exception_check",
+        "primitive": "challenge",
+        "survives": true,
+        "vulnerabilities": 0
+      },
+      {
+        "step_name": "govern_disposition",
+        "primitive": "govern",
+        "tier_applied": "auto",
+        "disposition": "proceed",
+        "tier_rationale": "All confidence scores are high (1.0), the deliberate warrant is present and clear, verify_conforms is true, and the challenge step confirmed no vulnerabilities. No conditions for higher tiers (HOLD, GATE, SPOT_CHECK) were met.",
+        "has_work_order": false,
+        "escalation_target": null,
+        "confidence": 1.0
+      }
+    ],
+    "input": {
+      "case_id": "SARA-S68-B-1-C-NEG",
+      "question_text": "Section 68(b)(1)(C) applies to Alice in 2016",
+      "statute_corpus": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n",
+      "case_narrative": "In 2016, Alice's income was $567192. Alice is a head of household for the year 2016."
+    },
+    "disposition": "CONTRADICTION",
+    "determination": "{'disposition': 'CONTRADICTION', 'primary_reasoning': \"The `investigate_rule_application` step determined that Section 68(b)(1)(C) does not apply to Alice in 2016. This is because a necessary condition for the applicability of Section 68(b)(1)(C)\u2014that the individual is not a head of household\u2014is directly contradicted by the case fact that 'Alice is a head of household for the year 2016.' Therefore, the claim that Section 68(b)(1)(C) applies to Alice in 2016 is a contradiction.\", 'claim_comparison': 'The claim asserts that Section 68(b)(1)(C) applies to Alice (true), but the rule-output from the investigation determined that it does not apply (false).', 'subsections_cited': ['Section 68(b)(1)(C)'], 'case_facts_cited': ['Alice is a head of household for the year 2016.'], 'verify_violations': []}"
+  }
+}

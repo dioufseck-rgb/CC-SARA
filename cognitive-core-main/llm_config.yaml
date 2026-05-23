@@ -1,0 +1,172 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Cognitive Core — LLM Configuration
+#
+# This file is the single source of truth for model names and provider settings.
+# Edit this file when models are deprecated or you want to use different models.
+# Never hardcode model names in application code.
+#
+# Override any value without editing this file:
+#   LLM_DEFAULT_MODEL=<model>     override the default model
+#   LLM_PROVIDER=<provider>       override the provider
+#   LLM_CONFIG_PATH=<path>        load a different config file entirely
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Provider ──────────────────────────────────────────────────────────────────
+# Leave null to auto-detect from API key environment variables.
+default_provider: null
+
+
+# ── Model aliases ─────────────────────────────────────────────────────────────
+# Maps logical alias → provider → model name.
+# Workflows reference aliases ("default", "fast", "standard", "strong").
+# Changing a model here updates all workflows that use that alias.
+#
+# UPDATED 2026-05-12 for SARA pack:
+#   - Replaced gemini-3-flash-preview (unavailable on user's tier) with
+#     gemini-2.5-flash (default/fast) and gemini-2.5-pro (standard/strong).
+#   - Long-context reasoning steps (investigate, verify, challenge) now route
+#     to 'standard' via primitive_model_alias to avoid Flash's truncation
+#     behavior on 30KB+ prompts.
+aliases:
+  default:
+    anthropic:    claude-haiku-4-5-20251001
+    google:       gemini-2.5-flash
+    openai:       gpt-4o-mini
+    azure:        gpt-4o-mini
+    azure_foundry: gpt-4o-mini
+    bedrock:      anthropic.claude-3-5-haiku-20241022-v1:0
+
+  fast:
+    anthropic:    claude-haiku-4-5-20251001
+    google:       gemini-2.5-flash-lite
+    openai:       gpt-4o-mini
+    azure:        gpt-4o-mini
+    azure_foundry: gpt-4o-mini
+    bedrock:      anthropic.claude-3-5-haiku-20241022-v1:0
+
+  standard:
+    anthropic:    claude-sonnet-4-6
+    google:       gemini-2.5-pro
+    openai:       gpt-4o
+    azure:        gpt-4o
+    azure_foundry: gpt-4o
+    bedrock:      anthropic.claude-3-5-sonnet-20241022-v2:0
+
+  strong:
+    anthropic:    claude-sonnet-4-6
+    google:       gemini-2.5-pro
+    openai:       gpt-4o
+    azure:        gpt-4o
+    azure_foundry: gpt-4o
+    bedrock:      anthropic.claude-3-5-sonnet-20241022-v2:0
+
+
+# ── Model → provider lookup ───────────────────────────────────────────────────
+model_to_provider:
+  # Google (current stable)
+  gemini-2.5-flash:               google
+  gemini-2.5-flash-lite:          google
+  gemini-2.5-pro:                 google
+  gemini-2.0-flash:               google
+  gemini-2.0-flash-lite:          google
+  # Google (preview, may not be available on all tiers — kept for reference)
+  gemini-3-flash-preview:         google
+  gemini-3-pro-preview:           google
+  gemini-3.1-flash-lite-preview:  google
+  gemini-3.1-pro-preview:         google
+  # Anthropic
+  claude-haiku-4-5-20251001:      anthropic
+  claude-sonnet-4-6:              anthropic
+  claude-opus-4-6:                anthropic
+  # OpenAI
+  gpt-4o:                         openai
+  gpt-4o-mini:                    openai
+  gpt-4.1:                        openai
+  gpt-4.1-mini:                   openai
+  o3:                             openai
+  o4-mini:                        openai
+  # Anthropic via Bedrock
+  anthropic.claude-3-5-haiku-20241022-v1:0:   bedrock
+  anthropic.claude-3-5-sonnet-20241022-v2:0:  bedrock
+  anthropic.claude-3-7-sonnet-20250219-v1:0:  bedrock
+
+
+# ── Provider-level defaults ───────────────────────────────────────────────────
+provider_defaults:
+  anthropic:    claude-haiku-4-5-20251001
+  google:       gemini-2.5-flash
+  openai:       gpt-4o-mini
+  azure:        gpt-4o
+  azure_foundry: gpt-4o
+  bedrock:      anthropic.claude-3-5-haiku-20241022-v1:0
+
+
+# ── Pricing (cost tracking) ───────────────────────────────────────────────────
+pricing:
+  claude-haiku-4-5-20251001:
+    input_per_million:  0.80
+    output_per_million: 4.00
+  claude-sonnet-4-6:
+    input_per_million:  3.00
+    output_per_million: 15.00
+  gemini-2.5-flash:
+    input_per_million:  0.30
+    output_per_million: 2.50
+  gemini-2.5-flash-lite:
+    input_per_million:  0.10
+    output_per_million: 0.40
+  gemini-2.5-pro:
+    input_per_million:  1.25
+    output_per_million: 10.00
+  gpt-4o-mini:
+    input_per_million:  0.15
+    output_per_million: 0.60
+  gpt-4o:
+    input_per_million:  2.50
+    output_per_million: 10.00
+
+
+# ── Provider settings ─────────────────────────────────────────────────────────
+provider_settings:
+  google:
+    # temperature: 0.7
+    # top_p: 0.95
+    # max_output_tokens: 8192
+  openai:
+    # timeout: 60
+  azure:
+    # api_version: "2024-08-01-preview"
+
+
+# ── Per-primitive output token budgets ────────────────────────────────────────
+# Controls max_tokens (Anthropic/OpenAI) / max_output_tokens (Google) per call.
+# Heavy primitives (deliberate, reflect, govern, generate, challenge) produce
+# large JSON schemas with multiple list fields — they need real headroom.
+# Light primitives (retrieve, classify, verify) are structurally bounded.
+primitive_max_tokens:
+  retrieve:    4096
+  classify:    4096
+  investigate: 8192
+  verify:      6144
+  deliberate:  8192
+  reflect:     8192
+  generate:    8192
+  challenge:   8192
+  govern:      6144
+
+
+# ── Per-primitive model alias overrides ───────────────────────────────────────
+# UPDATED for SARA: investigate, verify, challenge route to 'standard'
+# (gemini-2.5-pro on google). These primitives ingest 30KB+ prompts when the
+# raw statute corpus is inlined via ${input.statute_corpus}, and Flash-class
+# models truncate their structured JSON output on inputs of that size.
+# Pro handles long-context faithfully.
+#
+# Light primitives (retrieve, classify, generate, govern) stay on 'default'
+# (Flash) for speed; their prompts are shorter and don't hit the truncation
+# threshold.
+primitive_model_alias:
+  classify:    standard
+  verify:      standard
+  challenge:   standard
+  investigate: standard

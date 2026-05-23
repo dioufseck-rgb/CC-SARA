@@ -1,0 +1,10 @@
+{
+  "case_id": "SARA-S1-B-I-POS",
+  "source_id": "s1_b_i_pos",
+  "elapsed_s": 5.46,
+  "determination": "ENTAILMENT",
+  "status": "ok",
+  "ground_truth": "Entailment",
+  "raw_response": "1.  **Identify the IRC section(s) the claim references.**\n    The claim references section 1(b)(i).\n\n2.  **Identify the case facts relevant to those section(s).**\n    *   Alice is a head of household for the year 2017.\n    *   Alice's taxable income for the year 2017 is $9560.\n\n3.  **Apply the section(s) to the facts and derive the rule's output.**\n    Section 1(b) imposes tax on the taxable income of every head of a household.\n    Section 1(b)(i) states: \"15% of taxable income if the taxable income is not over $29,600\".\n    Alice's taxable income is $9560.\n    Since $9560 is not over $29,600, the tax rate is 15%.\n    Tax = 15% of $9560 = 0.15 * $9560 = $1434.\n\n4.  **Compare the rule's output to the claim's assertion.**\n    The rule's output is $1434.\n    The claim's assertion is $1434.\n    The outputs match.\n\n5.  **Consider any subsection exceptions or cross-references that could change the result.**\n    The problem states Alice *is* a head of household, so the definition in section 2(b) is assumed to be met. The tax rates in section 1 do not have specific year-based adjustments for 2017 that would alter the calculation for a head of household. While other sections like 63 and 151 have special rules for 2018-2025, these pertain to the calculation of \"taxable income\" or \"standard deduction\" or \"exemption amount,\" not the tax rates themselves in section 1 for 2017. The claim is about the tax *imposed* under section 1(b)(i) given a specific taxable income, which is a direct application of the rate schedule.\n\n6.  **Conclude with your determination.**\n    The calculation based on the statute and facts directly supports the claim.\n\nAnswer: ENTAILMENT",
+  "prompt_chars": 28363
+}

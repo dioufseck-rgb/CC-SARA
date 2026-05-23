@@ -1,0 +1,19 @@
+{
+  "label": "cc_hard_batch_n8",
+  "started_at": "cc_hard_batch_n8",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "spot_check": 1
+  },
+  "avg_elapsed_s": 117.99,
+  "case_results": [
+    {
+      "case_id": "SARA-S3306-C-10-A-I-NEG",
+      "determination": "ENTAILMENT",
+      "tier_applied": "spot_check",
+      "elapsed_s": 117.99,
+      "status": "completed"
+    }
+  ]
+}

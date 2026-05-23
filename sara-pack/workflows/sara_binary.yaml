@@ -1,0 +1,310 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Workflow: Statutory Reasoning — Entailment Determination (v6)
+#
+# Generic pattern for IRAC-style entailment problems. The disposition is
+# made by deliberate and rendered by generate. Generate does not re-evaluate.
+#
+# Composition:
+#   3 Retrieve calls  (orientation: question structure, authority, case facts)
+#   1 Investigate     (apply rules to facts; derive rule-output)
+#   1 Verify          (check investigate's reasoning soundness; R1, R3, R4, R5)
+#   1 Deliberate      (commit the disposition by comparing rule-output to claim)
+#   1 Generate        (render the determination artifact)
+#   1 Challenge       (test the determination for missed exceptions)
+#   1 Govern          (route by tier based on accumulated epistemic state)
+#
+# Architectural notes
+# ───────────────────
+# (1) Deliberate bears the disposition. Generate renders the artifact.
+#     This matches the canonical Cognitive Core chain (cf. paper §6.4 for
+#     prior auth appeal: investigate → verify → deliberate → generate →
+#     challenge → govern). Generate's prompt instructs it to render from
+#     source material; the disposition source is deliberate.recommended_action.
+#
+# (2) Challenge runs AFTER generate, not before. Challenge tests the rendered
+#     determination, not the in-progress reasoning. Challenge findings reach
+#     govern; they do not flow back to generate to invert the disposition.
+#     (In agentic mode reflect would mediate this; in workflow mode govern
+#     reads challenge's findings as part of the epistemic state.)
+#
+# (3) The govern step reads deliberate's recommended_action and warrant
+#     directly as resolved-state values, plus the framework-computed
+#     coherence flags (VERIFY_DELIBERATE_TENSION, UNWARRANTED_RECOMMENDATION
+#     etc.) which the engine emits when deliberate is in the chain.
+#
+# Long-form authority content is passed to reasoning primitives via
+# ${input.<key>} substitution rather than the standard prior-step context
+# channel, because the engine's context builder truncates retrieve.data
+# to 120 chars per source. The case_input must expose the authority body
+# and the case narrative as top-level string fields.
+#
+# Param-key reference (from prompts/*.txt):
+#   retrieve:    sources, specification, strategy
+#   investigate: question, scope
+#   verify:      rules, subject
+#   deliberate:  instruction, focus
+#   generate:    requirements, constraints, format
+#   challenge:   perspective, threat_model
+#   govern:      governance_context, workflow_state
+# ─────────────────────────────────────────────────────────────────────────────
+
+name: sara_binary
+mode: workflow
+
+steps:
+  # ── Orientation phase ────────────────────────────────────────────────────
+
+  - name: retrieve_question_structure
+    primitive: retrieve
+    params:
+      strategy: deterministic
+      sources: question_text
+      specification: |
+        Source: question_text. Read only this tool — no other sources.
+        Extract the question's logical structure per ${domain.question_anatomy}.
+        Surface structure only; do not evaluate, do not retrieve authority,
+        do not look at the case narrative.
+
+  - name: retrieve_statute
+    primitive: retrieve
+    params:
+      strategy: deterministic
+      sources: statute_corpus
+      specification: |
+        Source: statute_corpus. Read only this tool — no other sources.
+        Identify the relevant authority and its cross-reference closure
+        per ${domain.authority_traversal_protocol}.
+        Do not include verbatim text — the raw authority is preserved
+        separately for downstream steps. Your job is to identify the
+        closure, not to copy the text.
+
+  - name: retrieve_case_facts
+    primitive: retrieve
+    params:
+      strategy: deterministic
+      sources: case_narrative
+      specification: |
+        Source: case_narrative. Read only this tool — no other sources.
+        Extract the case facts as structured data per ${domain.fact_schema}.
+        Do not infer facts not stated. Do not apply rules.
+
+        ─── COMPLETENESS ASSERTION ────────────────────────────────────
+        Before returning, check the retrieved narrative for structural
+        completeness:
+          - Does the narrative end with a terminal punctuation
+            (period, exclamation, question mark)?
+          - If it ends with a dangling marker (colon, semicolon, dash,
+            comma, or open-ended structure suggesting continuation):
+            the narrative is INCOMPLETE.
+          - Are there bullet markers, numbered list openers, or table
+            row indicators without their corresponding content?
+            If yes: INCOMPLETE.
+
+        If INCOMPLETE:
+          - Set confidence to 0.2 or lower
+          - Add "retrieve_incomplete" to your output flags
+          - In your data, include a field "completeness_warning" with
+            the specific marker observed (e.g., "ends with colon",
+            "open bullet list", "trailing 'and'")
+
+        Downstream steps will treat low retrieve confidence as a
+        signal to escalate. The completeness check is not optional —
+        truncated narratives produce silent reasoning failures
+        downstream that are much harder to detect.
+
+  # ── Reasoning phase ──────────────────────────────────────────────────────
+
+  - name: investigate_rule_application
+    primitive: investigate
+    params:
+      question: |
+        Given the cited authority applied to the case facts, what is the
+        rule-output for the predicate the claim asserts?
+      scope: |
+        ${domain.rule_application_protocol}
+
+        ─── RAW AUTHORITY ─────────────────────────────────────────────
+        ${input.statute_corpus}
+
+        ─── RAW CASE NARRATIVE ────────────────────────────────────────
+        ${input.case_narrative}
+
+        ─── THE CLAIM (verbatim) ──────────────────────────────────────
+        ${input.question_text}
+
+        Use the prior-step outputs as orientation: they have identified
+        the governing section, the cross-reference closure, and the
+        structured facts. Apply the authority above to the facts above.
+
+  - name: verify_claim_comparison
+    primitive: verify
+    params:
+      subject: |
+        The reasoning from investigate_rule_application — its derived
+        rule-output, the predicates it claimed were satisfied, the
+        subsections it cited, and the case facts it cited.
+
+        ─── RAW AUTHORITY (grounding source for R3) ───────────────────
+        ${input.statute_corpus}
+
+        ─── RAW CASE NARRATIVE (grounding source for R4) ──────────────
+        ${input.case_narrative}
+      rules: |
+        ${domain.verification_rubric}
+
+  # ── Disposition phase ────────────────────────────────────────────────────
+
+  - name: deliberate_disposition
+    primitive: deliberate
+    params:
+      instruction: |
+        ${domain.disposition_decision_protocol}
+
+        ─── THE CLAIM (verbatim) ──────────────────────────────────────
+        ${input.question_text}
+
+        Read investigate_rule_application's finding (its derived rule-output
+        and the predicates it concluded held or failed). Read verify_claim_comparison's
+        conforms and violations fields. Apply the decision protocol above.
+
+        Your recommended_action must be exactly one of: ENTAILMENT, CONTRADICTION, INDETERMINATE.
+        Do not emit "AUTO", "GATE", "HOLD", or any other tier name — those
+        are governance routing terms, not dispositions.
+
+        The warrant field is mandatory. It is the explicit logical bridge
+        from the rule-output to the recommended_action: name the rule-output,
+        name the claim's asserted value, state the comparison result, and
+        state the resulting disposition. One paragraph.
+      focus: |
+        Evaluation criteria for SARA Binary entailment:
+
+        - A claim of "value V under §X" requires BOTH that the rule-output
+          equals V AND that the governing subsection is §X. A near-numerical
+          match under a different subsection is NOT ENTAILMENT.
+
+        - A claim asserting that a section "applies" to a subject in a year
+          is true when the rule-output for that section's applicability
+          predicate is true with respect to the subject and year. Otherwise
+          CONTRADICTION.
+
+        - A claim asserting a status ("Alice is a surviving spouse") is true
+          when the rule-output for the status predicate is true. Otherwise
+          CONTRADICTION.
+
+        - A claim asserting a relationship ("Bob bears a relationship to
+          Alice under §Y") is true when the relationship predicate holds.
+          Otherwise CONTRADICTION.
+
+        - INDETERMINATE is reserved for cases where investigate could not
+          derive a rule-output because a fact the rule depends on is absent
+          from the case narrative. INDETERMINATE is not used when investigate
+          derived a rule-output that differs from the claim — that is
+          CONTRADICTION.
+
+        Numeric tolerance: claims involving dollar amounts and percentages
+        match the rule-output when they are equal after rounding to whole
+        units (dollars, percent). $44,788.82 matches a claim of $44,789;
+        $442,984.08 matches a claim of $442,985. Differences of more than
+        one unit after rounding are not matches.
+
+  # ── Output phase ─────────────────────────────────────────────────────────
+
+  - name: generate_determination
+    primitive: generate
+    params:
+      requirements: |
+        Render the determination artifact for this entailment case.
+
+        The disposition has already been committed by deliberate_disposition.
+        Your job is to render the artifact — not to re-evaluate.
+
+        Read deliberate_disposition.recommended_action and use it verbatim
+        as the disposition field in the artifact. Read deliberate's warrant
+        and incorporate it into primary_reasoning. Do not invert the
+        disposition. Do not introduce a different rule-output. Do not
+        substitute your own judgment for deliberate's.
+
+        Cite investigate_rule_application's evidence and the subsections
+        it identified. If verify_claim_comparison found any violations,
+        list them. If challenge produces vulnerabilities (it runs after
+        this step, so its findings are not yet available at render time
+        in workflow mode), they will be incorporated by govern, not by
+        you.
+
+        Artifact must be a JSON object with these fields:
+          disposition:           verbatim from deliberate_disposition.recommended_action
+          primary_reasoning:     one paragraph based on deliberate's warrant
+          claim_comparison:      explicit rule-output vs claim's asserted value
+          subsections_cited:     list of subsection identifiers from investigate
+          case_facts_cited:      list of case facts from investigate
+          verify_violations:     list of any violations from verify (empty if none)
+      constraints: |
+        ${domain.determination_constraints}
+
+        ADDITIONAL CONSTRAINT (renderer discipline):
+        The disposition field MUST equal deliberate_disposition.recommended_action
+        verbatim. If you find yourself reasoning toward a different disposition,
+        stop — that reasoning belongs in a revised deliberate step, not here.
+        Generate is the renderer. The decision is upstream.
+      format: json
+
+  # ── Adversarial phase ────────────────────────────────────────────────────
+
+  - name: challenge_exception_check
+    primitive: challenge
+    params:
+      perspective: |
+        Act as a careful reviewer auditing the determination for
+        completeness. Your task is to search the authority for any
+        exception, cross-reference, or overlooked provision that the
+        prior reasoning may have missed — provisions that, if applicable,
+        would change investigate's derived rule-output and thus the
+        disposition that deliberate committed.
+
+        This is a thoroughness check, not an attack. The goal is to
+        surface anything the analysis hasn't considered. Vulnerabilities
+        you raise should attack the EPISTEMIC BASIS of the determination
+        — the rule-output deliberate worked from — not adjacent subsections
+        that don't bear on the claim.
+      threat_model: |
+        ${domain.exception_protocol}
+
+        ─── RAW AUTHORITY (search for exceptions) ─────────────────────
+        ${input.statute_corpus}
+
+        ─── RAW CASE NARRATIVE (look for triggering facts) ────────────
+        ${input.case_narrative}
+
+  # ── Governance phase ─────────────────────────────────────────────────────
+
+  - name: govern_disposition
+    primitive: govern
+    params:
+      governance_context: |
+        ${domain.governance_policy}
+
+        ─── RESOLVED WORKFLOW STATE (READ AS DATA) ────────────────────
+        These values are the resolved fields from prior steps. Read them
+        as data, not as natural-language claims to interpret.
+
+          verify_conforms:          ${verify_claim_comparison.conforms}
+          deliberate_disposition:   ${deliberate_disposition.recommended_action}
+          deliberate_warrant:       ${deliberate_disposition.warrant}
+          deliberate_confidence:    ${deliberate_disposition.confidence}
+          generate_confidence:      ${generate_determination.confidence}
+          challenge_survives:       ${challenge_exception_check.survives}
+          investigate_confidence:   ${investigate_rule_application.confidence}
+
+        Apply the tier policy literally to these resolved values.
+
+        ─── OUTPUT DISCIPLINE FOR GOVERN ──────────────────────────────
+        - work_order.inputs must contain ONLY short pointers (step names,
+          case_id, one-line summaries). Do NOT echo statute text. Do NOT
+          echo case narrative. Do NOT echo full prior step outputs.
+        - tier_rationale: at most 3 short sentences.
+        - reasoning: at most 5 short sentences.
+        - accountability_chain.governance_decisions[i].rationale: at most
+          1 short sentence per entry.
+
+        Tier output must be lowercase: "auto" | "spot_check" | "gate" | "hold".
+      workflow_state: "${accumulated}"

@@ -1,0 +1,605 @@
+{
+  "case_id": "SARA-S152-A-POS",
+  "source_id": "s152_a_pos",
+  "instance_id": "wf_9238a5cc9d48",
+  "status": "completed",
+  "error": null,
+  "elapsed_total_s": 124.68,
+  "tier_applied": "auto",
+  "determination": "ENTAILMENT",
+  "ground_truth": "Entailment",
+  "step_records": [
+    {
+      "step_name": "retrieve_question_structure",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 4840.710639953613,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `question_text` source was successfully queried and returned the required data. All fields specified in the `RETRIEVAL SPECIFICATION` could be extracted from the provided question text.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The question text 'Under section 152(a), Bob is a dependent of Alice for the year 2015' was used to extract all specified fields."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "question_text": {
+            "value": "Under section 152(a), Bob is a dependent of Alice for the year 2015"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "question_text",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.00286102294921875,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "statute_corpus",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": "The retrieval plan was deterministic. Only the `question_text` source was required by the specification to extract the question's logical structure. No other sources were needed or queried."
+      }
+    },
+    {
+      "step_name": "retrieve_statute",
+      "primitive": "retrieve",
+      "confidence": 0.8,
+      "elapsed_ms": 19568.227767944336,
+      "output": {
+        "data": {
+          "statute_corpus": {
+            "value": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "statute_corpus",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0019073486328125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": "",
+        "confidence": 0.8,
+        "reasoning": "Data retrieved successfully (1 sources) but LLM assessment parse failed: 2 validation errors for RetrieveOutput\nconfidence\n  Field required [type=missing, input_value={'data': {'statute_corpus...'calculate_settlement']}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing\nreasoning\n  Field required [type=missing, input_value={'data': {'statute_corpus...'calculate_settlement']}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing",
+        "evidence_used": [],
+        "evidence_missing": []
+      }
+    },
+    {
+      "step_name": "retrieve_case_facts",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 7506.601572036743,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The 'case_narrative' was successfully retrieved and processed. The narrative ends with a terminal punctuation (period), indicating structural completeness. All specified categories for fact extraction were considered, and relevant facts were extracted with their original wording. No inference or rules were applied, adhering strictly to the specification.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Extracted structured facts from the narrative: 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.'"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "case_narrative": {
+            "value": "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015."
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "case_narrative",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0016689300537109375,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "statute_corpus",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "investigate_rule_application",
+      "primitive": "investigate",
+      "confidence": 1.0,
+      "elapsed_ms": 22553.85398864746,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "STEP 1: EXTRACT KEY DATA POINTS\n- From \u00a7152(a): The term 'dependent' means (1) a qualifying child, or (2) a qualifying relative.\n- From case_narrative: 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.'\n- From \u00a7152(c)(1): This subsection provides the general definition for the term 'qualifying child'.\n\nSTEP 2: FORM HYPOTHESES\n- Hypothesis 1: Bob is a 'qualifying child' of Alice for the year 2015, satisfying the first prong of the \u00a7152(a) test.\n- Hypothesis 2: Because one prong of the disjunctive test in \u00a7152(a) is met, Bob is a dependent of Alice.\n\nSTEP 3: TEST EACH HYPOTHESIS AGAINST THE EXTRACTED DATA\n- Hypothesis 1: Bob is a 'qualifying child' of Alice. This is directly supported by the case narrative, which states 'Bob... satisfies section 152(c)(1) for the year 2015.' Section 152(c)(1) defines a qualifying child. Therefore, this hypothesis is supported.\n- Hypothesis 2: Bob is a dependent of Alice. Section 152(a) establishes a two-part disjunctive test (an 'OR' condition). Since Hypothesis 1 confirmed that Bob is a qualifying child (\u00a7152(a)(1)), the condition for being a dependent under \u00a7152(a) is met, regardless of whether he is also a qualifying relative (\u00a7152(a)(2)). Therefore, this hypothesis is supported.\n\nSTEP 4: STATE YOUR FINDING\nThe evidence directly confirms that Bob meets the definition of a 'qualifying child' under \u00a7152(c)(1). As \u00a7152(a) defines a dependent as a 'qualifying child' OR a 'qualifying relative', meeting the first condition is sufficient. The rule-output for the predicate 'Bob is a dependent of Alice' is therefore 'True'.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "\u00a7152(a) In general. For purposes of this subtitle, the term 'dependent' means- (1) a qualifying child, or (2) a qualifying relative."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "\u00a7152(c) Qualifying child. For purposes of this section- (1) In general. The term 'qualifying child' means, with respect to any taxpayer for any taxable year, an individual..."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "finding": "The rule-output is 'True'. Section 152(a) defines a dependent as either a qualifying child or a qualifying relative. The case narrative explicitly states that 'Bob... satisfies section 152(c)(1) for the year 2015,' which is the definition of a 'qualifying child'. Because Bob meets one of the two alternative conditions under \u00a7152(a), he is a dependent of Alice.",
+        "hypotheses_tested": [
+          {
+            "hypothesis": "Bob is a 'qualifying child' of Alice for the year 2015.",
+            "status": "supported",
+            "evidence_for": [
+              "Case narrative states: 'Bob... satisfies section 152(c)(1) for the year 2015.'"
+            ],
+            "evidence_against": [],
+            "reasoning": "The case narrative explicitly stipulates that Bob satisfies the statutory definition of a qualifying child found in \u00a7152(c)(1)."
+          },
+          {
+            "hypothesis": "The conditions of \u00a7152(a) for being a dependent are met.",
+            "status": "supported",
+            "evidence_for": [
+              "\u00a7152(a) defines a dependent as a qualifying child OR a qualifying relative.",
+              "The fact that Bob is a qualifying child satisfies the first part of this disjunctive test."
+            ],
+            "evidence_against": [],
+            "reasoning": "Since the test in \u00a7152(a) is an 'OR' condition, satisfying the 'qualifying child' prong is sufficient to meet the overall definition of a dependent."
+          }
+        ],
+        "recommended_actions": [],
+        "evidence_flags": [],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "verify_claim_comparison",
+      "primitive": "verify",
+      "confidence": 1.0,
+      "elapsed_ms": 11037.444353103638,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The verification process confirmed that the reasoning from the 'investigate_rule_application' step is sound and well-grounded. R1 (Type Match) passed because the claim is a STATUS claim and the rule-output is a boolean 'True', which is the correct type. R2 (Value/State Match) passed as the derived 'True' state matches the assertion in the question. R3 (Statute Grounding) passed because both cited subsections, \u00a7152(a) and \u00a7152(c)(1), are present in the provided raw authority. R4 (Fact Grounding) passed because the fact cited in the reasoning is a direct quote from the case narrative. R5 (Indeterminacy Disclosure) passed as no hypotheses were marked indeterminate.",
+        "evidence_used": [
+          {
+            "source": "SUBJECT TO VERIFY",
+            "description": "rule-output: 'True', reasoning: 'Section 152(a) defines a dependent as either a qualifying child or a qualifying relative... Bob... satisfies section 152(c)(1)...'"
+          },
+          {
+            "source": "RAW AUTHORITY",
+            "description": "Contents of \u00a7152(a) and \u00a7152(c)(1) were checked for existence."
+          },
+          {
+            "source": "RAW CASE NARRATIVE",
+            "description": "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015."
+          },
+          {
+            "source": "Workflow Input",
+            "description": "question_text: 'Under section 152(a), Bob is a dependent of Alice for the year 2015'"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "conforms": true,
+        "violations": [],
+        "rules_checked": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "deliberate_disposition",
+      "primitive": "deliberate",
+      "confidence": 1.0,
+      "elapsed_ms": 9378.281593322754,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The deliberation followed the decision rule for applicability/status/relational claims. The `investigate_rule_application` step provided a clear 'True' output for the claim's assertion, which was confirmed by `verify_claim_comparison`. This direct match leads to an ENTAILMENT disposition.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The verbatim claim being evaluated: 'Under section 152(a), Bob is a dependent of Alice for the year 2015'."
+          },
+          {
+            "source": "case_narrative",
+            "description": "The factual basis: 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.' This fact was used by investigate to determine dependency."
+          },
+          {
+            "source": "investigate_rule_application.finding",
+            "description": "The derived rule-output: 'The rule-output is 'True'. Section 152(a) defines a dependent as either a qualifying child or a qualifying relative. The case narrative explicitly states that 'Bob... satisfies section 152(c)(1) for the year 2015,' which is the definition of a 'qualifying child'. Because Bob meets one of the two alt'."
+          },
+          {
+            "source": "investigate_rule_application.Hypothesis: The conditions of \u00a7152(a) for being a dependent are met.",
+            "description": "This hypothesis was SUPPORTED, directly confirming the claim."
+          },
+          {
+            "source": "verify_claim_comparison.Conforms",
+            "description": "Indicates that the claim comparison passed without issues, confirming 'True'."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "situation_summary": "The case concerns whether Bob is a dependent of Alice under section 152(a) for the year 2015. The case narrative states that Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015. The `investigate_rule_application` step determined that the rule-output is 'True', concluding that Bob is a 'qualifying child' of Alice for 2015, and thus the conditions of \u00a7152(a) for being a dependent are met. The `verify_claim_comparison` step confirmed that all rules passed and the claim conforms.",
+        "evaluation_criteria": "For claims asserting a status or relationship, if the rule-output value is TRUE, the disposition is ENTAILMENT. If the rule-output value is FALSE, the disposition is CONTRADICTION. INDETERMINATE applies only if investigate could not derive a rule-output due to genuinely ambiguous or missing facts, which is not the case here.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": true,
+            "rationale": "The `investigate_rule_application` step explicitly found that the rule-output is 'True' for the conditions of \u00a7152(a) being met, directly supporting the claim that Bob is a dependent of Alice under section 152(a) for 2015. This aligns with Rule 1 for applicability/status/relational claims."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": false,
+            "rationale": "The rule-output is 'True', not 'False', and directly supports the claim. Therefore, CONTRADICTION is not appropriate."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "The `investigate_rule_application` step successfully derived a rule-output ('True') and did not report any missing or ambiguous facts preventing a determination. Therefore, INDETERMINATE is not appropriate."
+          }
+        ],
+        "recommended_action": "ENTAILMENT",
+        "warrant": "Investigate's rule-output is 'True' for the conditions of \u00a7152(a) being met. The claim asserts that 'Bob is a dependent of Alice for the year 2015 under section 152(a)'. The rule-output directly supports the claim. Therefore the disposition is ENTAILMENT.",
+        "confidence_basis": "The `investigate_rule_application` step reported a confidence of 1.0 and explicitly stated that the rule-output is 'True' and that the conditions of \u00a7152(a) are met. The `verify_claim_comparison` step confirmed that the claim conforms ('True') and all rules passed, indicating a clear and unambiguous match.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "generate_determination",
+      "primitive": "generate",
+      "confidence": 1.0,
+      "elapsed_ms": 13783.081769943237,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The artifact was generated by directly extracting the disposition from `deliberate_disposition.recommended_action`. The primary reasoning was constructed from `deliberate_disposition.warrant` and `investigate_rule_application.Finding`, citing relevant subsections and case facts. Claim comparison, subsections cited, case facts cited, and verify violations were all populated directly from the respective upstream step outputs. All constraints were met.",
+        "evidence_used": [
+          {
+            "source": "deliberate_disposition.recommended_action",
+            "description": "The recommended action for the disposition: ENTAILMENT."
+          },
+          {
+            "source": "deliberate_disposition.warrant",
+            "description": "The justification for the recommended action, detailing the rule-output and claim assertion."
+          },
+          {
+            "source": "investigate_rule_application.Finding",
+            "description": "The finding that the rule-output is 'True' and the explanation of how Bob satisfies \u00a7152(c)(1) as a qualifying child under \u00a7152(a)."
+          },
+          {
+            "source": "question_text",
+            "description": "The original claim text: 'Under section 152(a), Bob is a dependent of Alice for the year 2015'."
+          },
+          {
+            "source": "case_narrative",
+            "description": "The case fact: 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.'"
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Confirmation that 'All rules passed' and 'Conforms: True', indicating no violations."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "artifact": {
+          "disposition": "ENTAILMENT",
+          "primary_reasoning": "The investigation determined that the conditions of Section 152(a) for being a dependent are met, yielding a 'True' rule-output. This is because the case narrative explicitly states that 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015,' which defines Bob as a qualifying child under Section 152(a). Therefore, the claim that Bob is a dependent of Alice for the year 2015 is supported.",
+          "claim_comparison": {
+            "rule_output": "True",
+            "claim_asserted_value": "Bob is a dependent of Alice for the year 2015"
+          },
+          "subsections_cited": [
+            "\u00a7152(a)",
+            "\u00a7152(c)(1)"
+          ],
+          "case_facts_cited": [
+            "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015."
+          ],
+          "verify_violations": []
+        },
+        "format": "json",
+        "constraints_checked": [
+          {
+            "constraint": "disposition is exactly 'ENTAILMENT', 'CONTRADICTION', or 'INDETERMINATE'",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "disposition MUST equal deliberate_disposition.recommended_action verbatim",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "every identifier in subsections_cited must have been cited in investigate, verify, or deliberate step outputs",
+            "satisfied": true,
+            "notes": "\u00a7152(a) and \u00a7152(c)(1) were cited in investigate_rule_application."
+          },
+          {
+            "constraint": "every fact in case_facts_cited must have been cited in retrieve_case_facts or investigate",
+            "satisfied": true,
+            "notes": "The fact 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.' was cited in retrieve_case_facts and investigate_rule_application."
+          },
+          {
+            "constraint": "primary_reasoning references at least one subsection identifier and at least one case fact, and reflects deliberate's warrant",
+            "satisfied": true,
+            "notes": "References \u00a7152(a), \u00a7152(c)(1), and the case fact about Bob satisfying \u00a7152(c)(1), reflecting deliberate's warrant."
+          },
+          {
+            "constraint": "confidence reflects how cleanly the artifact tracks the upstream findings",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "Artifact must be a JSON object with specified fields",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "No DYNAMIC SPEC FROM REFLECT present",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "No prior challenge outputs for vulnerabilities",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "Identify key facts from source material and list in evidence_used",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "Generate artifact using ONLY facts from source material",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "Verify output against every constraint listed",
+            "satisfied": true,
+            "notes": ""
+          }
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "challenge_exception_check",
+      "primitive": "challenge",
+      "confidence": 1.0,
+      "elapsed_ms": 26464.76459503174,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "FACT-CHECK: All claims in the input match the provided context. The case ID is 'SARA-S152-A-POS', the question is 'Under section 152(a), Bob is a dependent of Alice for the year 2015', and the narrative is 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015'. The tax year is correctly identified as 2015. All facts are CONFIRMED. TREND-CHECK: No trend claims were made. ADVERSARIAL: The core of the original analysis is that since Bob satisfies \u00a7152(c)(1) (the definition of a 'qualifying child'), he is therefore a 'dependent' under \u00a7152(a). My review focused on finding any statutory exception that would override this conclusion. The most relevant section is \u00a7152(b) 'Exceptions'. Specifically, \u00a7152(b)(2) states an individual is not a dependent if they file a joint return. However, the definition of a 'qualifying child' in \u00a7152(c)(1)(E) explicitly requires that the individual has *not* filed a joint return. Since the narrative stipulates that Bob satisfies \u00a7152(c)(1), this exception is definitionally precluded. I also checked for year-specific rules. The TCJA-era rule in \u00a7151(d)(5) that zeros out the exemption amount only applies to years 2018-2025 and is therefore irrelevant to the 2015 tax year in this case. No other provision in the provided authority creates an exception applicable to the facts. DETERMINATION: The input survives because the original reasoning is sound and no applicable statutory exceptions were found.",
+        "evidence_used": [
+          {
+            "source": "\u00a7152",
+            "description": "Analyzed the definition of 'dependent' and its exceptions. Confirmed that satisfying \u00a7152(c)(1) makes an individual a dependent under \u00a7152(a), and that the conditions of \u00a7152(c)(1) prevent the exception in \u00a7152(b)(2) from applying."
+          },
+          {
+            "source": "\u00a7151(d)(5)",
+            "description": "Checked for year-specific rules and confirmed that the zeroing of the exemption amount for tax years 2018-2025 does not apply to the 2015 tax year in question."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "survives": true,
+        "vulnerabilities": [],
+        "strengths": [
+          "The reasoning is direct and logically sound, correctly identifying that satisfying \u00a7152(c)(1) (qualifying child) is sufficient to meet the definition of a dependent under \u00a7152(a).",
+          "The analysis correctly avoids applying TCJA-era rules, such as \u00a7151(d)(5), to a pre-TCJA tax year (2015)."
+        ],
+        "overall_assessment": "The input passes the challenge. A thorough fact-check confirmed all claims. The adversarial analysis searched for statutory exceptions, particularly in \u00a7152(b), but found none applicable. The narrative's core fact\u2014that Bob satisfies the definition of a qualifying child under \u00a7152(c)(1)\u2014precludes any exceptions based on the provided authority.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "govern_disposition",
+      "primitive": "govern",
+      "confidence": 1.0,
+      "elapsed_ms": 8584.908723831177,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The workflow state shows high confidence across all steps: investigate_confidence (1.0), deliberate_confidence (1.0), and generate_confidence (1.0). The verify_conforms flag is True, indicating no structural issues. The challenge_survives flag is True, confirming the robustness of the determination. The deliberate_warrant is present and clear. No epistemic flags were raised. Based on the tier policy, none of the conditions for HOLD, GATE, or SPOT_CHECK are met, leading to the application of the AUTO tier. Given the AUTO tier and high confidence, the disposition is to proceed.",
+        "evidence_used": [
+          {
+            "source": "verify_conforms",
+            "description": "Established that the reasoning is well-grounded and free from structural violations."
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "Provided the recommended action for the case."
+          },
+          {
+            "source": "deliberate_warrant",
+            "description": "Provided the justification for the recommended action."
+          },
+          {
+            "source": "deliberate_confidence",
+            "description": "Indicated high certainty in the deliberation step."
+          },
+          {
+            "source": "generate_confidence",
+            "description": "Indicated high certainty in the artifact generation step."
+          },
+          {
+            "source": "challenge_survives",
+            "description": "Confirmed that the determination survived adversarial analysis."
+          },
+          {
+            "source": "investigate_confidence",
+            "description": "Indicated high certainty in the initial rule application."
+          },
+          {
+            "source": "Workflow epistemic overall",
+            "description": "Confirmed the overall clean epistemic state of the workflow."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "tier_applied": "auto",
+        "tier_rationale": "All confidence scores are high, no epistemic flags were raised, and all policy conditions for higher tiers (HOLD, GATE, SPOT_CHECK) were not met.",
+        "disposition": "proceed",
+        "work_order": null,
+        "escalation_target": null,
+        "resumption_condition": null,
+        "accountability_chain": {
+          "decision_instance_id": "SARA-S152-A-POS-govern-20260512",
+          "governance_decisions": [
+            {
+              "step": "govern",
+              "tier": "auto",
+              "rationale": "All confidence scores are high, no epistemic flags were raised, and all policy conditions for higher tiers were not met.",
+              "timestamp": "2026-05-12T00:00:00Z"
+            }
+          ],
+          "final_tier": "auto",
+          "audit_timestamp": "2026-05-12T00:00:00Z"
+        }
+      }
+    }
+  ],
+  "result_summary": {
+    "step_count": 9,
+    "steps": [
+      {
+        "step_name": "retrieve_question_structure",
+        "primitive": "retrieve",
+        "sources": [
+          "question_text"
+        ]
+      },
+      {
+        "step_name": "retrieve_statute",
+        "primitive": "retrieve",
+        "sources": [
+          "statute_corpus"
+        ]
+      },
+      {
+        "step_name": "retrieve_case_facts",
+        "primitive": "retrieve",
+        "sources": [
+          "case_narrative"
+        ]
+      },
+      {
+        "step_name": "investigate_rule_application",
+        "primitive": "investigate",
+        "finding": "The rule-output is 'True'. Section 152(a) defines a dependent as either a qualifying child or a qualifying relative. The case narrative explicitly states that 'Bob... satisfies section 152(c)(1) for the year 2015,' which is the definition of a 'qualifying child'. Because Bob meets one of the two alternative conditions under \u00a7152(a), he is a dependent of Alice.",
+        "confidence": 1.0,
+        "evidence_flags": [],
+        "missing_evidence": []
+      },
+      {
+        "step_name": "verify_claim_comparison",
+        "primitive": "verify",
+        "conforms": true,
+        "violations": 0
+      },
+      {
+        "step_name": "deliberate_disposition",
+        "primitive": "deliberate",
+        "recommended_action": "ENTAILMENT",
+        "warrant": "Investigate's rule-output is 'True' for the conditions of \u00a7152(a) being met. The claim asserts that 'Bob is a dependent of Alice for the year 2015 under section 152(a)'. The rule-output directly supports the claim. Therefore the disposition is ENTAILMENT.",
+        "situation_summary": "The case concerns whether Bob is a dependent of Alice under section 152(a) for the year 2015. The case narrative states that Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015. The `investigate_rule_application` step determined that the rule-output is 'True', concluding that Bob is a 'qualifying child' of Alice for 2015, and thus the conditions of \u00a7152(a) for being a dependent are met. The `verify_claim_comparison` step confirmed that all rules passed and the claim conforms.",
+        "confidence_basis": "The `investigate_rule_application` step reported a confidence of 1.0 and explicitly stated that the rule-output is 'True' and that the conditions of \u00a7152(a) are met. The `verify_claim_comparison` step confirmed that the claim conforms ('True') and all rules passed, indicating a clear and unambiguous match.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": true,
+            "rationale": "The `investigate_rule_application` step explicitly found that the rule-output is 'True' for the conditions of \u00a7152(a) being met, directly supporting the claim that Bob is a dependent of Alice under section 152(a) for 2015. This aligns with Rule 1 for applicability/status/relational claims."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": false,
+            "rationale": "The rule-output is 'True', not 'False', and directly supports the claim. Therefore, CONTRADICTION is not appropriate."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "The `investigate_rule_application` step successfully derived a rule-output ('True') and did not report any missing or ambiguous facts preventing a determination. Therefore, INDETERMINATE is not appropriate."
+          }
+        ],
+        "confidence": 1.0
+      },
+      {
+        "step_name": "generate_determination",
+        "primitive": "generate",
+        "artifact_preview": "{'disposition': 'ENTAILMENT', 'primary_reasoning': \"The investigation determined that the conditions of Section 152(a) for being a dependent are met, yielding a 'True' rule-output. This is because the case narrative explicitly states that 'Alice has a son, Bob, who satisfies section 152(c)(1) for th",
+        "artifact": {
+          "disposition": "ENTAILMENT",
+          "primary_reasoning": "The investigation determined that the conditions of Section 152(a) for being a dependent are met, yielding a 'True' rule-output. This is because the case narrative explicitly states that 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015,' which defines Bob as a qualifying child under Section 152(a). Therefore, the claim that Bob is a dependent of Alice for the year 2015 is supported.",
+          "claim_comparison": {
+            "rule_output": "True",
+            "claim_asserted_value": "Bob is a dependent of Alice for the year 2015"
+          },
+          "subsections_cited": [
+            "\u00a7152(a)",
+            "\u00a7152(c)(1)"
+          ],
+          "case_facts_cited": [
+            "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015."
+          ],
+          "verify_violations": []
+        },
+        "confidence": 1.0
+      },
+      {
+        "step_name": "challenge_exception_check",
+        "primitive": "challenge",
+        "survives": true,
+        "vulnerabilities": 0
+      },
+      {
+        "step_name": "govern_disposition",
+        "primitive": "govern",
+        "tier_applied": "auto",
+        "disposition": "proceed",
+        "tier_rationale": "All confidence scores are high, no epistemic flags were raised, and all policy conditions for higher tiers (HOLD, GATE, SPOT_CHECK) were not met.",
+        "has_work_order": false,
+        "escalation_target": null,
+        "confidence": 1.0
+      }
+    ],
+    "input": {
+      "case_id": "SARA-S152-A-POS",
+      "question_text": "Under section 152(a), Bob is a dependent of Alice for the year 2015",
+      "statute_corpus": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n",
+      "case_narrative": "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015."
+    },
+    "disposition": "ENTAILMENT",
+    "determination": "{'disposition': 'ENTAILMENT', 'primary_reasoning': \"The investigation determined that the conditions of Section 152(a) for being a dependent are met, yielding a 'True' rule-output. This is because the case narrative explicitly states that 'Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015,' which defines Bob as a qualifying child under Section 152(a). Therefore, the claim that Bob is a dependent of Alice for the year 2015 is supported.\", 'claim_comparison': {'rule_output': 'True', 'claim_asserted_value': 'Bob is a dependent of Alice for the year 2015'}, 'subsections_cited': ['\u00a7152(a)', '\u00a7152(c)(1)'], 'case_facts_cited': ['Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.'], 'verify_violations': []}"
+  }
+}

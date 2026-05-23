@@ -1,0 +1,962 @@
+[
+  {
+    "id": "s151_d_1_neg",
+    "text": "Alice is entitled to an exemption under section 151(b) for the year 2015. No other taxpayer is entitled to a deduction for Alice in 2015.",
+    "question": "Alice's exemption amount under section 151(d)(1) is equal to $0",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s151_b_applies/2.\n:- [statutes/prolog/init].\ns151_b_applies(alice,2015).",
+    "test": ":- \\+ s151_d_1(0)."
+  },
+  {
+    "id": "s151_d_1_pos",
+    "text": "Alice is entitled to an exemption for herself under section 151(b) for the year 2015. No other taxpayer is entitled to a deduction for Alice in 2015.",
+    "question": "Alice's exemption amount under section 151(d)(1) is equal to $2000",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_b_applies/2.\n:- [statutes/prolog/init].\ns151_b_applies(alice,2015).",
+    "test": ":- s151_d_1(2000)."
+  },
+  {
+    "id": "s151_d_3_A_neg",
+    "text": "Alice's income in 2015 was $260932. For 2015, Alice received one exemption of $2000 under section 151(c). Alice's applicable percentage under section 151(d)(3)(B) is equal to 10%.",
+    "question": "Under section 151(d)(3)(A), Alice's exemption amount is reduced to $1900",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s151_c/4.\n:- [statutes/prolog/init].\nincome_(alice_makes_money).\nagent_(alice_makes_money,alice).\namount_(alice_makes_money,260932).\nstart_(alice_makes_money,\"2015-01-01\").\nend_(alice_makes_money,\"2015-12-31\").\ns151_c(alice,_,2000,2015).",
+    "test": ":- \\+ s151_d_3_A(alice,_,_,_,2000,1900,2015)."
+  },
+  {
+    "id": "s151_d_3_A_pos",
+    "text": "Alice's income in 2015 was $260932. For 2015, Alice received one exemption of $2000 under section 151(c). Alice's applicable percentage under section 151(d)(3)(B) is equal to 10%.",
+    "question": "Under section 151(d)(3)(A), Alice's exemption amount is reduced to $1800",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_c/4.\n:- [statutes/prolog/init].\nincome_(alice_makes_money).\nagent_(alice_makes_money,alice).\namount_(alice_makes_money,260932).\nstart_(alice_makes_money,\"2015-01-01\").\nend_(alice_makes_money,\"2015-12-31\").\ns151_c(alice,_,2000,2015).",
+    "test": ":- s151_d_3_A(alice,_,_,_,2000,1800,2015)."
+  },
+  {
+    "id": "s151_d_5_neg",
+    "text": "Alice is entitled to an exemption under section 151(b) for the year 2018.",
+    "question": "The exemption amount of Alice's exemption is equal to $2000 under section 151(d)(5)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s151_b_applies/2.\n:- [statutes/prolog/init].\ns151_b_applies(alice,2018).",
+    "test": ":- \\+ s151_d_5(2000,2018)."
+  },
+  {
+    "id": "s151_d_5_pos",
+    "text": "Alice is entitled to an exemption under section 151(b) for the year 2018.",
+    "question": "The exemption amount of Alice's exemption is equal to $0 under section 151(d)(5)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_b_applies/2.\n:- [statutes/prolog/init].\ns151_b_applies(alice,2018).",
+    "test": ":- s151_d_5(0,2018)."
+  },
+  {
+    "id": "s152_a_neg",
+    "text": "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.",
+    "question": "Under section 152(a), Bob is a dependent of Alice for the year 2014",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s152_c_1/3.\n:- [statutes/prolog/init].\ns152_c_1(bob,alice,2015).",
+    "test": ":- \\+ s152_a(bob,alice,2014,_,_)."
+  },
+  {
+    "id": "s152_a_pos",
+    "text": "Alice has a son, Bob, who satisfies section 152(c)(1) for the year 2015.",
+    "question": "Under section 152(a), Bob is a dependent of Alice for the year 2015",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s152_c_1/3.\n:- [statutes/prolog/init].\ns152_c_1(bob,alice,2015).",
+    "test": ":- s152_a(bob,alice,2015,_,_)."
+  },
+  {
+    "id": "s152_c_2_A_neg",
+    "text": "Alice has a brother, Bob, who was born January 31st, 2014.",
+    "question": "Bob bears a relationship to Alice under section 152(c)(2)(A)",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nbrother_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"2014-01-31\").",
+    "test": ":- \\+ s152_c_2_A(bob,alice,_,_,_)."
+  },
+  {
+    "id": "s152_c_2_A_pos",
+    "text": "Alice has a son, Bob, who was born January 31st, 2014.",
+    "question": "Bob bears a relationship to Alice under section 152(c)(2)(A)",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nson_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"2014-01-31\").",
+    "test": ":- s152_c_2_A(bob,alice,_,_,_)."
+  },
+  {
+    "id": "s152_d_1_D_neg",
+    "text": "In 2015, Alice's income was $312. The exemption amount for Alice under section 151(d) for the year 2015 was $2000. Alice is Bob's mother, and Bob is a dependent of Alice under 152(c) for the year 2015.",
+    "question": "Section 152(d)(1)(D) applies to Bob for the year 2015",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s152_c/3.\n:- discontiguous s151_d/4.\n:- [statutes/prolog/init].\nincome_(alice_makes_money).\nagent_(alice_makes_money,alice).\namount_(alice_makes_money,312).\nstart_(alice_makes_money,\"2015-01-01\").\nend_(alice_makes_money,\"2015-12-31\").\nfather_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\ns152_c(bob,alice,2015).\ns151_d(alice,_,2000,2015).",
+    "test": ":- \\+ s152_d_1_D(bob,2015)."
+  },
+  {
+    "id": "s152_d_1_D_pos",
+    "text": "In 2015, Alice's income was $312. The exemption amount for Alice under section 151(d) for the year 2015 was $2000. Bob is Alice's father.",
+    "question": "Section 152(d)(1)(D) applies to Bob for the year 2015",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_d/4.\n:- [statutes/prolog/init].\nincome_(alice_makes_money).\nagent_(alice_makes_money,alice).\namount_(alice_makes_money,312).\nstart_(alice_makes_money,\"2015-01-01\").\nend_(alice_makes_money,\"2015-12-31\").\nfather_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\ns151_d(alice,_,2000,2015).",
+    "test": ":- s152_d_1_D(bob,2015)."
+  },
+  {
+    "id": "s152_d_2_A_neg",
+    "text": "Bob is Alice's brother since April 15th, 2014.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(A)",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nbrother_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"2014-04-15\").",
+    "test": ":- \\+ s152_d_2_A(alice,bob,_,_)."
+  },
+  {
+    "id": "s152_d_2_A_pos",
+    "text": "Bob is Alice's father since April 15th, 2014.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(A)",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nfather_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"2014-04-15\").",
+    "test": ":- s152_d_2_A(alice,bob,_,_)."
+  },
+  {
+    "id": "s152_d_2_C_neg",
+    "text": "Charlie is Bob's father since April 15th, 1995. Dorothy is Bob's mother. Alice married Charlie on August 8th, 2018.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(C)",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nfather_(charlie_and_bob).\nagent_(charlie_and_bob,charlie).\npatient_(charlie_and_bob,bob).\nstart_(charlie_and_bob,\"1995-04-15\").\nmother_(dorothy_and_bob).\nagent_(dorothy_and_bob,dorothy).\npatient_(dorothy_and_bob,bob).\nstart_(dorothy_and_bob,\"1995-04-15\").\nmarriage_(alice_and_charlie).\nagent_(alice_and_charlie,alice).\nagent_(alice_and_charlie,charlie).\nstart_(alice_and_charlie,\"2018-08-08\").",
+    "test": ":- \\+ s152_d_2_C(alice,bob,_,_)."
+  },
+  {
+    "id": "s152_d_2_C_pos",
+    "text": "Bob is Alice's son since April 15th, 2014.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(C)",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nson_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"2014-04-15\").",
+    "test": ":- s152_d_2_C(alice,bob,_,_)."
+  },
+  {
+    "id": "s152_d_2_G_neg",
+    "text": "Alice and Bob started living together on April 15th, 2014. Alice and Bob are not related, nor do they have relatives married to one another.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(G) for the year 2018",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nresidence_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2014-04-15\").\npatient_(alice_and_bob,home).",
+    "test": ":- \\+ s152_d_2_G(alice,bob,_,_)."
+  },
+  {
+    "id": "s152_d_2_G_pos",
+    "text": "Charlie is Bob's father since April 15th, 2014. Alice married Bob on October 12th, 1992.",
+    "question": "Alice bears a relationship to Charlie under section 152(d)(2)(G) for the year 2018",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nfather_(charlie_and_bob).\nagent_(charlie_and_bob,charlie).\npatient_(charlie_and_bob,bob).\nstart_(charlie_and_bob,\"2014-04-15\").\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-10-12\").",
+    "test": ":- s152_d_2_G(alice,charlie,Start_relationship,End_relationship),"
+  },
+  {
+    "id": "s152_d_2_H_neg",
+    "text": "Bob is Alice's father since April 15th, 1994. In 2015, Alice and Bob live in separate houses.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(H) for the year 2015",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nfather_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"1994-04-15\").",
+    "test": ":- \\+ s152_d_2_H(alice,bob,2015,_,_,_)."
+  },
+  {
+    "id": "s152_d_2_H_pos",
+    "text": "Alice and Bob started living together on April 15th, 2014. Alice and Bob are not married.",
+    "question": "Alice bears a relationship to Bob under section 152(d)(2)(H) for the year 2018",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nresidence_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2014-04-15\").\npatient_(alice_and_bob,home).",
+    "test": ":- s152_d_2_H(alice,bob,2018,_,_,_)."
+  },
+  {
+    "id": "s1_a_2_iv_neg",
+    "text": "Alice is a surviving spouse for the year 2017. Alice's taxable income for the year 2017 is $615572.",
+    "question": "Alice has to pay $220295 in taxes for the year 2017 under section 1(a)(iv)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_a/3.\n:- [statutes/prolog/init].\ns2_a(alice,_,2017).\ns63(alice,2017,615572).",
+    "test": ":- \\+ s1_a_iv(615572,220295)."
+  },
+  {
+    "id": "s1_a_2_iv_pos",
+    "text": "Alice is a surviving spouse for the year 2017. Alice's taxable income for the year 2017 is $236422.",
+    "question": "Alice has to pay $70640 in taxes for the year 2017 under section 1(a)(iv)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_a/3.\n:- [statutes/prolog/init].\ns2_a(alice,_,2017).\ns63(alice,2017,236422).",
+    "test": ":- s1_a_iv(236422,70640)."
+  },
+  {
+    "id": "s1_a_2_neg",
+    "text": "Alice's taxable income for the year 2017 is $210204. Alice is not married, is not a surviving spouse, and is not a head of household in 2017.",
+    "question": "Alice has to pay $65445 in taxes for the year 2017 under section 1(a)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63/3.\n:- [statutes/prolog/init].\ns63(alice,2017,2102047).",
+    "test": ":- \\+ s1_a(alice,2017,_,65445)."
+  },
+  {
+    "id": "s1_a_2_pos",
+    "text": "Alice is a surviving spouse for the year 2017. Alice's taxable income for the year 2017 is $70117.",
+    "question": "Alice has to pay $14836 in taxes for the year 2017 under section 1(a)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_a/3.\n:- [statutes/prolog/init].\ns2_a(alice,_,2017).\ns63(alice,2017,70117).",
+    "test": ":- s1_a(alice,2017,_,14836)."
+  },
+  {
+    "id": "s1_a_2_v_neg",
+    "text": "Alice is a surviving spouse for the year 2017. Alice's taxable income for the year 2017 is $25561.",
+    "question": "Alice has to pay $3834 in taxes for the year 2017 under section 1(a)(v)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_a/3.\n:- [statutes/prolog/init].\ns2_a(alice,_,2017).\ns63(alice,2017,25561).",
+    "test": ":- \\+ s1_a_v(25561,3834)."
+  },
+  {
+    "id": "s1_a_2_v_pos",
+    "text": "Alice is a surviving spouse for the year 2017. Alice's taxable income for the year 2017 is $615572.",
+    "question": "Alice has to pay $220295 in taxes for the year 2017 under section 1(a)(v)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_a/3.\n:- [statutes/prolog/init].\ns2_a(alice,_,2017).\ns63(alice,2017,615572).",
+    "test": ":- s1_a_v(615572,220295)."
+  },
+  {
+    "id": "s1_b_i_neg",
+    "text": "Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $1172980.",
+    "question": "Alice has to pay $442985 in taxes for the year 2017 under section 1(b)(i)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_b/3.\n:- [statutes/prolog/init].\ns2_b(alice,_,2017).\ns63(alice,2017,1172980).",
+    "test": ":- \\+ s1_b_i(1172980,442985)."
+  },
+  {
+    "id": "s1_b_i_pos",
+    "text": "Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $9560.",
+    "question": "Alice has to pay $1434 in taxes for the year 2017 under section 1(b)(i)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_b/3.\n:- [statutes/prolog/init].\ns2_b(alice,_,2017).\ns63(alice,2017,9560).",
+    "test": ":- s1_b_i(9560,1434)."
+  },
+  {
+    "id": "s1_b_neg",
+    "text": "Alice is married under section 7703 for the year 2017. Alice's taxable income for the year 2017 is $554313. Alice files a separate return from her spouse.",
+    "question": "Alice has to pay $207772 in taxes for the year 2017 under section 1(b)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s7703/4.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\ns63(alice,2017,554313).",
+    "test": ":- \\+ s1_b(alice,2017,_,207772)."
+  },
+  {
+    "id": "s1_b_pos",
+    "text": "Alice is a head of household for the year 2017. Alice's taxable income for the year 2017 is $97407.",
+    "question": "Alice has to pay $24056 in taxes for the year 2017 under section 1(b)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- discontiguous s2_b/3.\n:- [statutes/prolog/init].\ns2_b(alice,_,2017).\ns63(alice,2017,97407).",
+    "test": ":- s1_b(alice,2017,_,24056)."
+  },
+  {
+    "id": "s1_c_iii_neg",
+    "text": "Alice's taxable income for the year 2017 is $22895. Alice is not married, is not a surviving spouse, and is not a head of household in 2017.",
+    "question": "Alice has to pay $3538 in taxes for the year 2017 under section 1(c)(iii)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63/3.\n:- [statutes/prolog/init].\ns63(alice,2017,22895).",
+    "test": ":- \\+ s1_c_iii(22895,3538)."
+  },
+  {
+    "id": "s1_c_iii_pos",
+    "text": "Alice's taxable income for the year 2017 is $102268. Alice is not married, is not a surviving spouse, and is not a head of household in 2017.",
+    "question": "Alice has to pay $27225 in taxes for the year 2017 under section 1(c)(iii)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- [statutes/prolog/init].\ns63(alice,2017,102268).",
+    "test": ":- s1_c_iii(102268,27225)."
+  },
+  {
+    "id": "s1_c_neg",
+    "text": "Alice is married under section 7703 for the year 2017. Alice files a joint return with her spouse for 2017. Alice's and her spouse's taxable income for the year 2017 is $17330.",
+    "question": "Alice and her spouse have to pay $2600 in taxes for the year 2017 under section 1(c)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s7703/4.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\njoint_return_(joint_return).\nagent_(joint_return,alice).\nagent_(joint_return,spouse).\nstart_(joint_return,\"2017-01-01\").\nend_(joint_return,\"2017-12-31\").\ns63(alice,2017,17330).",
+    "test": ":- \\+ s1_c(alice,2017,_,2600)."
+  },
+  {
+    "id": "s1_c_pos",
+    "text": "Alice's taxable income for the year 2017 is $210204. Alice is not married, is not a surviving spouse, and is not a head of household in 2017.",
+    "question": "Alice has to pay $65445 in taxes for the year 2017 under section 1(c)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63/3.\n:- [statutes/prolog/init].\ns63(alice,2017,210204).",
+    "test": ":- s1_c(alice,2017,_,65445)."
+  },
+  {
+    "id": "s1_d_i_neg",
+    "text": "Alice is married under section 7703 for the year 2017. Alice's taxable income for the year 2017 is $67285. Alice files taxes separately in 2017.",
+    "question": "Alice has to pay $17123 in taxes for the year 2017 under section 1(d)(i)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s7703/4.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\ns63(alice,2017,67285).",
+    "test": ":- \\+ s1_d_i(67285,17123)."
+  },
+  {
+    "id": "s1_d_i_pos",
+    "text": "Alice is married under section 7703 for the year 2017. Alice's taxable income for the year 2017 is $6662. Alice files taxes separately in 2017.",
+    "question": "Alice has to pay $999 in taxes for the year 2017 under section 1(d)(i)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s7703/4.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\ns63(alice,2017,6662).",
+    "test": ":- s1_d_i(6662,999)."
+  },
+  {
+    "id": "s1_d_ii_neg",
+    "text": "Alice is married under section 7703 for the year 2017. Alice's taxable income for the year 2017 is $113580. Alice files a separate return.",
+    "question": "Alice has to pay $33653 in taxes for the year 2017 under section 1(d)(ii)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s7703/4.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\ns63(alice,2017,113580).",
+    "test": ":- \\+ s1_d_ii(113580,33653)."
+  },
+  {
+    "id": "s1_d_ii_pos",
+    "text": "Alice is married under section 7703 for the year 2017. Alice's taxable income for the year 2017 is $28864. Alice files a separate return.",
+    "question": "Alice has to pay $5683 in taxes for the year 2017 under section 1(d)(ii)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s7703/4.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\ns63(alice,2017,28864).",
+    "test": ":- s1_d_ii(28864,5683)."
+  },
+  {
+    "id": "s1_d_neg",
+    "text": "Alice is a surviving spouse for the year 2017. Alice's taxable income for the year 2017 is $70117.",
+    "question": "Alice has to pay $14836 in taxes for the year 2017 under section 1(d)",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s2_a/3.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns2_a(alice,_,2017).\ns63(alice,2017,70117).",
+    "test": ":- \\+ s1_d(alice,_,2017,_,14836)."
+  },
+  {
+    "id": "s1_d_pos",
+    "text": "Alice is married under section 7703 for the year 2017. Alice's taxable income for the year 2017 is $554313. Alice files a separate return.",
+    "question": "Alice has to pay $207772 in taxes for the year 2017 under section 1(d)",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s7703/4.\n:- discontiguous s63/3.\n:- [statutes/prolog/init].\ns7703(alice,spouse,_,2017).\ns63(alice,2017,554313).",
+    "test": ":- s1_d(alice,_,2017,_,207772)."
+  },
+  {
+    "id": "s2_a_1_B_neg",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice has a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2021. From 2011 to 2024, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. In 2020, Charlie filed a joint return with his spouse whom he married on Dec 1st, 2019. Charlie earned $312489 in 2020.",
+    "question": "Section 2(a)(1)(B) applies to Bob in 2020",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2021-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2011-01-01\").\nend_(charlie_and_bob_residence,\"2024-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2011,2024,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_marriage).\nagent_(charlie_marriage,charlie).\nagent_(charlie_marriage,spouse).\nstart_(charlie_marriage,\"2019-12-01\").\njoint_return_(charlie_and_spouse_joint_return).\nagent_(charlie_and_spouse_joint_return,charlie).\nagent_(charlie_and_spouse_joint_return,spouse).\nstart_(charlie_and_spouse_joint_return,\"2020-01-01\").\nend_(charlie_and_spouse_joint_return,\"2020-12-31\").\nincome_(charlie_makes_money).\nagent_(charlie_makes_money,charlie).\namount_(charlie_makes_money,312489).\nstart_(charlie_makes_money,\"2020-12-31\").",
+    "test": ":- \\+ s2_a_1_B(bob,_,_,2020)."
+  },
+  {
+    "id": "s2_a_1_B_pos",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2017, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. From 2014 to 2017, Bob was entitled to a deduction for Charlie under section 151. Bob's income in 2016 was $553252.",
+    "question": "Section 2(a)(1)(B) applies to Bob in 2016",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151/5.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2017-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2017,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\ns151(bob,_,[charlie],[0],Year) :- between(2014,2017,Year).\nincome_(bob_income_2016).\nagent_(bob_income_2016,bob).\namount_(bob_income_2016,553252).\nstart_(bob_income_2016,\"2016-12-31\").",
+    "test": ":- s2_a_1_B(bob,_,_,2016)."
+  },
+  {
+    "id": "s2_b_1_A_i_II_neg",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. Charlie married Dan on Feb 14th, 2018.",
+    "question": "Section 2(b)(1)(A)(i)(II) applies to Bob with Charlie as the qualifying child in 2018",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_and_dan).\nagent_(charlie_and_dan,dan).\nagent_(charlie_and_dan,charlie).\nstart_(charlie_and_dan,\"2018-02-14\").",
+    "test": ":- \\+ s2_b_1_A_i_II(charlie,bob,2018)."
+  },
+  {
+    "id": "s2_b_1_A_i_II_pos",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. Charlie married Dan on Feb 14th, 2018. Section 152(b)(2) applies to Charlie as the dependent and Bob as the taxpayer for 2018.",
+    "question": "Section 2(b)(1)(A)(i)(II) applies to Bob with Charlie as the qualifying child in 2018",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s152_b_2/4.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_and_dan).\nagent_(charlie_and_dan,dan).\nagent_(charlie_and_dan,charlie).\nstart_(charlie_and_dan,\"2018-02-14\").\ns152_b_2(charlie,_,bob,2018).",
+    "test": ":- s2_b_1_A_i_II(charlie,bob,2018)."
+  },
+  {
+    "id": "s2_b_1_A_i_I_neg",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. Charlie married Dan on Feb 14th, 2018.",
+    "question": "Section 2(b)(1)(A)(i)(I) applies to Charlie in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_and_dan).\nagent_(charlie_and_dan,dan).\nagent_(charlie_and_dan,charlie).\nstart_(charlie_and_dan,\"2018-02-14\").",
+    "test": ":- \\+ s2_b_1_A_i_I(charlie,2017)."
+  },
+  {
+    "id": "s2_b_1_A_i_I_pos",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. Charlie married Dan on Feb 14th, 2017.",
+    "question": "Section 2(b)(1)(A)(i)(I) applies to Charlie in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_and_dan).\nagent_(charlie_and_dan,dan).\nagent_(charlie_and_dan,charlie).\nstart_(charlie_and_dan,\"2017-02-14\").",
+    "test": ":- s2_b_1_A_i_I(charlie,2017)."
+  },
+  {
+    "id": "s2_b_1_A_i_neg",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. Charlie married Dan on Feb 14th, 2018. Section 152(b)(2) applies to Bob as the dependent and Charlie as the taxpayer for 2018.",
+    "question": "Section 2(b)(1)(A)(i) applies to Bob in 2018",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s152_b_2/4.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_and_dan).\nagent_(charlie_and_dan,dan).\nagent_(charlie_and_dan,charlie).\nstart_(charlie_and_dan,\"2018-02-14\").\ns152_b_2(bob,_,charlie,2018).",
+    "test": ":- \\+ s2_b_1_A_i(_,bob,2018)."
+  },
+  {
+    "id": "s2_b_1_A_i_pos",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time.",
+    "question": "Section 2(b)(1)(A)(i) applies to Charlie in 2018",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).",
+    "test": ":- s2_b_1_A_i(_,charlie,2018)."
+  },
+  {
+    "id": "s2_b_1_A_ii_neg",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Bob has a brother, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. In 2017, Charlie earned $312489. In 2017, Charlie filed a joint return with his spouse whom he married on Dec 1st, 2016.",
+    "question": "Section 2(b)(1)(A)(ii) applies to Charlie as the dependent in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_brother).\nagent_(charlie_is_brother,charlie).\npatient_(charlie_is_brother,bob).\nstart_(charlie_is_brother,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nincome_(charlie_makes_money).\nagent_(charlie_makes_money,charlie).\namount_(charlie_makes_money,312489).\nstart_(charlie_makes_money,\"2017-12-31\").\nmarriage_(charlie_marriage).\nagent_(charlie_marriage,charlie).\nagent_(charlie_marriage,spouse).\nstart_(charlie_marriage,\"2016-12-01\").\njoint_return_(charlie_and_spouse_joint_return).\nagent_(charlie_and_spouse_joint_return,charlie).\nagent_(charlie_and_spouse_joint_return,spouse).\nstart_(charlie_and_spouse_joint_return,\"2017-01-01\").\nend_(charlie_and_spouse_joint_return,\"2017-12-31\").",
+    "test": ":- \\+ s2_b_1_A_ii(_,charlie,2017)."
+  },
+  {
+    "id": "s2_b_1_A_ii_pos",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Bob has a brother, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. From 2015 to 2019, Bob was entitled to a deduction for Charlie under section 151(c). In 2017, Bob earned $5254312.",
+    "question": "Section 2(b)(1)(A)(ii) applies to Charlie as the dependent in 2017",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_c_applies/3.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nbrother_(charlie_is_brother).\nagent_(charlie_is_brother,charlie).\npatient_(charlie_is_brother,bob).\nstart_(charlie_is_brother,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\ns151_c_applies(bob,charlie,Year) :- between(2015,2019,Year).\nincome_(bob_makes_money).\nagent_(bob_makes_money,bob).\namount_(bob_makes_money,5254312).\nstart_(bob_makes_money,\"2017-12-31\").",
+    "test": ":- s2_b_1_A_ii(_,charlie,2017)."
+  },
+  {
+    "id": "s2_b_3_A_neg",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and and his father Charlie lived during that time. Bob is entitled to a deduction for Charlie under section 151(c) for the years 2015 to 2019. Bob was a nonresident alien until Feb 12, 2018.",
+    "question": "Section 2(b)(3)(A) applies to Bob in 2019",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s151_c_applies/3.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_father).\nagent_(charlie_is_father,charlie).\npatient_(charlie_is_father,bob).\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\ns151_c_applies(bob,charlie,Year) :- between(2015,2019,Year).\nnonresident_alien_(bob_is_a_nra).\nagent_(bob_is_a_nra,bob).\nend_(bob_is_a_nra,\"2018-02-12\").",
+    "test": ":- \\+ s2_b_3_A(bob,2019,_)."
+  },
+  {
+    "id": "s2_b_3_A_pos",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice died on July 9th, 2014. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and and his father Charlie lived during that time. Bob is entitled to a deduction for Charlie under section 151(c) for the years 2015 to 2019. Bob was a nonresident alien until Feb 12, 2018.",
+    "question": "Section 2(b)(3)(A) applies to Bob in 2018",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_c_applies/3.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_father).\nagent_(charlie_is_father,charlie).\npatient_(charlie_is_father,bob).\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\ns151_c_applies(bob,charlie,Year) :- between(2015,2019,Year).\nnonresident_alien_(bob_is_a_nra).\nagent_(bob_is_a_nra,bob).\nend_(bob_is_a_nra,\"2018-02-12\").",
+    "test": ":- s2_b_3_A(bob,2018,_)."
+  },
+  {
+    "id": "s3301_neg",
+    "text": "Alice is an employer under section 3306(a) for the year 2015 and 2016, and she has paid $453009 in total wages in 2015, and $443870 in 2016.",
+    "question": "Alice has to pay $26362 in excise tax for the year 2016 under section 3301",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous total_wages_employer/6.\n:- discontiguous s3306_a/2.\n:- [statutes/prolog/init].\ns3306_a(alice,Year) :- between(2015,2016,Year).\ntotal_wages_employer(alice,453009,_,_,\"2015-01-01\",\"2015-12-31\").\ntotal_wages_employer(alice,443870,_,_,\"2016-01-01\",\"2016-12-31\").",
+    "test": ":- \\+ s3301(alice,2016,_,_,_,26362)."
+  },
+  {
+    "id": "s3301_pos",
+    "text": "Alice is an employer under section 3306(a) for the year 2015 and 2016, and she has paid $453009 in total wages in 2015, and $443870 in 2016.",
+    "question": "Alice has to pay $27181 in excise tax for the year 2015 under section 3301",
+    "answer": "Entailment",
+    "facts": ":- discontiguous total_wages_employer/6.\n:- discontiguous s3306_a/2.\n:- [statutes/prolog/init].\ns3306_a(alice,Year) :- between(2015,2016,Year).\ntotal_wages_employer(alice,453009,_,_,\"2015-01-01\",\"2015-12-31\").\ntotal_wages_employer(alice,443870,_,_,\"2016-01-01\",\"2016-12-31\").",
+    "test": ":- s3301(alice,2015,_,_,_,27181)."
+  },
+  {
+    "id": "s3306_a_1_B_neg",
+    "text": "Alice has employed Bob on various occasions during the year 2017:",
+    "question": "Section 3306(a)(1)(B) applies to Alice for the year 2017",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s3306_c/5.\n:- [statutes/prolog/init].\ns3306_c(Employment_event,alice,bob,Day,_) :-\n    member(Day, [\"2017-01-24\",\"2017-02-04\",\"2017-03-03\",\"2017-03-19\",\"2017-04-02\",\"2017-10-25\",\"2017-11-08\",\"2017-11-22\",\"2017-12-01\",\"2017-12-03\"]),\n    atom_concat(\"alice_employer_\",Day,Employment_event).",
+    "test": ":- \\+ s3306_a_1_B(alice,_,_,2017)."
+  },
+  {
+    "id": "s3306_a_1_B_pos",
+    "text": "Alice has employed Bob on various occasions during the year 2017:",
+    "question": "Section 3306(a)(1)(B) applies to Alice for the year 2017",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s3306_c/5.\n:- [statutes/prolog/init].\ns3306_c(Employment_event,alice,bob,Day,_) :-\n    member(Day, [\"2017-01-24\", \"2017-02-04\", \"2017-03-03\", \"2017-03-19\",\"2017-04-02\",\"2017-05-09\",\"2017-10-15\",\"2017-10-25\",\"2017-11-08\",\"2017-11-22\",\"2017-12-01\",\"2017-12-03\"]),\n    atom_concat(\"alice_employer_\",Day,Employment_event).",
+    "test": ":- s3306_a_1_B(alice,_,_,2017)."
+  },
+  {
+    "id": "s3306_a_3_neg",
+    "text": "Alice has paid $3200 in cash to Bob for agricultural labor done from Feb 1st, 2017 to Sep 2nd, 2017. Bob has paid $4200 in cash to Alice for domestic service done from Apr 1st, 2017 to Sep 2nd, 2018 in his home.",
+    "question": "Section 3306(a)(3) applies to Alice for the year 2017",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s3306_b/8.\n:- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\npurpose_(alice_employer,\"agricultural labor\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2017-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\nmeans_(alice_pays,\"cash\").\ns3306_b(3200,alice_pays,alice_employer,alice,bob,alice,bob,_).\nservice_(bob_employer).\npatient_(bob_employer,bob).\nagent_(bob_employer,alice).\nstart_(bob_employer,\"2017-04-01\").\nend_(bob_employer,\"2018-09-02\").\npurpose_(bob_employer, \"domestic service\").\nlocation_(bob_employer, \"private home\").\npayment_(bob_pays).\nagent_(bob_pays,bob).\npatient_(bob_pays,alice).\nstart_(bob_pays,\"2018-09-02\").\npurpose_(bob_pays,bob_employer).\namount_(bob_pays,4200).\nmeans_(bob_pays,\"cash\").\ns3306_b(4200,bob_pays,bob_employer,bob,alice,bob,alice,_).",
+    "test": ":- \\+ s3306_a_3(alice,_,_,2017)."
+  },
+  {
+    "id": "s3306_a_3_pos",
+    "text": "Alice has paid $3200 in cash to Bob for agricultural labor done from Feb 1st, 2017 to Sep 2nd, 2017. Bob has paid $4200 in cash to Alice for domestic service in his home, done from Apr 1st, 2017 to Sep 2nd, 2018.",
+    "question": "Section 3306(a)(3) applies to Bob for the year 2018",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s3306_b/8.\n:- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\npurpose_(alice_employer,\"agricultural labor\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2017-09-02\").\nend_(alice_pays,\"2017-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\nmeans_(alice_pays,\"cash\").\ns3306_b(3200,alice_pays,alice_employer,alice,bob,alice,bob,_).\nservice_(bob_employer).\npatient_(bob_employer,bob).\nagent_(bob_employer,alice).\nstart_(bob_employer,\"2017-04-01\").\nend_(bob_employer,\"2018-09-02\").\npurpose_(bob_employer, \"domestic service\").\nlocation_(bob_employer, \"private home\").\npayment_(bob_pays).\nagent_(bob_pays,bob).\npatient_(bob_pays,alice).\nstart_(bob_pays,\"2018-09-02\").\nend_(bob_pays,\"2018-09-02\").\npurpose_(bob_pays,bob_employer).\namount_(bob_pays,4200).\nmeans_(bob_pays,\"cash\").\ns3306_b(4200,bob_pays,bob_employer,bob,alice,bob,alice,_).",
+    "test": ":- s3306_a_3(bob,_,_,2018)."
+  },
+  {
+    "id": "s3306_b_2_C_neg",
+    "text": "Alice has paid $45252 to Bob for work done in the year 2017. In 2017, Alice has also paid $9832 into a retirement fund for Bob, and $5322 into life insurance for Charlie, who is Alice's father and has retired in 2016.",
+    "question": "Section 3306(b)(2)(C) applies to the payment Alice made to the retirement fund for the year 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-01-01\").\nend_(alice_employer,\"2017-12-31\").\npayment_(alice_pays_bob).\nagent_(alice_pays_bob,alice).\npatient_(alice_pays_bob,bob).\nstart_(alice_pays_bob,\"2017-01-01\").\nend_(alice_pays_bob,\"2017-12-31\").\npurpose_(alice_pays_bob,alice_employer).\namount_(alice_pays_bob,45252).\npayment_(alice_pays_retirement).\nagent_(alice_pays_retirement,alice).\npatient_(alice_pays_retirement,retirement_fund).\npurpose_(alice_pays_retirement,\"make provisions for employees in case of retirement\").\nbeneficiary_(alice_pays_retirement,bob).\nstart_(alice_pays_retirement,\"2017-01-01\").\nend_(alice_pays_retirement,\"2017-12-31\").\namount_(alice_pays_retirement,9832).\npayment_(alice_pays_insurance).\nagent_(alice_pays_insurance,alice).\npatient_(alice_pays_insurance,life_insurance_fund).\npurpose_(alice_pays_insurance,\"make provisions in case of death\").\nbeneficiary_(alice_pays_insurance,charlie).\nstart_(alice_pays_insurance,\"2017-01-01\").\nend_(alice_pays_insurance,\"2017-12-31\").\namount_(alice_pays_insurance,5322).\nfather_(alice_and_charlie).\nagent_(alice_and_charlie,charlie).\npatient_(alice_and_charlie,alice).\nretirement_(charlie_retires).\nagent_(charlie_retires,charlie).\nstart_(charlie_retires,\"2016-01-01\").",
+    "test": ":- \\+ s3306_b_2_C(retirement_fund)."
+  },
+  {
+    "id": "s3306_b_2_C_pos",
+    "text": "Alice has paid $45252 to Bob for work done in the year 2017. In 2017, Alice has also paid $9832 into a retirement fund for Bob, and $5322 into life insurance for Bob.",
+    "question": "Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-01-01\").\nend_(alice_employer,\"2017-12-31\").\npayment_(alice_pays_bob).\nagent_(alice_pays_bob,alice).\npatient_(alice_pays_bob,bob).\nstart_(alice_pays_bob,\"2017-01-01\").\nend_(alice_pays_bob,\"2017-12-31\").\npurpose_(alice_pays_bob,alice_employer).\namount_(alice_pays_bob,45252).\npayment_(alice_pays_retirement).\nagent_(alice_pays_retirement,alice).\npatient_(alice_pays_retirement,retirement_fund).\nplan_(retirement_fund).\npurpose_(retirement_fund,\"make provisions for employees in case of retirement\").\nbeneficiary_(retirement_fund,bob).\nstart_(alice_pays_retirement,\"2017-01-01\").\nend_(alice_pays_retirement,\"2017-12-31\").\namount_(alice_pays_retirement,9832).\npayment_(alice_pays_insurance).\nagent_(alice_pays_insurance,alice).\npatient_(alice_pays_insurance,life_insurance_fund).\nplan_(life_insurance_fund).\npurpose_(life_insurance_fund,\"make provisions for employees in case of death\").\nbeneficiary_(life_insurance_fund,bob).\nstart_(alice_pays_insurance,\"2017-01-01\").\nend_(alice_pays_insurance,\"2017-12-31\").\namount_(alice_pays_insurance,5322).",
+    "test": ":- s3306_b_2_C(life_insurance_fund)."
+  },
+  {
+    "id": "s3306_c_10_B_neg",
+    "text": "Alice was paid $200 in March 2017 for services performed at Johns Hopkins Hospital in March 2017. Alice was a patient at Johns Hopkins Hospital from January 12th, 2017 to February 20th, 2017.",
+    "question": "Section 3306(c)(10)(B) applies to Alice's employment situation in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nhospital_(hopkins_is_a_hospital).\nagent_(hopkins_is_a_hospital,\"johns hopkins hospital\").\nservice_(alice_employed).\npatient_(alice_employed,\"johns hopkins hospital\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-03-01\").\nend_(alice_employed,\"2017-03-31\").\nlocation_(alice_employed,baltimore).\nlocation_(alice_employed,maryland).\nlocation_(alice_employed,usa).\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"johns hopkins hospital\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-03-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,200).\nmedical_patient_(alice_goes_to_hopkins).\nagent_(alice_goes_to_hopkins,alice).\npatient_(alice_goes_to_hopkins,\"johns hopkins hospital\").\nstart_(alice_goes_to_hopkins,\"2017-01-12\").\nend_(alice_goes_to_hopkins,\"2017-02-20\").",
+    "test": ":- \\+ s3306_c_10_B(alice_employed,_,alice,\"2017-03-01\")."
+  },
+  {
+    "id": "s3306_c_10_B_pos",
+    "text": "Alice was paid $200 in March 2017 for services performed at Johns Hopkins Hospital in March 2017. Alice was a patient at Johns Hopkins Hospital from March 15th, 2017 to April 2nd, 2017.",
+    "question": "Section 3306(c)(10)(B) applies to Alice's employment situation in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nhospital_(hopkins_is_a_hospital).\nagent_(hopkins_is_a_hospital,\"johns hopkins hospital\").\nservice_(alice_employed).\npatient_(alice_employed,\"johns hopkins hospital\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-03-15\").\nend_(alice_employed,\"2017-03-31\").\nlocation_(alice_employed,\"baltimore\").\nlocation_(alice_employed,\"maryland\").\nlocation_(alice_employed,\"usa\").\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"johns hopkins hospital\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-03-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,200).\nmedical_patient_(alice_goes_to_hopkins).\nagent_(alice_goes_to_hopkins,alice).\npatient_(alice_goes_to_hopkins,\"johns hopkins hospital\").\nstart_(alice_goes_to_hopkins,\"2017-03-15\").\nend_(alice_goes_to_hopkins,\"2017-04-02\").",
+    "test": ":- s3306_c_10_B(alice_employed,_,alice,\"2017-03-15\")."
+  },
+  {
+    "id": "s3306_c_11_neg",
+    "text": "Alice was paid $73200 in 2017 as an employee of the State of Maryland in Baltimore, Maryland, USA.",
+    "question": "Section 3306(c)(11) applies to Alice's employment situation in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"state of maryland\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,\"baltimore\").\nlocation_(alice_employed,\"maryland\").\nlocation_(alice_employed,\"usa\").\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"state of maryland\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- \\+ s3306_c_11(alice_employed,_)."
+  },
+  {
+    "id": "s3306_c_11_pos",
+    "text": "Alice was paid $73200 in 2017 as an employee of the Canadian Government.",
+    "question": "Section 3306(c)(11) applies to Alice's employment situation in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"canadian government\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,\"toronto\").\nlocation_(alice_employed,\"ontario\").\nlocation_(alice_employed,\"canada\").\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"canadian government\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- s3306_c_11(alice_employed,_)."
+  },
+  {
+    "id": "s3306_c_16_neg",
+    "text": "Alice was paid $73200 in 2017 as an employee of the United States Government in Arlington, Virginia, USA.",
+    "question": "Section 3306(c)(16) applies to Alice's employment situation in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"united states government\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,arlington).\nlocation_(alice_employed,virginia).\nlocation_(alice_employed,usa).\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"united states government\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- \\+ s3306_c_16(alice_employed,_)."
+  },
+  {
+    "id": "s3306_c_16_pos",
+    "text": "Alice was paid $73200 in 2017 as an employee of the International Monetary Fund in Washington, D.C., USA.",
+    "question": "Section 3306(c)(16) applies to Alice's employment situation in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\ninternational_organization_(imf_is_an_international_organization).\nagent_(imf_is_an_international_organization,\"international monetary fund\").\nservice_(alice_employed).\npatient_(alice_employed,\"international monetary fund\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,\"washington dc\").\nlocation_(alice_employed,usa).\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"international monetary fund\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- s3306_c_16(alice_employed,_)."
+  },
+  {
+    "id": "s3306_c_1_B_neg",
+    "text": "Alice has paid $3200 to Bob for agricultural labor done from Feb 1st, 2017 to Sep 2nd, 2017, in Stanley, Wisconsin, USA. Alice is an american citizen, and Bob is a Mexican citizen who was admitted to the USA to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.",
+    "question": "Section 3306(c)(1)(B) applies to Alice employing Bob for the year 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\nlocation_(alice_employer,\"stanley, wisconsin, usa\").\ncountry_(\"stanley, wisconsin, usa\",\"usa\").\npurpose_(alice_employer,\"agricultural labor\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2017-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\ncitizenship_(alice_is_american).\nagent_(alice_is_american,alice).\npatient_(alice_is_american,\"usa\").\ncitizenship_(bob_is_mexican).\nagent_(bob_is_mexican,bob).\npatient_(bob_is_mexican,mexico).\nmigration_(bob_migrates_to_usa).\ndestination_(bob_migrates_to_usa,\"usa\").\nagent_(bob_migrates_to_usa,bob).\npurpose_(bob_migrates_to_usa,\"agricultural labor\").",
+    "test": ":- \\+ s3306_c_1_B(alice_employer,_)."
+  },
+  {
+    "id": "s3306_c_1_B_pos",
+    "text": "Alice has paid $3200 to Bob for agricultural labor done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen. Alice is an American employer.",
+    "question": "Section 3306(c)(1)(B) applies to Alice employing Bob for the year 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\nlocation_(alice_employer,\"caracas, venezuela\").\ncountry_(\"caracas, venezuela\",\"venezuela\").\npurpose_(alice_employer,\"agricultural labor\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2017-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\namerican_employer_(alice_is_american_employer).\nagent_(alice_is_american_employer,alice).\ncitizenship_(bob_is_american).\nagent_(bob_is_american,bob).\npatient_(bob_is_american,\"usa\").",
+    "test": ":- s3306_c_1_B(alice_employer,_)."
+  },
+  {
+    "id": "s3306_c_6_neg",
+    "text": "Alice was paid $73200 in 2017 as an employee of Nando's Chicken in Arlington, Virginia, USA.",
+    "question": "Section 3306(c)(6) applies to Alice's employment situation in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"nando's chicken\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,\"arlington\").\nlocation_(alice_employed,\"virginia\").\nlocation_(alice_employed,\"usa\").\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"nando's chicken\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- \\+ s3306_c_6(alice_employed)."
+  },
+  {
+    "id": "s3306_c_6_pos",
+    "text": "Alice was paid $73200 in 2017 as an employee of the United States Government in Arlington, Virginia, USA.",
+    "question": "Section 3306(c)(6) applies to Alice's employment situation in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"united states government\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,\"arlington\").\nlocation_(alice_employed,\"virginia\").\nlocation_(alice_employed,\"usa\").\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"united states government\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- s3306_c_6(alice_employed)."
+  },
+  {
+    "id": "s3306_c_7_neg",
+    "text": "Alice was paid $73200 in 2017 as an employee of Bertha's Mussels in Baltimore, Maryland, USA.",
+    "question": "Section 3306(c)(7) applies to Alice's employment situation in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"bertha's mussels\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,baltimore).\nlocation_(alice_employed,maryland).\nlocation_(alice_employed,usa).\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"bertha's mussels\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- \\+ s3306_c_7(alice_employed,_)."
+  },
+  {
+    "id": "s3306_c_7_pos",
+    "text": "Alice was paid $73200 in 2017 as an employee of the State of Maryland in Baltimore, Maryland, USA.",
+    "question": "Section 3306(c)(7) applies to Alice's employment situation in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employed).\npatient_(alice_employed,\"state of maryland\").\nagent_(alice_employed,alice).\nstart_(alice_employed,\"2017-01-01\").\nend_(alice_employed,\"2017-12-31\").\nlocation_(alice_employed,baltimore).\nlocation_(alice_employed,maryland).\nlocation_(alice_employed,usa).\npayment_(alice_is_paid).\nagent_(alice_is_paid,\"state of maryland\").\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\npurpose_(alice_is_paid,alice_employed).\namount_(alice_is_paid,73200).",
+    "test": ":- s3306_c_7(alice_employed,_)."
+  },
+  {
+    "id": "s3306_c_B_neg",
+    "text": "Alice has paid $3200 to Bob for work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela. Alice is a citizen of Venezuela, and Bob is an American citizen.",
+    "question": "Section 3306(c)(B) applies to Alice employing Bob for the year 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\nlocation_(alice_employer,\"caracas, venezuela\").\ncountry_(\"caracas, venezuela\",\"venezuela\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2017-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\ncitizenship_(alice_is_venezuelan).\nagent_(alice_is_venezuelan,alice).\npatient_(alice_is_venezuelan,\"venezuela\").\ncitizenship_(bob_is_american).\nagent_(bob_is_american,bob).\npatient_(bob_is_american,\"usa\").",
+    "test": ":- \\+ s3306_c_B(_,alice,bob,_)."
+  },
+  {
+    "id": "s3306_c_B_pos",
+    "text": "Alice has paid $3200 to Bob for work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen and Alice is an American employer.",
+    "question": "Section 3306(c)(B) applies to Alice employing Bob for the year 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\nlocation_(alice_employer,\"caracas, venezuela\").\ncountry_(\"caracas, venezuela\",\"venezuela\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2017-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\namerican_employer_(alice_is_american_employer).\nagent_(alice_is_american_employer,alice).\ncitizenship_(bob_is_american).\nagent_(bob_is_american,bob).\npatient_(bob_is_american,\"usa\").",
+    "test": ":- s3306_c_B(alice_employer,_,_,_)."
+  },
+  {
+    "id": "s63_b_neg",
+    "text": "In 2017, Alice was paid $33200. She is allowed a deduction under section 63(c)(1) of $2000 for the year 2017, and no deduction under section 151. Alice takes the standard deduction.",
+    "question": "Under section 63(b), Alice's taxable income in 2017 is equal to $31400",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s63_c_1/3.\n:- discontiguous s151/5.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\ns63_c_1(alice,2017,2000).\ns151(alice,0,_,_,2017).",
+    "test": ":- \\+ s63_b(alice,2017,31400,_)."
+  },
+  {
+    "id": "s63_b_pos",
+    "text": "In 2017, Alice was paid $33200. She is allowed a deduction under section 63(c)(1) of $2000 for the year 2017, and no deduction under section 151. Alice decides not to itemize her deductions.",
+    "question": "Under section 63(b), Alice's taxable income in 2017 is equal to $31200",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s63_c_1/3.\n:- discontiguous s151/5.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\ns63_c_1(alice,2017,2000).\ns151(alice,0,_,_,2017).",
+    "test": ":- s63_b(alice,2017,31200,_)."
+  },
+  {
+    "id": "s63_c_2_A_i_neg",
+    "text": "In 2017, Alice was paid $33200 in remuneration. Alice and Bob have been married since Feb 3rd, 2017. Alice and Bob file separate returns in 2017.",
+    "question": "Section 63(c)(2)(A)(i) applies to Alice in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").",
+    "test": ":- \\+ s63_c_2_A_i(alice,_,2017)."
+  },
+  {
+    "id": "s63_c_2_A_i_pos",
+    "text": "In 2017, Alice was paid $33200 in remuneration. Alice and Bob have been married since Feb 3rd, 2017, and they file a joint return for 2017.",
+    "question": "Section 63(c)(2)(A)(i) applies to Alice in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\njoint_return_(alice_and_bob_file_a_joint_return).\nagent_(alice_and_bob_file_a_joint_return,alice).\nagent_(alice_and_bob_file_a_joint_return,bob).\nstart_(alice_and_bob_file_a_joint_return,\"2017-01-01\").\nend_(alice_and_bob_file_a_joint_return,\"2017-12-31\").",
+    "test": ":- s63_c_2_A_i(alice,_,2017)."
+  },
+  {
+    "id": "s63_c_2_A_ii_neg",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob have been married since Feb 3rd, 2017, and they file a joint return for 2017.",
+    "question": "Section 63(c)(2)(A)(ii) applies to Alice in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\njoint_return_(alice_and_bob_file_a_joint_return).\nagent_(alice_and_bob_file_a_joint_return,alice).\nagent_(alice_and_bob_file_a_joint_return,bob).\nstart_(alice_and_bob_file_a_joint_return,\"2017-01-01\").\nend_(alice_and_bob_file_a_joint_return,\"2017-12-31\").",
+    "test": ":- \\+ s63_c_2_A_ii(alice,2017)."
+  },
+  {
+    "id": "s63_c_2_A_ii_pos",
+    "text": "In 2017, Alice was paid $33200. Alice is a surviving spouse for 2017.",
+    "question": "Section 63(c)(2)(A)(ii) applies to Alice in 2017",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s2_a/3.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\ns2_a(alice,_,2017).",
+    "test": ":- s63_c_2_A_ii(alice,2017)."
+  },
+  {
+    "id": "s63_c_6_B_neg",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob got married on Feb 3rd, 2017. Alice was a nonresident alien from August 23rd, 2015 to September 15th, 2016.",
+    "question": "Section 63(c)(6)(B) applies to Alice for 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\nnonresident_alien_(alice_is_a_nra).\nagent_(alice_is_a_nra,alice).\nstart_(alice_is_a_nra,\"2015-08-23\").\nend_(alice_is_a_nra,\"2016-08-15\").",
+    "test": ":- \\+ s63_c_6_B(alice,2017)."
+  },
+  {
+    "id": "s63_c_6_B_pos",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob got married on Feb 3rd, 2017. Alice was a nonresident alien from August 23rd, 2016 to September 15th, 2018.",
+    "question": "Section 63(c)(6)(B) applies to Alice for 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\nnonresident_alien_(alice_is_a_nra).\nagent_(alice_is_a_nra,alice).\nstart_(alice_is_a_nra,\"2016-08-23\").\nend_(alice_is_a_nra,\"2018-08-15\").",
+    "test": ":- s63_c_6_B(alice,2017)."
+  },
+  {
+    "id": "s63_c_6_D_neg",
+    "text": "From 1973 to 2019, the Walter Brown Family Trust II was considered to be a business trust.",
+    "question": "Section 63(c)(6)(D) applies to the Walter Brown Family Trust II for 2021",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nbusiness_trust_(wbft_is_a_trust).\nagent_(wbft_is_a_trust,\"Walter Brown Family Trust II\").\nstart_(wbft_is_a_trust,\"1973-01-01\").\nend_(wbft_is_a_trust,\"2019-12-31\").",
+    "test": ":- \\+ s63_c_6_D(\"Walter Brown Family Trust II\",2021)."
+  },
+  {
+    "id": "s63_c_6_D_pos",
+    "text": "From 1973 to 2019, the Walter Brown Family Trust II was considered to be a business trust.",
+    "question": "Section 63(c)(6)(D) applies to the Walter Brown Family Trust II for 1999",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nbusiness_trust_(wbft_is_a_trust).\nagent_(wbft_is_a_trust,\"Walter Brown Family Trust II\").\nstart_(wbft_is_a_trust,\"1973-01-01\").\nend_(wbft_is_a_trust,\"2019-12-31\").",
+    "test": ":- s63_c_6_D(\"Walter Brown Family Trust II\",1999)."
+  },
+  {
+    "id": "s63_c_7_i_neg",
+    "text": "In 2019, Alice was paid $33200. Alice is a head of household for 2019.",
+    "question": "Under section 63(c)(7)(i), Alice's basic standard deduction in 2019 is equal to $4400",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s2_b/3.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2019-12-31\").\namount_(alice_is_paid,33200).\ns2_b(alice,_,2019).",
+    "test": ":- \\+ s63_c_7_i(2019,4400)."
+  },
+  {
+    "id": "s63_c_7_i_pos",
+    "text": "In 2019, Alice was paid $33200. Alice is a head of household for 2019.",
+    "question": "Under section 63(c)(7)(i), Alice's basic standard deduction in 2019 is equal to $18000",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s2_b/3.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2019-12-31\").\namount_(alice_is_paid,33200).\ns2_b(alice,_,2019).",
+    "test": ":- s63_c_7_i(2019,18000)."
+  },
+  {
+    "id": "s63_f_1_A_neg",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob have been married since Feb 3rd, 2017. Alice was born March 2nd, 1950 and Bob was born March 3rd, 1955.",
+    "question": "Section 63(f)(1)(A) applies to Bob in 2017",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\nbirth_(alice_is_born).\nagent_(alice_is_born,alice).\nstart_(alice_is_born,\"1950-03-02\").\nend_(alice_is_born,\"1950-03-02\").\nbirth_(bob_is_born).\nagent_(bob_is_born,bob).\nstart_(bob_is_born,\"1955-03-03\").\nend_(bob_is_born,\"1955-03-03\").",
+    "test": ":- \\+ s63_f_1_A(bob,2017)."
+  },
+  {
+    "id": "s63_f_1_A_pos",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob have been married since Feb 3rd, 2017. Alice was born March 2nd, 1950 and Bob was born March 3rd, 1955.",
+    "question": "Section 63(f)(1)(A) applies to Alice in 2017",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\nbirth_(alice_is_born).\nagent_(alice_is_born,alice).\nstart_(alice_is_born,\"1950-03-02\").\nend_(alice_is_born,\"1950-03-02\").\nbirth_(bob_is_born).\nagent_(bob_is_born,bob).\nstart_(bob_is_born,\"1955-03-03\").\nend_(bob_is_born,\"1955-03-03\").",
+    "test": ":- s63_f_1_A(alice,2017)."
+  },
+  {
+    "id": "s63_f_2_B_neg",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob have been married since Feb 3rd, 2017. Alice has been blind since October 4, 2013. In addition, Alice is allowed an exemption for Bob under section 151(b) for the year 2017.",
+    "question": "Section 63(f)(2)(B) applies to Alice in 2017",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s151_b_applies/3.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\nblindness_(alice_is_blind).\nagent_(alice_is_blind,alice).\nstart_(alice_is_blind,\"2013-10-04\").\ns151_b_applies(alice,bob,2017).",
+    "test": ":- \\+ s63_f_2_B(alice,_,2017)."
+  },
+  {
+    "id": "s63_f_2_B_pos",
+    "text": "In 2017, Alice was paid $33200. Alice and Bob have been married since Feb 3rd, 2017. Alice has been blind since Feb 28, 2014. In addition, Bob is allowed an exemption for Alice under section 151(b) for the year 2017.",
+    "question": "Section 63(f)(2)(B) applies to Bob in 2017",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_b_applies/3.\n:- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,33200).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").\nblindness_(alice_is_blind).\nagent_(alice_is_blind,alice).\nstart_(alice_is_blind,\"2014-02-28\").\ns151_b_applies(bob,alice,2017).",
+    "test": ":- s63_f_2_B(bob,_,2017)."
+  },
+  {
+    "id": "s68_a_2_neg",
+    "text": "In 2016, Alice's income was $295192. Alice is a surviving spouse for the year 2016. Alice is allowed itemized deductions of $60000 under section 63.",
+    "question": "Section 68(a)(2) prescribes a reduction of Alice's itemized deductions for the year 2016 by $47000",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s2_a/3.\n:- discontiguous s63_d/4.\n:- [statutes/prolog/init].\nincome_(alice_is_paid).\nagent_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2016-12-31\").\namount_(alice_is_paid,295192).\ns63_d(alice,_,60000,2016).\ns2_a(alice,_,2016).",
+    "test": ":- \\+ s68_a_2(alice,_,47000,2016)."
+  },
+  {
+    "id": "s68_a_2_pos",
+    "text": "In 2016, Alice's income was $277192. Alice is a head of household for the year 2016. Alice is allowed itemized deductions of $60000 under section 63.",
+    "question": "Section 68(a)(2) prescribes a reduction of Alice's itemized deductions for the year 2016 by $48000",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s2_b/3.\n:- discontiguous s63_d/4.\n:- [statutes/prolog/init].\nincome_(alice_is_paid).\nagent_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2016-12-31\").\namount_(alice_is_paid,277192).\ns63_d(alice,_,60000,2016).\ns2_b(alice,_,2016).",
+    "test": ":- s68_a_2(alice,_,48000,2016)."
+  },
+  {
+    "id": "s68_b_1_B_neg",
+    "text": "In 2016, Alice's income was $567192. Alice is a surviving spouse for the year 2016.",
+    "question": "Under section 68(b)(1)(B), Alice's applicable amount for 2016 is equal to $275000",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s2_a/3.\n:- [statutes/prolog/init].\nincome_(alice_is_paid).\nagent_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2016-12-31\").\namount_(alice_is_paid,567192).\ns2_a(alice,_,2016).",
+    "test": ":- \\+ s68_b_1_B(alice,275000,2016)."
+  },
+  {
+    "id": "s68_b_1_B_pos",
+    "text": "In 2016, Alice's income was $567192. Alice is a head of household for the year 2016.",
+    "question": "Under section 68(b)(1)(B), Alice's applicable amount for 2016 is equal to $275000",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s2_b/3.\n:- [statutes/prolog/init].\nincome_(alice_is_paid).\nagent_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2016-12-31\").\namount_(alice_is_paid,567192).\ns2_b(alice,_,2016).",
+    "test": ":- s68_b_1_B(alice,275000,2016)."
+  },
+  {
+    "id": "s68_b_1_C_neg",
+    "text": "In 2016, Alice's income was $567192. Alice is a head of household for the year 2016.",
+    "question": "Section 68(b)(1)(C) applies to Alice in 2016",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s2_b/3.\n:- [statutes/prolog/init].\nincome_(alice_is_paid).\nagent_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2016-12-31\").\namount_(alice_is_paid,567192).\ns2_b(alice,_,2016).",
+    "test": ":- \\+ s68_b_1_C(alice,_,2016)."
+  },
+  {
+    "id": "s68_b_1_C_pos",
+    "text": "In 2016, Alice's income was $567192. Alice is not married, is not a surviving spouse, and is not a head of household in 2016.",
+    "question": "Section 68(b)(1)(C) applies to Alice in 2016 with the applicable amount equal to $250000",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nincome_(alice_is_paid).\nagent_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2016-12-31\").\namount_(alice_is_paid,567192).",
+    "test": ":- s68_b_1_C(alice,250000,2016)."
+  },
+  {
+    "id": "s7703_a_1_neg",
+    "text": "Alice and Bob got married on April 5th, 2012. Bob died September 16th, 2017.",
+    "question": "Section 7703(a)(1) applies to Alice for the year 2018",
+    "answer": "Contradiction",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2012-04-05\").\ndeath_(bob_dies).\nagent_(bob_dies,bob).\nstart_(bob_dies,\"2017-09-16\").",
+    "test": ":- \\+ s7703_a_1(alice,_,_,_,2018)."
+  },
+  {
+    "id": "s7703_a_1_pos",
+    "text": "Alice and Bob got married on April 5th, 2012. Bob died September 16th, 2017.",
+    "question": "Section 7703(a)(1) applies to Alice for the year 2012",
+    "answer": "Entailment",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2012-04-05\").\ndeath_(bob_dies).\nagent_(bob_dies,bob).\nstart_(bob_dies,\"2017-09-16\").",
+    "test": ":- s7703_a_1(alice,_,_,_,2012)."
+  },
+  {
+    "id": "s7703_b_2_neg",
+    "text": "Alice and Bob got married on April 5th, 2012. Alice and Bob have a son, Charlie, who was born on September 16th, 2017. Alice and Charlie live in a home for which Alice furnished 40% of the maintenance costs, since September 16th, 2017. Alice is entitled to a deduction for Charlie under section 151(c) for the years 2017 to 2019.",
+    "question": "Section 7703(b)(2) applies to Alice maintaining her home for the year 2018",
+    "answer": "Contradiction",
+    "facts": ":- discontiguous s151_c_applies/3.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2012-04-05\").\nson_(charlie_is_born).\nagent_(charlie_is_born,charlie).\npatient_(charlie_is_born,bob).\npatient_(charlie_is_born,alice).\nstart_(charlie_is_born,\"2017-09-16\").\nresidence_(home).\nagent_(home,alice).\nagent_(home,charlie).\npatient_(home,alice_s_house).\nstart_(home,\"2017-09-16\").\nsomeone_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2017,2117,Year), % avoid infinite forward loop\n    atom_concat('someone_maintains_household_',Year,Event),\n    (((Year==2017)->(Start_day=\"2017-09-16\"));first_day_year(Year,Start_day)),\n    last_day_year(Year,End_day).\npayment_(Event) :- someone_household_maintenance(_,Event,_,_).\nagent_(Event,someone) :- someone_household_maintenance(_,Event,_,_).\namount_(Event,60) :- someone_household_maintenance(_,Event,_,_).\npurpose_(Event,home) :- someone_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- someone_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- someone_household_maintenance(_,Event,_,End_day).\nalice_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2017,2117,Year), % avoid infinite forward loop\n    atom_concat('alice_maintains_household_',Year,Event),\n    (((Year==2017)->(Start_day=\"2017-09-16\"));first_day_year(Year,Start_day)),\n    last_day_year(Year,End_day).\npayment_(Event) :- alice_household_maintenance(_,Event,_,_).\nagent_(Event,alice) :- alice_household_maintenance(_,Event,_,_).\namount_(Event,40) :- alice_household_maintenance(_,Event,_,_).\npurpose_(Event,home) :- alice_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- alice_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- alice_household_maintenance(_,Event,_,End_day).\ns151_c_applies(alice,charlie,Year) :- between(2017,2019,Year).",
+    "test": ":- \\+ s7703_b_2(alice,alice_s_house,_,2018)."
+  },
+  {
+    "id": "s7703_b_2_pos",
+    "text": "Alice and Bob got married on April 5th, 2012. Alice and Bob have a son, Charlie, who was born on September 16th, 2017. Alice and Charlie live in a home maintained by Alice since September 16th, 2017. Alice is entitled to a deduction for Charlie under section 151(c) for the years 2017 to 2019. Alice and Bob file a joint return for the years 2017 to 2019.",
+    "question": "Section 7703(b)(2) applies to Alice maintaining her home for the year 2018",
+    "answer": "Entailment",
+    "facts": ":- discontiguous s151_c_applies/3.\n:- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2012-04-05\").\nson_(charlie_is_born).\nagent_(charlie_is_born,charlie).\npatient_(charlie_is_born,bob).\npatient_(charlie_is_born,alice).\nstart_(charlie_is_born,\"2017-09-16\").\nresidence_(home).\nagent_(home,alice).\nagent_(home,charlie).\npatient_(home,alice_s_house).\nstart_(home,\"2017-09-16\").\nalice_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2017,2117,Year), % avoid infinite forward loop\n    atom_concat('alice_maintains_household_',Year,Event),\n    (((Year==2017)->(Start_day=\"2017-09-16\"));first_day_year(Year,Start_day)),\n    last_day_year(Year,End_day).\npayment_(Event) :- alice_household_maintenance(_,Event,_,_).\nagent_(Event,alice) :- alice_household_maintenance(_,Event,_,_).\namount_(Event,1) :- alice_household_maintenance(_,Event,_,_).\npurpose_(Event,home) :- alice_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- alice_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- alice_household_maintenance(_,Event,_,End_day).\ns151_c_applies(alice,charlie,Year) :- between(2017,2019,Year).\njoint_return_alice_and_bob(Year,Event,Start_day,End_day) :-\n    between(2017,2019,Year),\n    atom_concat('alice_and_bob_joint_return_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\njoint_return_(Event) :- joint_return_alice_and_bob(_,Event,_,_).\nagent_(Event,alice) :- joint_return_alice_and_bob(_,Event,_,_).\nagent_(Event,bob) :- joint_return_alice_and_bob(_,Event,_,_).\nstart_(Event,Day) :- joint_return_alice_and_bob(_,Event,Day,_).\nend_(Event,Day) :- joint_return_alice_and_bob(_,Event,_,Day).",
+    "test": ":- s7703_b_2(alice,alice_s_house,_,2018)."
+  },
+  {
+    "id": "tax_case_28",
+    "text": "Alice has paid wages of $53200 to Bob for domestic service done from Feb 1st, 2017 to Sep 2nd, 2017. Alice's gross income in 2017 was $921324. Alice takes the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2017",
+    "answer": "$344848",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\npurpose_(alice_employer,\"domestic service\").\npayment_(alice_pays_bob).\nagent_(alice_pays_bob,alice).\npatient_(alice_pays_bob,bob).\nstart_(alice_pays_bob,\"2017-09-02\").\npurpose_(alice_pays_bob,alice_employer).\namount_(alice_pays_bob,53200).\nincome_(alice_income).\nstart_(alice_income,\"2017-12-31\").\namount_(alice_income,921324).\nagent_(alice_income,alice).",
+    "test": ":- tax(alice,2017,344848)."
+  },
+  {
+    "id": "tax_case_30",
+    "text": "Alice's gross income for the year 2017 is $6662, Bob's income is $17896. Alice and Bob got married on Feb 3rd, 1992. From 2004 to 2019, Bob furnished the costs of maintaining the home where he and Alice lived during that time. In 2017, Alice and Bob file separate returns, and they both take the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2017",
+    "answer": "$249",
+    "facts": ":- [statutes/prolog/init].\nincome_(alice_income).\nagent_(alice_income,alice).\namount_(alice_income,6662).\nstart_(alice_income,\"2017-12-31\").\nincome_(bob_income).\nagent_(bob_income,bob).\namount_(bob_income,17896).\nstart_(bob_income,\"2017-12-31\").\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\nresidence_(alice_and_bob_residence).\nagent_(alice_and_bob_residence,charlie).\nagent_(alice_and_bob_residence,bob).\npatient_(alice_and_bob_residence,bob_s_house).\nstart_(alice_and_bob_residence,\"2004-01-01\").\nend_(alice_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2015,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).",
+    "test": ":- tax(alice,2017,249)."
+  },
+  {
+    "id": "tax_case_31",
+    "text": "In 2017, Alice was paid $39212, and Bob had no income. Alice and Bob have been married since Feb 3rd, 2017. Alice and Bob file separately in 2017.",
+    "question": "How much tax does Alice have to pay in 2017",
+    "answer": "$6621",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,39212).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2017-02-03\").",
+    "test": ":- tax(alice,2017,6621)."
+  },
+  {
+    "id": "tax_case_34",
+    "text": "Alice's gross income for the year 2017 is $22895. Alice takes the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2017",
+    "answer": "$2684",
+    "facts": ":- [statutes/prolog/init].\nincome_(alice_income).\nagent_(alice_income,alice).\nstart_(alice_income,\"2017-12-31\").\namount_(alice_income,22895).",
+    "test": ":- tax(alice,2017,2684)."
+  },
+  {
+    "id": "tax_case_43",
+    "text": "In 2017, Alice was paid $23191. Alice and Bob got married on Feb 3rd, 1992. Alice was a nonresident alien until July 9th, 2014. Bob earned $34081 in 2017. Alice and Bob file jointly in 2017 and take the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2017",
+    "answer": "$8439",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2017-12-31\").\namount_(alice_is_paid,23191).\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\nnonresident_alien_(alice_is_a_nra).\nagent_(alice_is_a_nra,alice).\nend_(alice_is_a_nra,\"2014-07-09\").\nincome_(bob_income).\nagent_(bob_income,bob).\namount_(bob_income,34081).\nstart_(bob_income,\"2017-12-31\").\njoint_return_(alice_and_bob_joint_return).\nagent_(alice_and_bob_joint_return,alice).\nagent_(alice_and_bob_joint_return,bob).\nstart_(alice_and_bob_joint_return,\"2017-01-01\").\nend_(alice_and_bob_joint_return,\"2017-12-31\").",
+    "test": ":- tax(alice,2017,8439)."
+  },
+  {
+    "id": "tax_case_46",
+    "text": "Alice has paid $3200 to Bob for agricultural labor done from Feb 1st, 2020 to Sep 2nd, 2020. Alice paid Bob with eggs, grapes and hay. Alice has been married since 1999. Alice files a joint return with her spouse for 2020. Alice's and her spouse's gross income for the year 2020 is $103272. Alice takes the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2020",
+    "answer": "$17399",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2020-02-01\").\nend_(alice_employer,\"2020-09-02\").\npurpose_(alice_employer,\"agricultural labor\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2020-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\nmeans_(alice_pays,\"kind\").\nmarriage_(alice_marriage).\nagent_(alice_marriage,alice).\nagent_(alice_marriage,spouse).\nstart_(alice_marriage,\"1999-12-31\").\njoint_return_(joint_return).\nagent_(joint_return,alice).\nagent_(joint_return,spouse).\nstart_(joint_return,\"2020-01-01\").\nend_(joint_return,\"2020-12-31\").\nincome_(alice_income_2020).\nagent_(alice_income_2020,alice).\namount_(alice_income_2020,103272).\nstart_(alice_income_2020,\"2020-12-31\").",
+    "test": ":- tax(alice,2020,17399)."
+  },
+  {
+    "id": "tax_case_48",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice and Bob have a child, Charlie, born October 9th, 2000. Alice died on July 9th, 2014. From 2004 to 2018, Bob furnished the costs of maintaining the home where he and Charlie lived during that time. Charlie married Dan on Feb 14th, 2018, and they file a joint return that same year. Bob's gross income in 2018 was $132268. Bob takes the standard deduction.",
+    "question": "How much tax does Bob have to pay in 2018",
+    "answer": "$33068",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\npatient_(charlie_is_son,bob).\nstart_(charlie_is_son,\"2000-10-09\").\nresidence_(charlie_and_bob_residence).\nagent_(charlie_and_bob_residence,charlie).\nagent_(charlie_and_bob_residence,bob).\npatient_(charlie_and_bob_residence,bob_s_house).\nstart_(charlie_and_bob_residence,\"2004-01-01\").\nend_(charlie_and_bob_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2004,2018,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nmarriage_(charlie_and_dan).\nagent_(charlie_and_dan,dan).\nagent_(charlie_and_dan,charlie).\nstart_(charlie_and_dan,\"2018-02-14\").\njoint_return_(charlie_and_dan_joint_return).\nagent_(charlie_and_dan_joint_return,charlie).\nagent_(charlie_and_dan_joint_return,dan).\nstart_(charlie_and_dan_joint_return,\"2018-01-01\").\nend_(charlie_and_dan_joint_return,\"2018-12-31\").\nincome_(bob_income_2018).\nagent_(bob_income_2018,bob).\namount_(bob_income_2018,132268).\nstart_(bob_income_2018,\"2018-12-31\").",
+    "test": ":- tax(bob,2018,33068)."
+  },
+  {
+    "id": "tax_case_49",
+    "text": "Bob is Alice and Charlie's father. Bob had no income in 2015. Alice's gross income in 2015 is $264215. Alice takes the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2015",
+    "answer": "$82819",
+    "facts": ":- [statutes/prolog/init].\nfather_(bob_is_father).\nagent_(bob_is_father,bob).\npatient_(bob_is_father,alice).\npatient_(bob_is_father,charlie).\nincome_(alice_income_2015).\nagent_(alice_income_2015,alice).\namount_(alice_income_2015,264215).\nstart_(alice_income_2015,\"2015-12-31\").",
+    "test": ":- tax(alice,2015,82819)."
+  },
+  {
+    "id": "tax_case_53",
+    "text": "Alice has a brother, Bob, who was born January 31st, 2014. Alice's gross income in 2020 was $604312. Alice married Charlie on October 12th, 1992. Charlie had no income in 2020. Alice and Charlie file jointly and take the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2020",
+    "answer": "$206332",
+    "facts": ":- [statutes/prolog/init].\nbrother_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nstart_(alice_and_bob,\"2014-01-31\").\nincome_(alice_income_2020).\nagent_(alice_income_2020,alice).\namount_(alice_income_2020,604312).\nstart_(alice_income_2020,\"2020-12-31\").\nmarriage_(alice_and_charlie).\nagent_(alice_and_charlie,alice).\nagent_(alice_and_charlie,charlie).\nstart_(alice_and_charlie,\"1992-10-12\").\njoint_return_(joint_return).\nagent_(joint_return,alice).\nagent_(joint_return,charlie).\nstart_(joint_return,\"2020-01-01\").\nend_(joint_return,\"2020-12-31\").",
+    "test": ":- tax(alice,2020,206332)."
+  },
+  {
+    "id": "tax_case_57",
+    "text": "Alice got married on Feb 29, 2000. Alice files a joint return with her spouse for 2017. Alice's gross income for the year 2017 is $22895, and her spouse's is $14257. They take the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2017",
+    "answer": "$4073",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_marriage).\nagent_(alice_marriage,alice).\nagent_(alice_marriage,spouse).\nstart_(alice_marriage,\"2000-02-29\").\njoint_return_(joint_return).\nagent_(joint_return,alice).\nagent_(joint_return,spouse).\nstart_(joint_return,\"2017-01-01\").\nend_(joint_return,\"2017-12-31\").\nincome_(alice_income_2017).\nagent_(alice_income_2017,alice).\namount_(alice_income_2017,22895).\nstart_(alice_income_2017,\"2017-12-31\").\nincome_(spouse_income_2017).\nagent_(spouse_income_2017,spouse).\namount_(spouse_income_2017,14257).\nstart_(spouse_income_2017,\"2017-12-31\").",
+    "test": ":- tax(alice,2017,4073)."
+  },
+  {
+    "id": "tax_case_68",
+    "text": "Alice has paid $3200 to Bob for domestic service done from Feb 1st, 2017 to Sep 2nd, 2017. In 2018, Bob has paid $4500 to Alice for work done from Apr 1st, 2017 to Sep 2nd, 2018. Alice was otherwise paid $113209 in 2018.",
+    "question": "How much tax does Alice have to pay in 2018",
+    "answer": "$28292",
+    "facts": ":- [statutes/prolog/init].\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2017-02-01\").\nend_(alice_employer,\"2017-09-02\").\npurpose_(alice_employer,\"domestic service\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2019-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,3200).\nservice_(bob_employer).\npatient_(bob_employer,bob).\nagent_(bob_employer,alice).\nstart_(bob_employer,\"2017-02-01\").\nend_(bob_employer,\"2017-09-02\").\npayment_(bob_pays).\nagent_(bob_pays,bob).\npatient_(bob_pays,alice).\nstart_(bob_pays,\"2018-09-02\").\nend_(bob_pays,\"2018-09-02\").\npurpose_(bob_pays,bob_employer).\namount_(bob_pays,4500).\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2018-12-31\").\namount_(alice_is_paid,113209).",
+    "test": ":- tax(alice,2018,28292)."
+  },
+  {
+    "id": "tax_case_69",
+    "text": "Alice and Bob were married from Feb 3rd, 1997 to Oct 30th, 2001. Alice's gross income for the year 2014 is $718791 and she takes the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2014",
+    "answer": "$264225",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1997-02-03\").\nend_(alice_and_bob,\"2001-10-31\").\nincome_(alice_income).\nagent_(alice_income,alice).\nstart_(alice_income,\"2014-12-31\").\namount_(alice_income,718791).",
+    "test": ":- tax(alice,2014,264225)."
+  },
+  {
+    "id": "tax_case_75",
+    "text": "Alice shares a house with her father Bob since 2007. Alice pays for 75% of the costs of the house, while Charlie, her brother, pays for the remaining 25%. Alice's gross income for the year 2012 was $67285 and Charlie's was $56174. Alice is allowed itemized deductions of $17817.",
+    "question": "How much tax does Alice have to pay in 2012",
+    "answer": "$8883",
+    "facts": ":- [statutes/prolog/init].\nresidence_(alice_residence).\nagent_(alice_residence,alice).\npatient_(alice_residence,home).\nstart_(alice_residence,\"2007-01-01\").\nfather_(bob_father).\nagent_(bob_father,bob).\npatient_(bob_father,alice).\nresidence_(bob_residence).\nagent_(bob_residence,bob).\npatient_(bob_residence,home).\nstart_(bob_residence,\"2007-01-01\").\npayment_(alice_maintains_home).\nagent_(alice_maintains_home,alice).\namount_(alice_maintains_home,75).\npurpose_(alice_maintains_home,home).\nstart_(alice_maintains_home,Day) :- between(2007,2107,Year),\n    first_day_year(Year,Day).\nbrother_(charlie_brother).\nagent_(charlie_brother,charlie).\npatient_(charlie_brother,alice).\npayment_(charlie_maintains_home).\nagent_(charlie_maintains_home,charlie).\namount_(charlie_maintains_home,25).\npurpose_(charlie_maintains_home,home).\nstart_(charlie_maintains_home,Day) :- between(2007,2107,Year),\n    first_day_year(Year,Day).\nincome_(alice_income_2012).\nagent_(alice_income_2012,alice).\namount_(alice_income_2012,67285).\nstart_(alice_income_2012,\"2012-12-31\").\nincome_(charlie_income_2012).\nagent_(charlie_income_2012,charlie).\namount_(charlie_income_2012,56174).\nstart_(charlie_income_2012,\"2012-12-31\").\ndeduction_(itemized_deductions).\nagent_(itemized_deductions,alice).\namount_(itemized_deductions,17817).\nstart_(itemized_deductions,\"2012-01-01\").",
+    "test": ":- tax(alice,2012,8883)."
+  },
+  {
+    "id": "tax_case_77",
+    "text": "Alice's gross income for the year 2023 is $54775. In 2023, Bob, the son of her son Charlie, lives at her place, a house that she maintains. Bob has no income in 2023. Alice takes the standard deduction.",
+    "question": "How much tax does Alice have to pay in 2023",
+    "answer": "$6449",
+    "facts": ":- [statutes/prolog/init].\nincome_(alice_income_2023).\nagent_(alice_income_2023,alice).\namount_(alice_income_2023,54775).\nstart_(alice_income_2023,\"2023-12-31\").\nson_(bob_is_son).\nagent_(bob_is_son,bob).\npatient_(bob_is_son,charlie).\nson_(charlie_is_son).\nagent_(charlie_is_son,charlie).\npatient_(charlie_is_son,alice).\nresidence_(alice_residence).\nagent_(alice_residence,alice).\npatient_(alice_residence,alice_house).\nstart_(alice_residence,\"2023-01-01\").\nend_(alice_residence,\"2023-12-31\").\nresidence_(bob_residence).\nagent_(bob_residence,bob).\npatient_(bob_residence,alice_house).\nstart_(bob_residence,\"2023-01-01\").\nend_(bob_residence,\"2023-12-31\").\npayment_(alice_maintains_house).\nagent_(alice_maintains_house,alice).\namount_(alice_maintains_house,1).\nstart_(alice_maintains_house,\"2023-01-01\").\npurpose_(alice_maintains_house,alice_house).",
+    "test": ":- tax(alice,2023,6449)."
+  },
+  {
+    "id": "tax_case_78",
+    "text": "Alice and Bob got married on April 5th, 2012. Alice and Bob have a son, Charlie, who was born on September 16th, 2017. Alice and Charlie live in a home maintained by Alice since September 16th, 2017. Alice's gross income in 2019 is $73124. Alice and Bob file separate returns. Alice takes the standard deduction. In 2019, Bob has a different principal place of abode than Alice and Charlie.",
+    "question": "How much tax does Alice have to pay in 2019",
+    "answer": "$14470",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2012-04-05\").\nson_(charlie_is_born).\nagent_(charlie_is_born,charlie).\npatient_(charlie_is_born,bob).\npatient_(charlie_is_born,alice).\nstart_(charlie_is_born,\"2017-09-16\").\nresidence_(alice_residence).\nagent_(alice_residence,alice).\npatient_(alice_residence,alice_s_house).\nstart_(alice_residence,\"2017-09-16\").\nresidence_(charlie_residence).\nagent_(charlie_residence,charlie).\npatient_(charlie_residence,alice_s_house).\nstart_(charlie_residence,\"2017-09-16\").\nalice_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2017,2117,Year), % avoid infinite forward loop\n    atom_concat('alice_maintains_household_',Year,Event),\n    (((Year==2017)->(Start_day=\"2017-09-16\"));first_day_year(Year,Start_day)),\n    last_day_year(Year,End_day).\npayment_(Event) :- alice_household_maintenance(_,Event,_,_).\nagent_(Event,alice) :- alice_household_maintenance(_,Event,_,_).\namount_(Event,1) :- alice_household_maintenance(_,Event,_,_).\npurpose_(Event,alice_s_house) :- alice_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- alice_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- alice_household_maintenance(_,Event,_,End_day).\nincome_(alice_income_2019).\nagent_(alice_income_2019,alice).\namount_(alice_income_2019,73124).\nstart_(alice_income_2019,\"2019-12-31\").\nresidence_(bob_residence).\nagent_(bob_residence,bob).\npatient_(bob_residence,bob_s_house).\nstart_(bob_residence,\"2019-01-01\").\nend_(bob_residence,\"2019-12-31\").",
+    "test": ":- tax(alice,2019,14470)."
+  },
+  {
+    "id": "tax_case_82",
+    "text": "In 2012, Alice was paid $54268 in remuneration. In addition, Alice has paid $11571 to Bob for work done from Feb 1st, 2012 to Sep 2nd, 2012, in Caracas, Venezuela. Alice is an American employer, and Bob is an American citizen. Bob takes the standard deduction in 2012.",
+    "question": "How much tax does Bob have to pay in 2012",
+    "answer": "$986",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_income).\npatient_(alice_income,alice).\nstart_(alice_income,\"2012-12-31\").\namount_(alice_income,54268).\nservice_(alice_employer).\npatient_(alice_employer,alice).\nagent_(alice_employer,bob).\nstart_(alice_employer,\"2012-02-01\").\nend_(alice_employer,\"2012-09-02\").\nlocation_(alice_employer,\"caracas, venezuela\").\ncountry_(\"caracas, venezuela\",\"venezuela\").\npayment_(alice_pays).\nagent_(alice_pays,alice).\npatient_(alice_pays,bob).\nstart_(alice_pays,\"2012-09-02\").\npurpose_(alice_pays,alice_employer).\namount_(alice_pays,11571).\namerican_employer_(alice_is_american_employer).\nagent_(alice_is_american_employer,alice).\ncitizenship_(bob_is_american).\nagent_(bob_is_american,bob).\npatient_(bob_is_american,\"usa\").",
+    "test": ":- tax(bob,2012,986)."
+  },
+  {
+    "id": "tax_case_85",
+    "text": "In 2019, Alice was paid $34510. Alice has a brother, Charlie, whose son Bob lived at Alice's place in 2019, a house that she maintains. In 2019, Charlie had a different principal place of abode, and Bob had no income. Alice takes the standard deduction in 2019.",
+    "question": "How much tax does Alice have to pay in 2019",
+    "answer": "$2477",
+    "facts": ":- [statutes/prolog/init].\npayment_(alice_is_paid).\npatient_(alice_is_paid,alice).\nstart_(alice_is_paid,\"2019-12-31\").\namount_(alice_is_paid,34510).\nbrother_(charlie_brother).\nagent_(charlie_brother,charlie).\npatient_(charlie_brother,alice).\nson_(bob_is_son).\nagent_(bob_is_son,bob).\npatient_(bob_is_son,charlie).\nresidence_(bob_residence).\nagent_(bob_residence,bob).\npatient_(bob_residence,alice_house).\nstart_(bob_residence,\"2019-01-01\").\nend_(bob_residence,\"2019-12-31\").\nresidence_(alice_residence).\nagent_(alice_residence,alice).\npatient_(alice_residence,alice_house).\nstart_(alice_residence,\"2019-01-01\").\nend_(alice_residence,\"2019-12-31\").\npayment_(alice_maintains_house).\nagent_(alice_maintains_house,alice).\namount_(alice_maintains_house,1).\nstart_(alice_maintains_house,\"2019-01-01\").\npurpose_(alice_maintains_house,alice_house).\nresidence_(charlie_residence).\nagent_(charlie_residence,charlie).\npatient_(charlie_residence,charlie_house).\nstart_(charlie_residence,\"2019-01-01\").\nend_(charlie_residence,\"2019-12-31\").",
+    "test": ":- tax(alice,2019,2477)."
+  },
+  {
+    "id": "tax_case_9",
+    "text": "Alice and Bob got married on April 5th, 2012. Alice and Bob have a son, Charlie, who was born on September 16th, 2017. Alice and Charlie live in a home for which Alice furnished 40% of the maintenance costs, and Bob the remaining 60%, since September 16th, 2017. Alice and Bob file jointly from 2017 to 2019. Alice and Bob's incomes in 2018 were $36991 and $41990 respectively. Alice and Bob take the standard deduction. From 2017 to 2019, Bob lived separately.",
+    "question": "How much tax does Alice have to pay in 2018",
+    "answer": "$10598",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"2012-04-05\").\nson_(charlie_is_born).\nagent_(charlie_is_born,charlie).\npatient_(charlie_is_born,bob).\npatient_(charlie_is_born,alice).\nstart_(charlie_is_born,\"2017-09-16\").\nresidence_(home).\nagent_(home,alice).\nagent_(home,charlie).\npatient_(home,alice_s_house).\nstart_(home,\"2017-09-16\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2017,2117,Year), % avoid infinite forward loop\n    atom_concat('bob_maintains_household_',Year,Event),\n    (((Year==2017)->(Start_day=\"2017-09-16\"));first_day_year(Year,Start_day)),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,60) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,home) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nalice_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2017,2117,Year), % avoid infinite forward loop\n    atom_concat('alice_maintains_household_',Year,Event),\n    (((Year==2017)->(Start_day=\"2017-09-16\"));first_day_year(Year,Start_day)),\n    last_day_year(Year,End_day).\npayment_(Event) :- alice_household_maintenance(_,Event,_,_).\nagent_(Event,alice) :- alice_household_maintenance(_,Event,_,_).\namount_(Event,40) :- alice_household_maintenance(_,Event,_,_).\npurpose_(Event,home) :- alice_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- alice_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- alice_household_maintenance(_,Event,_,End_day).\njoint_return_alice_and_bob(Year,Event,Start_day,End_day) :-\n    between(2017,2019,Year),\n    atom_concat('alice_and_bob_joint_return_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\njoint_return_(Event) :- joint_return_alice_and_bob(_,Event,_,_).\nagent_(Event,alice) :- joint_return_alice_and_bob(_,Event,_,_).\nagent_(Event,bob) :- joint_return_alice_and_bob(_,Event,_,_).\nstart_(Event,Day) :- joint_return_alice_and_bob(_,Event,Day,_).\nend_(Event,Day) :- joint_return_alice_and_bob(_,Event,_,Day).\nincome_(alice_income_2018).\nagent_(alice_income_2018,alice).\namount_(alice_income_2018,36991).\nstart_(alice_income_2018,\"2018-12-31\").\nincome_(bob_income_2018).\nagent_(bob_income_2018,bob).\namount_(bob_income_2018,41990).\nstart_(bob_income_2018,\"2018-12-31\").\nresidence_(bob_residence).\nagent_(bob_residence,bob).\npatient_(bob_residence,bob_s_house).\nstart_(bob_residence,\"2017-01-01\").\nend_(bob_residence,\"2019-12-31\").",
+    "test": ":- tax(alice,2018,10598)."
+  },
+  {
+    "id": "tax_case_90",
+    "text": "Alice and Bob got married on Feb 3rd, 1992. Alice died on July 9th, 2014. From 2015 to 2019, Bob furnished the costs of maintaining the home where he and and his friend Charlie lived during that time, while Charlie had no income and was not the qualifying child of any taxpayer. Bob earned $304598 every year from 2015 to 2019.",
+    "question": "How much tax does Bob have to pay in 2018",
+    "answer": "$96641",
+    "facts": ":- [statutes/prolog/init].\nmarriage_(alice_and_bob).\nagent_(alice_and_bob,alice).\nagent_(alice_and_bob,bob).\nstart_(alice_and_bob,\"1992-02-03\").\ndeath_(alice_dies).\nagent_(alice_dies,alice).\nstart_(alice_dies,\"2014-07-09\").\nend_(alice_dies,\"2014-07-09\").\nresidence_(bob_residence).\nagent_(bob_residence,bob).\npatient_(bob_residence,bob_s_house).\nstart_(bob_residence,\"2015-01-01\").\nend_(bob_residence,\"2019-12-31\").\nresidence_(charlie_residence).\nagent_(charlie_residence,charlie).\npatient_(charlie_residence,bob_s_house).\nstart_(charlie_residence,\"2015-01-01\").\nend_(charlie_residence,\"2019-12-31\").\nbob_household_maintenance(Year,Event,Start_day,End_day) :-\n    between(2015,2019,Year),\n    atom_concat('bob_maintains_household_',Year,Event),\n    first_day_year(Year,Start_day),\n    last_day_year(Year,End_day).\npayment_(Event) :- bob_household_maintenance(_,Event,_,_).\nagent_(Event,bob) :- bob_household_maintenance(_,Event,_,_).\namount_(Event,1) :- bob_household_maintenance(_,Event,_,_).\npurpose_(Event,bob_s_house) :- bob_household_maintenance(_,Event,_,_).\nstart_(Event,Start_day) :- bob_household_maintenance(_,Event,Start_day,_).\nend_(Event,End_day) :- bob_household_maintenance(_,Event,_,End_day).\nbob_income(Year,Event,Day) :-\n    between(2015,2019,Year),\n    atom_concat('bob_income_',Year,Event),\n    last_day_year(Year,Day).\nincome_(Event) :- bob_income(_,Event,_).\nagent_(Event,bob) :- bob_income(_,Event,_).\namount_(Event,304598) :- bob_income(_,Event,_).\nstart_(Event,Day) :- bob_income(_,Event,Day).",
+    "test": ":- tax(bob,2018,96641)."
+  },
+  {
+    "id": "tax_case_93",
+    "text": "Bob is Alice's father. Alice's gross income in 2015 is $311510. Bob has no income in 2015. Alice takes the standard deduction in 2015.",
+    "question": "How much tax does Alice have to pay in 2015",
+    "answer": "$102150",
+    "facts": ":- [statutes/prolog/init].\nfather_(alice_and_bob).\nagent_(alice_and_bob,bob).\npatient_(alice_and_bob,alice).\nincome_(alice_income_2015).\nagent_(alice_income_2015,alice).\nstart_(alice_income_2015,\"2015-01-01\").\nend_(alice_income_2015,\"2015-12-31\").\namount_(alice_income_2015,311510).",
+    "test": ":- tax(alice,2015,102150)."
+  }
+]

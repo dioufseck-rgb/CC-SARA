@@ -1,0 +1,19 @@
+{
+  "label": "yaml_fix_2",
+  "started_at": "yaml_fix_2",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "auto": 1
+  },
+  "avg_elapsed_s": 106.28,
+  "case_results": [
+    {
+      "case_id": "SARA-S7703-B-2-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 106.28,
+      "status": "completed"
+    }
+  ]
+}

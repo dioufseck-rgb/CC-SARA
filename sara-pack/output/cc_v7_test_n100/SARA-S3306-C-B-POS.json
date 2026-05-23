@@ -1,0 +1,617 @@
+{
+  "case_id": "SARA-S3306-C-B-POS",
+  "source_id": "s3306_c_B_pos",
+  "instance_id": "wf_66a73a1122be",
+  "status": "completed",
+  "error": null,
+  "elapsed_total_s": 148.62,
+  "tier_applied": "auto",
+  "determination": "ENTAILMENT",
+  "ground_truth": "Entailment",
+  "step_records": [
+    {
+      "step_name": "retrieve_question_structure",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 16344.213724136353,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The 'question_text' source was successfully retrieved and contained the full question string. This data is complete and sufficient to extract all specified fields for the question's logical structure as per the retrieval specification. No other sources were required for this step.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The full question text 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017' was retrieved, allowing for the extraction of all required logical structure components."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "question_text": {
+            "value": "Section 3306(c)(B) applies to Alice employing Bob for the year 2017"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "question_text",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0030994415283203125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "statute_corpus",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_statute",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 20666.718244552612,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "All required data was successfully retrieved from the `statute_corpus`. The primary section, specific subsections, and their cross-references forming the closure have been identified as per the retrieval specification and common cross-reference patterns for FUTA",
+        "evidence_used": [],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "statute_corpus": {
+            "value": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "statute_corpus",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.003337860107421875,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_case_facts",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 11577.134370803833,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `case_narrative` was successfully retrieved and is structurally complete, ending with a terminal period. All specified categories for structured data extraction were processed, and facts were extracted without inference, preserving original wording. No data quality issues were identified.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Extracted structured facts from the narrative: 'Alice has paid $3200 to Bob for work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen and Alice is an American employer.'"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "case_narrative": {
+            "value": "Alice has paid $3200 to Bob for work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen and Alice is an American employer."
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "case_narrative",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.002384185791015625,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "statute_corpus",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "investigate_rule_application",
+      "primitive": "investigate",
+      "confidence": 1.0,
+      "elapsed_ms": 27643.512725830078,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "STEP 1: EXTRACT KEY DATA POINTS\n- Employer: Alice, an American employer.\n- Employee: Bob, an American citizen.\n- Service Period: Feb 1st, 2017 to Sep 2nd, 2017.\n- Location of Service: Caracas, Venezuela.\n- Payment: $3200.\n- Tax Year: 2017.\n\nSTEP 2: FORM HYPOTHESES\nBased on the statutory text of \u00a73306(c)(B), for the service to be considered 'employment', several conditions must be met:\n1. The service was performed outside the United States.\n2. The location of service was not a contiguous country with a relevant unemployment compensation agreement.\n3. The service was performed by a citizen of the United States.\n4. The service was performed for an American employer.\n5. The service does not fall under any of the listed exceptions in \u00a73306(c).\n\nSTEP 3: TEST EACH HYPOTHESIS AGAINST THE EXTRACTED DATA\n- Hypothesis 1 (Service outside U.S.): Supported. The work was done in 'Caracas, Venezuela', which is outside the United States.\n- Hypothesis 2 (Not a contiguous country): Supported. The work was done in 'Venezuela'. The contiguous countries to the U.S. are Canada and Mexico. Venezuela is not a contiguous country, so this condition is met.\n- Hypothesis 3 (U.S. citizen employee): Supported. The case narrative explicitly states, 'Bob is an American citizen'.\n- Hypothesis 4 (American employer): Supported. The case narrative explicitly states, 'Alice is an American employer'.\n- Hypothesis 5 (No exceptions apply): Supported. Reviewing the exceptions listed in \u00a73306(c) (e.g., agricultural labor, domestic service, family employment, government service), there are no facts in the case narrative to suggest that any of these exceptions are applicable to the work performed by Bob.\n\nSTEP 4: STATE YOUR FINDING\nAll predicates for \u00a73306(c)(B) are met by the provided case facts, and no exceptions appear to apply. Therefore, the service performed by Bob for Alice in Venezuela during 2017 qualifies as 'employment' under \u00a73306(c)(B). The claim that the section applies is correct.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Alice is an American employer."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Bob is an American citizen."
+          },
+          {
+            "source": "case_narrative",
+            "description": "work done... in Caracas, Venezuela."
+          },
+          {
+            "source": "question_text",
+            "description": "The claim asserts that Section 3306(c)(B) applies for the year 2017."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "finding": "The claim is correct. Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. The service constitutes 'employment' under this subsection because all its predicates are met by the case facts: the service was performed outside the U.S. (in Venezuela) by a U.S. citizen (Bob) for an American employer (Alice), and no statutory exceptions apply.",
+        "hypotheses_tested": [
+          {
+            "hypothesis": "The service was performed outside the United States.",
+            "status": "supported",
+            "evidence_for": [
+              "work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela"
+            ],
+            "evidence_against": [],
+            "reasoning": "The case narrative states the work was performed in Caracas, Venezuela, which is a location outside the United States. This directly satisfies the predicate in \u00a73306(c)(B)."
+          },
+          {
+            "hypothesis": "The location of service was not a contiguous country with a relevant unemployment compensation agreement.",
+            "status": "supported",
+            "evidence_for": [
+              "work done... in Caracas, Venezuela"
+            ],
+            "evidence_against": [],
+            "reasoning": "\u00a73306(c)(B) contains an exception for service performed in a contiguous country with a relevant agreement. Venezuela is not contiguous with the United States, so this exception does not apply."
+          },
+          {
+            "hypothesis": "The service was performed by a citizen of the United States.",
+            "status": "supported",
+            "evidence_for": [
+              "Bob is an American citizen"
+            ],
+            "evidence_against": [],
+            "reasoning": "The case narrative explicitly states Bob's citizenship, which matches the requirement in \u00a73306(c)(B)."
+          },
+          {
+            "hypothesis": "The service was performed for an American employer.",
+            "status": "supported",
+            "evidence_for": [
+              "Alice is an American employer"
+            ],
+            "evidence_against": [],
+            "reasoning": "The case narrative explicitly states Alice's status as an American employer, which matches the requirement in \u00a73306(c)(B)."
+          },
+          {
+            "hypothesis": "The service does not fall under any of the listed exceptions in \u00a73306(c).",
+            "status": "supported",
+            "evidence_for": [
+              "The case narrative describes the situation as 'work done' without specifying a type of work that would trigger an exception (e.g., agricultural, domestic, family, government)."
+            ],
+            "evidence_against": [],
+            "reasoning": "Based on the provided facts, there is no information to suggest the service qualifies for any of the specific exceptions enumerated in \u00a73306(c), such as agricultural labor, domestic service, or family employment."
+          }
+        ],
+        "recommended_actions": [
+          "Proceed to analyze whether Alice meets the definition of an 'employer' under \u00a73306(a), for which she would need to have paid wages of $1,500 or more during the calendar year.",
+          "Confirm that the $3200 payment constitutes 'wages' under \u00a73306(b)."
+        ],
+        "evidence_flags": [
+          "cross_border_employment"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "verify_claim_comparison",
+      "primitive": "verify",
+      "confidence": 1.0,
+      "elapsed_ms": 15305.19413948059,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "R1 (TYPE MATCH): The claim is an APPLICABILITY claim, and the 'investigate' step's output directly confirms applicability. This is a match. R2 (VALUE/STATE MATCH): The 'investigate' step's finding that the section applies matches the claim. R3 (STATUTE GROUNDING): The cited statute, \u00a73306(c)(B), is present in the provided raw authority text. R4 (FACT GROUNDING): The facts cited in the reasoning (work in Venezuela, Bob is a US citizen, Alice is an American employer) are all present in the case narrative. R5 (INDETERMINACY DISCLOSURE): No hypotheses were marked 'indeterminate', so this rule passes by default.",
+        "evidence_used": [
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The claim is correct. Section 3306(c)(B) applies..."
+          },
+          {
+            "source": "RAW AUTHORITY",
+            "description": "\u00a73306(c) Employment... (B) performed outside the United States... by a citizen of the United States as an employee of an American employer"
+          },
+          {
+            "source": "RAW CASE NARRATIVE",
+            "description": "...work done... in Caracas, Venezuela. Bob is an American citizen and Alice is an American employer."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "conforms": true,
+        "violations": [],
+        "rules_checked": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "deliberate_disposition",
+      "primitive": "deliberate",
+      "confidence": 1.0,
+      "elapsed_ms": 6884.7644329071045,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The deliberation directly applied Rule 1 (Applicability/Status/Relational Claims) from the decision protocol. The `investigate_rule_application` step provided a definitive 'TRUE' for the applicability of the specified section, which directly matches the claim. The `verify_claim_comparison` step confirmed the conformance, reinforcing the finding.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The claim being evaluated: 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017'."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Facts about Alice employing Bob, including location, dates, and citizenship, which were used by investigate to determine applicability."
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "The finding that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017' and the supporting hypotheses."
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Confirmation that the claim conforms to the rule application findings ('Conforms: True')."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "situation_summary": "The case concerns whether Section 3306(c)(B) applies to Alice employing Bob for the year 2017. Alice paid Bob $3200 for work performed from February 1st, 2017, to September 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen, and Alice is an American employer. The investigation found that Section 3306(c)(B) applies to this employment relationship for 2017 because the service was performed outside the U.S. by a U.S. citizen, and the location was not a contiguous country with a relevant unemployment agreement. The claim comparison verified that all rules passed and the claim conforms to the findings.",
+        "evaluation_criteria": "A claim asserting that a section 'applies' to a subject in a year is true when the rule-output for that section's applicability predicate is true with respect to the subject and year. Otherwise, the disposition is CONTRADICTION.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": true,
+            "rationale": "Investigate's rule-output explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017', directly supporting the claim. The verify step also confirmed conformance."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": false,
+            "rationale": "Investigate's finding directly supports the claim's applicability, rather than refuting it. Therefore, CONTRADICTION is not appropriate."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "Investigate successfully derived a clear rule-output regarding the applicability of Section 3306(c)(B), and there are no reported issues of missing or ambiguous facts preventing a determination. Therefore, INDETERMINATE is not appropriate."
+          }
+        ],
+        "recommended_action": "ENTAILMENT",
+        "warrant": "Investigate's rule-output explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017'. The claim asserts that 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017'. The rule-output directly matches the claim's assertion of applicability. Therefore, the disposition is ENTAILMENT.",
+        "confidence_basis": "The `investigate_rule_application.finding` clearly states that the claim is correct and Section 3306(c)(B) applies, with a confidence of 1.0. The `verify_claim_comparison` also reports 'Conforms: True' and 'All rules passed'.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "generate_determination",
+      "primitive": "generate",
+      "confidence": 1.0,
+      "elapsed_ms": 13473.268508911133,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The artifact was generated by extracting the disposition verbatim from `deliberate_disposition.recommended_action`. The `primary_reasoning` was constructed based on `deliberate_disposition.warrant` and elaborated with details from `investigate_rule_application.Finding`, referencing the specific subsection and relevant case facts. `claim_comparison` directly compares the `question_text` with the `investigate_rule_application.Finding`. `subsections_cited` and `case_facts_cited` were populated from `investigate_rule_application` and `case_narrative`. `verify_violations` is an empty list as `verify_claim_comparison.Conforms` was True. All constraints were carefully checked.",
+        "evidence_used": [
+          {
+            "source": "deliberate_disposition",
+            "description": "recommended_action: ENTAILMENT"
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "warrant: Investigate's rule-output explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017'."
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The claim is correct. Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. The service constitutes 'employment' under this subsection because all its predicates are met by the case facts: the service was performed outside the U.S. (in Venezuela) by a U.S. citizen."
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Hypothesis: The service was performed outside the United States. -> HypothesisStatus.SUPPORTED"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Hypothesis: The service was performed by a citizen of the United States. -> HypothesisStatus.SUPPORTED"
+          },
+          {
+            "source": "question_text",
+            "description": "Section 3306(c)(B) applies to Alice employing Bob for the year 2017"
+          },
+          {
+            "source": "case_narrative",
+            "description": "Bob is an American citizen"
+          },
+          {
+            "source": "case_narrative",
+            "description": "work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela"
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Conforms: True"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "artifact": {
+          "disposition": "ENTAILMENT",
+          "primary_reasoning": "The disposition is ENTAILMENT because the investigate step explicitly found that Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. This conclusion is supported by the case facts that Bob, an American citizen, performed work for Alice in Caracas, Venezuela, which constitutes service performed outside the United States by a U.S. citizen, thereby meeting the predicates of the subsection.",
+          "claim_comparison": "The claim asserts that 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017'. The rule-output from the investigate step explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017'. Therefore, the rule-output conforms to the claim.",
+          "subsections_cited": [
+            "Section 3306(c)(B)"
+          ],
+          "case_facts_cited": [
+            "Bob is an American citizen",
+            "work done ... in Caracas, Venezuela"
+          ],
+          "verify_violations": []
+        },
+        "format": "json",
+        "constraints_checked": [
+          {
+            "constraint": "disposition is exactly 'ENTAILMENT', 'CONTRADICTION', or 'INDETERMINATE'",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "disposition MUST equal deliberate_disposition.recommended_action verbatim",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "every identifier in subsections_cited must have been cited in investigate, verify, or deliberate step outputs",
+            "satisfied": true,
+            "notes": "Section 3306(c)(B) is cited in investigate and deliberate."
+          },
+          {
+            "constraint": "every fact in case_facts_cited must have been cited in retrieve_case_facts or investigate",
+            "satisfied": true,
+            "notes": "Facts about Bob's citizenship and work location are from case_narrative and supported by investigate."
+          },
+          {
+            "constraint": "primary_reasoning references at least one subsection identifier and at least one case fact, and reflects deliberate's warrant",
+            "satisfied": true,
+            "notes": "References 'Section 3306(c)(B)', 'Bob, an American citizen', and 'Caracas, Venezuela'."
+          },
+          {
+            "constraint": "confidence reflects how cleanly the artifact tracks the upstream findings",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "No DYNAMIC SPEC FROM REFLECT or challenge outputs present",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "artifact field MUST be a JSON OBJECT",
+            "satisfied": true,
+            "notes": ""
+          }
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "challenge_exception_check",
+      "primitive": "challenge",
+      "confidence": 1.0,
+      "elapsed_ms": 29061.363697052002,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "FACT-CHECK: The underlying finding from the 'investigate' step, which forms the basis of the determination, is that Section 3306(c)(B) applies. This is based on several sub-claims derived from the narrative: 1) Service was performed outside the U.S. (Source: 'in Caracas, Venezuela') - CONFIRMED. 2) The employee is a U.S. citizen (Source: 'Bob is an American citizen') - CONFIRMED. 3) The employer is an American employer (Source: 'Alice is an American employer') - CONFIRMED. 4) The location is not a contiguous country with a relevant agreement (Source: 'Venezuela') - CONFIRMED. All factual predicates for the rule are met. TREND-CHECK: Not applicable, as there are no trend-based claims. ADVERSARIAL: A thorough review of the provided authority, specifically \u00a73306, was conducted to find any applicable exceptions. The analysis focused on the exceptions to the definition of 'employment' listed in \u00a73306(c). None of the exceptions (e.g., for agricultural labor, domestic service, family employment, government service) are triggered by the facts presented in the case narrative. The analysis also considered the definition of 'employer' in \u00a73306(a), and the facts confirm Alice meets the threshold ($3200 paid > $1500 threshold), reinforcing the original conclusion. The other provided statutes relate to personal income tax and are not relevant to the FUTA employment definition. DETERMINATION: The input survives because the reasoning is sound and no overlooked exceptions or provisions in the provided authority would alter the conclusion.",
+        "evidence_used": [
+          {
+            "source": "RAW AUTHORITY (\u00a73306)",
+            "description": "Analyzed the definition of 'employment' in \u00a73306(c), the specific requirements of sub-paragraph (B), and all listed exceptions. Confirmed the case facts meet the requirements of (B) and do not trigger any exceptions."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Cross-referenced the facts about the employer, employee, location, and payment against the statutory requirements in \u00a73306."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "survives": true,
+        "vulnerabilities": [],
+        "strengths": [
+          "The original analysis correctly identified the operative statute, \u00a73306(c)(B), as the basis for the claim.",
+          "The reasoning correctly maps the key facts from the narrative (employee citizenship, employer type, location of work) to the specific predicates of the statute, leading to a well-supported conclusion."
+        ],
+        "overall_assessment": "The determination is correct and well-founded. The facts of the case align perfectly with the statutory definition of 'employment' for FUTA purposes under \u00a73306(c)(B). A systematic review of the statutory exceptions in \u00a73306(c) confirms that none are triggered by the provided narrative. The prior analysis is thorough and accurate.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "govern_disposition",
+      "primitive": "govern",
+      "confidence": 1.0,
+      "elapsed_ms": 6776.1430740356445,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The workflow state shows high confidence across all relevant steps: investigate_confidence (1.0), deliberate_confidence (1.0), and generate_confidence (1.0). The deliberate_warrant is present and clear. The verify_conforms flag is True, and challenge_survives is True. No epistemic flags were raised. According to the tier policy, since none of the conditions for HOLD, GATE, or SPOT_CHECK are met, the 'auto' tier is applied.",
+        "evidence_used": [
+          {
+            "source": "verify_conforms",
+            "description": "Confirmed that the reasoning conforms to structural rules."
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "The recommended action is ENTAILMENT."
+          },
+          {
+            "source": "deliberate_warrant",
+            "description": "The warrant for the disposition is present and explicit."
+          },
+          {
+            "source": "deliberate_confidence",
+            "description": "Confidence in the deliberate step is 1.0, exceeding the 0.75 threshold for auto."
+          },
+          {
+            "source": "generate_confidence",
+            "description": "Confidence in the generation step is 1.0."
+          },
+          {
+            "source": "challenge_survives",
+            "description": "The challenge step found no vulnerabilities, indicating robustness."
+          },
+          {
+            "source": "investigate_confidence",
+            "description": "Confidence in the investigation step is 1.0, exceeding the 0.60 threshold for auto."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "tier_applied": "auto",
+        "tier_rationale": "All confidence thresholds were met, the deliberate warrant is present, and the challenge step confirmed the determination's basis. No critical issues or moderate uncertainties were identified.",
+        "disposition": "proceed",
+        "work_order": null,
+        "escalation_target": null,
+        "resumption_condition": null,
+        "accountability_chain": {
+          "decision_instance_id": "SARA-S3306-C-B-POS-GOVERN-1",
+          "governance_decisions": [
+            {
+              "step": "govern",
+              "tier": "auto",
+              "rationale": "All conditions for higher tiers were not met, leading to an 'auto' classification.",
+              "timestamp": "2026-05-12T00:00:00Z"
+            }
+          ],
+          "final_tier": "auto",
+          "audit_timestamp": "2026-05-12T00:00:00Z"
+        }
+      }
+    }
+  ],
+  "result_summary": {
+    "step_count": 9,
+    "steps": [
+      {
+        "step_name": "retrieve_question_structure",
+        "primitive": "retrieve",
+        "sources": [
+          "question_text"
+        ]
+      },
+      {
+        "step_name": "retrieve_statute",
+        "primitive": "retrieve",
+        "sources": [
+          "statute_corpus"
+        ]
+      },
+      {
+        "step_name": "retrieve_case_facts",
+        "primitive": "retrieve",
+        "sources": [
+          "case_narrative"
+        ]
+      },
+      {
+        "step_name": "investigate_rule_application",
+        "primitive": "investigate",
+        "finding": "The claim is correct. Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. The service constitutes 'employment' under this subsection because all its predicates are met by the case facts: the service was performed outside the U.S. (in Venezuela) by a U.S. citizen (Bob) for an American employer (Alice), and no statutory exceptions apply.",
+        "confidence": 1.0,
+        "evidence_flags": [
+          "cross_border_employment"
+        ],
+        "missing_evidence": []
+      },
+      {
+        "step_name": "verify_claim_comparison",
+        "primitive": "verify",
+        "conforms": true,
+        "violations": 0
+      },
+      {
+        "step_name": "deliberate_disposition",
+        "primitive": "deliberate",
+        "recommended_action": "ENTAILMENT",
+        "warrant": "Investigate's rule-output explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017'. The claim asserts that 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017'. The rule-output directly matches the claim's assertion of applicability. Therefore, the disposition is ENTAILMENT.",
+        "situation_summary": "The case concerns whether Section 3306(c)(B) applies to Alice employing Bob for the year 2017. Alice paid Bob $3200 for work performed from February 1st, 2017, to September 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen, and Alice is an American employer. The investigation found that Section 3306(c)(B) applies to this employment relationship for 2017 because the service was performed outside the U.S. by a U.S. citizen, and the location was not a contiguous country with a relevant u",
+        "confidence_basis": "The `investigate_rule_application.finding` clearly states that the claim is correct and Section 3306(c)(B) applies, with a confidence of 1.0. The `verify_claim_comparison` also reports 'Conforms: True' and 'All rules passed'.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": true,
+            "rationale": "Investigate's rule-output explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017', directly supporting the claim. The verify step also confirmed conformance."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": false,
+            "rationale": "Investigate's finding directly supports the claim's applicability, rather than refuting it. Therefore, CONTRADICTION is not appropriate."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "Investigate successfully derived a clear rule-output regarding the applicability of Section 3306(c)(B), and there are no reported issues of missing or ambiguous facts preventing a determination. Therefore, INDETERMINATE is not appropriate."
+          }
+        ],
+        "confidence": 1.0
+      },
+      {
+        "step_name": "generate_determination",
+        "primitive": "generate",
+        "artifact_preview": "{'disposition': 'ENTAILMENT', 'primary_reasoning': 'The disposition is ENTAILMENT because the investigate step explicitly found that Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. This conclusion is supported by the case facts that Bob, an American",
+        "artifact": {
+          "disposition": "ENTAILMENT",
+          "primary_reasoning": "The disposition is ENTAILMENT because the investigate step explicitly found that Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. This conclusion is supported by the case facts that Bob, an American citizen, performed work for Alice in Caracas, Venezuela, which constitutes service performed outside the United States by a U.S. citizen, thereby meeting the predicates of the subsection.",
+          "claim_comparison": "The claim asserts that 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017'. The rule-output from the investigate step explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017'. Therefore, the rule-output conforms to the claim.",
+          "subsections_cited": [
+            "Section 3306(c)(B)"
+          ],
+          "case_facts_cited": [
+            "Bob is an American citizen",
+            "work done ... in Caracas, Venezuela"
+          ],
+          "verify_violations": []
+        },
+        "confidence": 1.0
+      },
+      {
+        "step_name": "challenge_exception_check",
+        "primitive": "challenge",
+        "survives": true,
+        "vulnerabilities": 0
+      },
+      {
+        "step_name": "govern_disposition",
+        "primitive": "govern",
+        "tier_applied": "auto",
+        "disposition": "proceed",
+        "tier_rationale": "All confidence thresholds were met, the deliberate warrant is present, and the challenge step confirmed the determination's basis. No critical issues or moderate uncertainties were identified.",
+        "has_work_order": false,
+        "escalation_target": null,
+        "confidence": 1.0
+      }
+    ],
+    "input": {
+      "case_id": "SARA-S3306-C-B-POS",
+      "question_text": "Section 3306(c)(B) applies to Alice employing Bob for the year 2017",
+      "statute_corpus": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n",
+      "case_narrative": "Alice has paid $3200 to Bob for work done from Feb 1st, 2017 to Sep 2nd, 2017, in Caracas, Venezuela. Bob is an American citizen and Alice is an American employer."
+    },
+    "disposition": "ENTAILMENT",
+    "determination": "{'disposition': 'ENTAILMENT', 'primary_reasoning': 'The disposition is ENTAILMENT because the investigate step explicitly found that Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017. This conclusion is supported by the case facts that Bob, an American citizen, performed work for Alice in Caracas, Venezuela, which constitutes service performed outside the United States by a U.S. citizen, thereby meeting the predicates of the subsection.', 'claim_comparison': \"The claim asserts that 'Section 3306(c)(B) applies to Alice employing Bob for the year 2017'. The rule-output from the investigate step explicitly states that 'Section 3306(c)(B) applies to the employment relationship between Alice and Bob for the year 2017'. Therefore, the rule-output conforms to the claim.\", 'subsections_cited': ['Section 3306(c)(B)'], 'case_facts_cited': ['Bob is an American citizen', 'work done ... in Caracas, Venezuela'], 'verify_violations': []}"
+  }
+}

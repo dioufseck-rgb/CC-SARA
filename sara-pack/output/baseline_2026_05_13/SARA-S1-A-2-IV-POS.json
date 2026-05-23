@@ -1,0 +1,10 @@
+{
+  "case_id": "SARA-S1-A-2-IV-POS",
+  "source_id": "s1_a_2_iv_pos",
+  "elapsed_s": 7.63,
+  "determination": "ENTAILMENT",
+  "status": "ok",
+  "ground_truth": "Entailment",
+  "raw_response": "1.  **Identify the IRC section(s) the claim references.**\n    The claim explicitly references \"section 1(a)(iv)\". Section 1(a) imposes tax on \"Married individuals filing joint returns and surviving spouses\".\n\n2.  **Identify the case facts relevant to those section(s).**\n    *   Alice is a surviving spouse for the year 2017.\n    *   Alice's taxable income for the year 2017 is $236,422.\n\n3.  **Apply the section(s) to the facts and derive the rule's output.**\n    *   Alice is a \"surviving spouse,\" so section 1(a) applies.\n    *   Her taxable income is $236,422.\n    *   According to section 1(a), the relevant bracket for taxable income over $140,000 but not over $250,000 is (iv): \"$35,928.50, plus 36% of the excess over $140,000\".\n    *   Calculate the tax:\n        *   Base tax: $35,928.50\n        *   Excess taxable income: $236,422 - $140,000 = $96,422\n        *   Tax on excess: 36% of $96,422 = 0.36 * 96,422 = $34,711.92\n        *   Total tax: $35,928.50 + $34,711.92 = $70,640.42\n\n4.  **Compare the rule's output to the claim's assertion.**\n    The calculated tax is $70,640.42. The claim asserts the tax is $70,640. When rounded to the nearest dollar, $70,640.42 becomes $70,640.\n\n5.  **Consider any subsection exceptions or cross-references that could change the result.**\n    The facts provide Alice's filing status and taxable income directly. The special rules for taxable years 2018 through 2025 in sections 63(c)(7), 68(f), and 151(d)(5) are not applicable as the taxable year is 2017. No other exceptions or cross-references within the provided text alter the direct application of the tax rate schedule in \u00a71(a) to the given taxable income.\n\n6.  **Conclude with your determination.**\n    The calculated tax of $70,640.42, when rounded to the nearest dollar, matches the claimed amount of $70,640.\n\nAnswer: ENTAILMENT",
+  "prompt_chars": 28366
+}

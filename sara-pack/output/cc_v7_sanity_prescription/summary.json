@@ -1,0 +1,19 @@
+{
+  "label": "cc_v7_sanity_prescription",
+  "started_at": "cc_v7_sanity_prescription",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "auto": 1
+  },
+  "avg_elapsed_s": 188.04,
+  "case_results": [
+    {
+      "case_id": "SARA-S68-A-2-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 188.04,
+      "status": "completed"
+    }
+  ]
+}

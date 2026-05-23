@@ -1,0 +1,19 @@
+{
+  "label": "cc_v7_test_n100",
+  "started_at": "cc_v7_test_n100",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "auto": 1
+  },
+  "avg_elapsed_s": 140.63,
+  "case_results": [
+    {
+      "case_id": "SARA-S7703-B-2-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 140.63,
+      "status": "completed"
+    }
+  ]
+}

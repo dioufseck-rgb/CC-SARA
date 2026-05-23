@@ -1,0 +1,628 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Domain: SARA Binary — Statutory Reasoning Assessment, Entailment Subtask
+#
+# All SARA-specific content lives here. The workflow (sara_binary.yaml) is
+# the generic statutory-reasoning pattern; this file is what makes it
+# SARA-specific. To run the same workflow on a different statutory domain
+# (USCIS-AAO, DeonticBench Housing), write a new domain YAML with the same
+# top-level keys and reference it from a new coordinator instance.
+#
+# Knowledge keys this domain provides (referenced by workflow):
+#   question_anatomy            — what fields to extract from the claim
+#   authority_traversal_protocol — how retrieve_statute should scope authority
+#   fact_schema                 — categories of case facts to extract
+#   rule_application_protocol   — how to apply rules to facts (used by investigate)
+#   verification_rubric         — R1-R5 verification rules (used by verify)
+#   exception_protocol          — SARA exception patterns (used by challenge)
+#   determination_requirements  — artifact format (used by generate)
+#   determination_constraints   — artifact constraints (used by generate)
+#   governance_policy           — tier rules and disposition criteria (used by govern)
+#
+# Source: SARA v1 (Holzenberger, Blair-Stanek, Van Durme). The corpus
+# covers nine SARA-edited IRC sections: §1, §2, §63, §68, §151, §152,
+# §3301, §3306, §7703. These are the SARA-edited versions, not the live
+# US Code.
+# ─────────────────────────────────────────────────────────────────────────────
+
+domain_name: sara_us_federal_tax
+version: "0.2"
+
+# Default governance tier the coordinator assigns to new instances.
+# Workflow's govern step can escalate; this is the starting tier.
+governance:
+  tier: auto
+
+goal: |
+  Determine whether the given claim is ENTAILED or CONTRADICTED by the
+  cited SARA IRC section(s) applied to the case facts.
+
+  Disposition must be exactly one of:
+    ENTAILMENT    — the claim follows from the statute applied to the facts
+    CONTRADICTION — the claim does not follow
+
+  The determination must cite specific subsections that govern, the case
+  facts that satisfy or fail each statutory predicate, and the derived
+  rule-output that supports the disposition. Every cited subsection must
+  appear verbatim in the retrieved statute. Every cited case fact must
+  appear in the case narrative.
+
+# ── Question anatomy ────────────────────────────────────────────────────────
+# Used by retrieve_question_structure to parse the claim's structure.
+
+question_anatomy: |
+  Every SARA Binary question has a parseable structure. Return JSON with:
+    subject:           the person(s) the claim is about
+    tax_year:          the year the claim is asserted about
+    governing_section: the specific IRC section/subsection cited
+                       (e.g. "§151(a)" or "§3306(a)(1)(A)")
+    asserted_predicate: what the claim asserts, in one sentence
+    asserted_value:    if numeric, the dollar amount asserted
+    asserted_status:   if a status claim, the status asserted
+    polarity:          "affirmative" or "negative"
+    claim_type:        one of:
+                         "numeric_value"     — "value V under §X"
+                         "applicability"     — "§X applies to S"
+                         "relational"        — "A bears relationship to B"
+                         "status"            — "A is a Y"
+                         "prescription"      — "§X(y) prescribes value V"
+    relational_subject: for relational claims: the party BEARING the
+                        relationship (the one in subject position).
+                        Set to null for non-relational claims.
+    relational_object:  for relational claims: the party the relationship
+                        is borne TOWARD. Set to null otherwise.
+
+  Surface structure only — do not evaluate. If a field cannot be
+  extracted from the question, set it to null.
+
+  ─── DIRECTIONALITY OF RELATIONAL CLAIMS ────────────────────────────
+  A claim of the form "A bears a relationship to B under §S" is a
+  DIRECTIONAL claim. The relational_subject is A; the relational_object
+  is B. §S's definition tells you what relationship A must have to B.
+
+  Do not infer the inverse. If §S says the relationship is "a father or
+  mother, or an ancestor of either", then "A bears this relationship
+  to B" means A is B's father, mother, or ancestor. It does NOT mean
+  B is A's father, mother, or ancestor.
+
+  Worked example:
+    Claim:    "Alice bears a relationship to Bob under §152(d)(2)(C)"
+    §152(d)(2)(C):  "A father or mother, or an ancestor of either"
+    Parse:    relational_subject = Alice, relational_object = Bob
+    Reading:  Alice must be Bob's father/mother/ancestor
+    Fact:     "Bob is Alice's son" ⟹ Alice IS Bob's parent ⟹ HOLDS
+
+  If the case narrative gives only "B is A's son/daughter", that
+  ESTABLISHES "A is B's parent" by inversion. Test the relationship
+  in the direction the claim asserts, using the facts to derive it
+  in that direction.
+
+  ─── SUBSECTION SPECIFICITY ─────────────────────────────────────────
+  Some subsections are COMPONENTS of a larger rule (e.g., §68(a) is
+  "the lesser of (a)(1) or (a)(2)" — (a)(1) and (a)(2) are components).
+
+  A claim about a COMPONENT subsection asks about that component's
+  value, not the aggregate result.
+
+  Worked example:
+    §68(a) prescribes the LESSER OF:
+      (a)(1) = 3% of excess of AGI over applicable amount
+      (a)(2) = 80% of itemized deductions
+    If (a)(1) = $65.76 and (a)(2) = $48,000, then §68(a) = $65.76
+    (the lesser). But §68(a)(2) ON ITS OWN is still $48,000.
+
+    Claim:  "§68(a)(2) prescribes a reduction of $48,000"
+    Reading: ask about (a)(2)'s component value, not §68(a)'s minimum.
+    Investigate must compute (a)(2) specifically and compare to the
+    asserted value.
+
+  When governing_section is a component subsection (deeper than §X(y)),
+  flag this in claim_type as "prescription" and treat the rule-output
+  as the value computed at THAT specific subsection, not the value
+  computed at its parent.
+
+# ── Authority traversal protocol ────────────────────────────────────────────
+# Used by retrieve_statute to scope which subsections matter.
+
+authority_traversal_protocol: |
+  SARA IRC sections cross-reference each other. Identifying the closure
+  matters: cite-by-cite linkage that bears on the claim.
+
+  Return JSON with:
+    primary_section:           the section explicitly cited in the question
+    primary_subsections:       list of subsections within that section that
+                               bear on the claim (e.g. ["§151(a)", "§151(c)",
+                               "§151(d)(1)"])
+    cross_referenced_sections: list of OTHER sections referenced by the
+                               primary section that are needed for correct
+                               application (e.g. ["§152"])
+    notes:                     brief note on what the section governs
+
+  Common cross-reference patterns in the SARA corpus:
+    §151(a) refers to "exemptions provided by this section" — that pulls
+            in §151(b), §151(c), §151(d).
+    §151(c) defines "dependent" by reference to §152.
+    §63 (taxable income) references §151 (exemptions) and §68 (overall
+            limitation on itemized deductions).
+    §7703 (marital status) is used by §1, §2, §151.
+    §3301 (FUTA tax) refers to §3306(a)(employer), §3306(b)(wages),
+            §3306(c)(employment).
+
+  Do not include verbatim subsection text in your output — the raw
+  authority is preserved separately. Return only the identifiers and
+  brief notes.
+
+# ── Fact schema ─────────────────────────────────────────────────────────────
+# Used by retrieve_case_facts to structure the narrative.
+
+fact_schema: |
+  Extract the case facts as JSON with these categories:
+    persons:       list of named persons with attributes (name, DOB,
+                   marital status, relationships, residence)
+    relationships: marriage, parent-child, dependent declarations
+    financial:     gross income, wages paid, deductions, payments, with
+                   amounts and dates
+    temporal:      dated events (marriage date, residence dates, year
+                   boundaries, day-counts for FUTA tests)
+    filing:        filing status declared or implied
+    employment:    for FUTA cases, the employer-employee relationship,
+                   wage amounts, days worked, type of labor
+
+  For every fact, preserve the original wording in a "quote" field.
+  Do not infer facts not stated. Do not apply rules.
+
+# ── Rule application protocol ───────────────────────────────────────────────
+# Used by investigate to apply rules to facts.
+
+rule_application_protocol: |
+  To apply a SARA IRC subsection to case facts:
+    1. Enumerate the subsection's statutory predicates verbatim. For
+       example, §151(d)(3) phaseout requires: AGI > applicable amount
+       (under §68(b)), applicable percentage computation, year-applicable.
+    2. For each predicate, identify the case fact(s) that determine
+       whether the predicate holds.
+    3. Evaluate each predicate: holds | fails | indeterminate.
+    4. If all required predicates hold and no exceptions apply, the
+       subsection's consequent obtains. If a predicate fails, the
+       consequent does not obtain. If a predicate is indeterminate
+       because a fact is missing, record it in evidence_missing and
+       proceed with the best partial finding.
+
+  Each predicate evaluation is a separate hypothesis_tested entry. Use
+  rule-output vocabulary (holds / fails / indeterminate) inside the reasoning
+  field where the call is explained, and inside the primary finding. Use the
+  schema's epistemic-stance vocabulary for the status field:
+    - holds         → status: "supported"
+    - fails         → status: "rejected"
+    - indeterminate → status: "inconclusive"
+  evidence_for names the case fact establishing the predicate; evidence_against
+  lists any complicating facts. The reasoning explains why this status was
+  assigned, citing the rule-output (holds / fails / indeterminate) and the
+  predicates that determined it.
+
+  The primary finding is the derived rule-output, stated in the same
+  units as the claim's asserted_predicate so it can be compared directly.
+
+  Notes specific to SARA's IRC subset:
+    - §151(d)(5) sets exemption amount to zero for taxable years
+      2018-2025. Cases in 2015 are NOT affected by §151(d)(5).
+    - §63(c)(7) substitutes higher standard deductions for taxable
+      years 2018-2025. Same temporal scope as §151(d)(5).
+    - §68(f) disapplies the overall itemized-deduction limitation for
+      taxable years 2018-2025.
+    - §3301 FUTA tax is 6% of wages as defined in §3306(b); employer
+      status is determined under §3306(a). The two FUTA tests
+      (paragraph 1: wages ≥ $1,500; paragraph 2 for agricultural) are
+      alternatives — meeting either makes the person an employer.
+
+  When citing a subsection in your reasoning, use ONLY identifiers that
+  appear verbatim in the raw authority provided to you. Do not infer
+  subsection numbers; if §151(d)(3) does not appear in the authority,
+  do not cite it.
+
+# ── Verification rubric ─────────────────────────────────────────────────────
+# Used by verify_claim_comparison to check investigate's soundness.
+
+verification_rubric: |
+  OUTPUT DISCIPLINE: Verify's output schema expects:
+    rules_checked: list of STRINGS — just the rule identifiers you ran
+                   (e.g. ["R1", "R2", "R3", "R4", "R5"]).
+    violations:    list of structured Violation entries, ONLY for rules
+                   that failed. Each entry has:
+                     rule:        the rule identifier (e.g. "R3")
+                     description: short description of the violation
+                                  (max 200 chars)
+                     severity:    "critical" | "major" | "minor"
+                     location:    short pointer (e.g. "investigate.reasoning
+                                  cites §151(d)(99)")
+    conforms:      true if no critical violations; false otherwise.
+
+  Do not put structured rule-check objects in rules_checked. That field
+  holds only the rule identifier strings. Detailed findings about
+  passing rules belong in your reasoning text; detailed findings about
+  failing rules belong in violations.
+
+  Keep all fields short. Truncated output is a hard failure mode.
+
+  ─── RULES TO CHECK ─────────────────────────────────────────────────
+
+  R1 — TYPE MATCH (revised v7)
+  Does investigate's derived rule-output answer the claim's predicate?
+
+  - For NUMERIC_VALUE claims ("value V under §X"): rule-output must be
+    numeric. If investigate returned a non-numeric finding, emit R1
+    violation, severity="major".
+
+  - For APPLICABILITY claims ("§X applies to S"): the rule-output is
+    TRUE if §X correctly applies to S given the facts. Investigate may
+    report the *consequence* of applying §X (e.g., "§X applies and
+    yields $6,000") — this is NOT a type mismatch. The consequence is
+    informational; the applicability claim is supported when the
+    consequence is correctly derived per §X. Emit R1 violation ONLY
+    if investigate's reasoning fails to address applicability at all
+    (e.g., says nothing about whether §X applies and just computes a
+    number).
+
+  - For RELATIONAL claims ("A bears relationship to B under §S"):
+    rule-output is TRUE if the relationship holds in the asserted
+    direction (A → B under §S), FALSE otherwise. If investigate tested
+    the inverse direction (B → A), emit R1 violation, severity="major"
+    with description="directional inversion".
+
+  - For STATUS claims ("A is a Y"): rule-output is TRUE if the status
+    predicate is satisfied, FALSE otherwise.
+
+  - For PRESCRIPTION claims ("§X(y) prescribes value V"): rule-output
+    must be the value computed AT §X(y) specifically, not at §X's
+    aggregate level. If investigate computed §X's overall result
+    instead of §X(y)'s component value, emit R1 violation,
+    severity="major" with description="subsection specificity mismatch".
+
+  R1 affects conforms only if severity is critical (rare).
+
+  R2 — VALUE/STATE MATCH
+  Does investigate's derived rule-output match what the claim asserts?
+  This rule is a FINDING for downstream, not a verification failure.
+  Mismatch is a legitimate CONTRADICTION signal — it does NOT generate
+  a violation and does NOT affect conforms. Note the comparison in
+  reasoning text and move on. R2 always passes for verify purposes.
+
+  R3 — STATUTE GROUNDING
+  For each subsection identifier cited in investigate.evidence_used or
+  investigate.reasoning, does that identifier appear in the raw
+  authority?
+  If any cited identifier is absent: emit a Violation with rule="R3",
+  severity="critical", description naming the hallucinated identifier.
+
+  R4 — FACT GROUNDING
+  For each case fact cited in investigate.evidence_used, does the
+  substance of that fact appear in the raw case narrative (paraphrase
+  OK; substance must be present)?
+  If any cited fact is invented: emit a Violation with rule="R4",
+  severity="critical".
+
+  R5 — INDETERMINACY DISCLOSURE
+  For each hypothesis investigate marked "indeterminate", is there a
+  corresponding entry in investigate.evidence_missing?
+  If an indeterminate hypothesis is undisclosed: emit a Violation with
+  rule="R5", severity="minor".
+
+  ─── CONFORMS DETERMINATION ─────────────────────────────────────────
+  conforms = true if no violation has severity == "critical".
+  Major and minor violations are recorded but do not break conforms.
+
+  Verify checks the reasoning's soundness, not the claim's truth.
+
+# ── Exception protocol ──────────────────────────────────────────────────────
+# Used by challenge to search for missed exceptions.
+
+exception_protocol: |
+  OUTPUT DISCIPLINE: each candidate exception is a SHORT STRUCTURED
+  entry recorded as a vulnerability. Do not quote statute text.
+  Do not write long analytical prose.
+
+  Vulnerability entry format:
+    description:     what the exception is, ONE SHORT SENTENCE
+    statutory_basis: subsection identifier only (e.g. "§151(d)(2)") —
+                     must appear in the raw authority above
+    triggering_fact: the case fact that activates the exception,
+                     paraphrased in ONE SHORT SENTENCE — must appear
+                     in the raw narrative above
+    severity:        critical | major | minor
+                     critical → would flip investigate's rule-output
+                     major    → would change confidence, not outcome
+                     minor    → no material impact on outcome
+
+  Only record an exception as a vulnerability if its triggering fact
+  is established in the narrative. If no applicable exceptions are
+  found after a thorough review, return an empty vulnerabilities list
+  and survives = true. That is a legitimate and common outcome.
+
+  ─── COMMON SARA EXCEPTION PATTERNS ─────────────────────────────────
+
+  Dependent-of-another override (§151(d)(2)):
+    Zeros out the personal exemption if the taxpayer can be claimed
+    as a dependent of another taxpayer.
+
+  Marital-status fictions:
+    §7703(a)(2) — legally separated individuals not considered married.
+    §7703(b)   — abandoned-spouse rule: married individuals living
+                 apart for ≥ last 6 months of the taxable year with a
+                 §151-eligible child are not considered married.
+
+  Joint-return vs married-filing-separately rate schedules:
+    §1(a) vs §1(d) — different schedules apply depending on filing
+    status; mixing them up changes the tax outcome materially.
+
+  Phase-outs and limitations:
+    §151(d)(3) — exemption-amount phaseout above §68(b) AGI threshold.
+    §68(a)     — overall limitation on itemized deductions above the
+                 §68(b) threshold.
+
+  Tax-year zeroing rules (TCJA-era):
+    §151(d)(5) — exemption amount is zero for tax years 2018-2025.
+    §63(c)(7)  — substituted standard deduction for tax years 2018-2025.
+    §68(f)     — §68 limitation disapplied for tax years 2018-2025.
+    Cases in years outside 2018-2025 are NOT subject to these zeroing
+    rules; cases inside that window ARE.
+
+  FUTA threshold tests (§3306(a)):
+    Paragraph (1): wages of $1,500 in a quarter (general).
+    Paragraph (2): wages of $20,000 for agricultural labor.
+    Paragraph (3): wages of $1,000 for domestic service.
+    A fact pattern failing one path may satisfy another.
+
+  Age-based rules:
+    §151(c)(1)(B) — student-exemption age extension.
+    §2(b) head-of-household — qualifying-child rules involve age tests.
+
+# ── Determination requirements ──────────────────────────────────────────────
+# Used by generate to commit to a disposition.
+
+# ── Disposition decision protocol ──────────────────────────────────────────
+# Consumed by deliberate_disposition. This is where the disposition is made.
+# Generate downstream renders the result; it does not re-evaluate.
+
+disposition_decision_protocol: |
+  Determine the entailment disposition for this SARA Binary case.
+
+  ─── DISPOSITION VOCABULARY ─────────────────────────────────────────
+  recommended_action is exactly one of:
+    ENTAILMENT     — the claim follows from the statute applied to the
+                     facts
+    CONTRADICTION  — the claim does not follow
+    INDETERMINATE  — investigate could not derive a rule-output because
+                     a fact the rule depends on is absent from the
+                     narrative
+
+  GATE, HOLD, SPOT_CHECK, and AUTO are governance routing terms, NOT
+  dispositions. Do not emit them as recommended_action.
+
+  ─── DECISION RULE ──────────────────────────────────────────────────
+  Read investigate_rule_application.finding. It states the rule-output
+  derived by applying the cited authority to the case facts. The rule-
+  output has a value (a number, a status, an applicability boolean, a
+  relationship boolean) and a governing subsection.
+
+  Compare the rule-output to the claim:
+
+    RULE 1 — APPLICABILITY/STATUS/RELATIONAL CLAIMS
+    Claim asserts "§X applies" / "Alice is a Y" / "Bob bears a
+    relationship to Alice under §Y".
+      If rule-output value is TRUE  → ENTAILMENT
+      If rule-output value is FALSE → CONTRADICTION
+
+    For RELATIONAL claims specifically: investigate must have tested
+    the relationship in the DIRECTION the claim asserts. The claim
+    "A bears a relationship to B under §S" tests A→B, not B→A.
+    If the relationship holds in the asserted direction → ENTAILMENT.
+    If investigate inverted the direction by mistake (verify R1 will
+    flag this as "directional inversion"), the rule-output is not
+    trustworthy; route to GATE via low confidence.
+
+    RULE 1B — PRESCRIPTION CLAIMS
+    Claim asserts "§X(y) prescribes value V" where §X(y) is a
+    COMPONENT of a larger rule. The rule-output is the value computed
+    at §X(y) specifically, NOT the aggregate result of §X.
+      If §X(y) component value equals V (after rounding) → ENTAILMENT
+      Even if §X(y) is not the binding/operative value in the overall
+      §X computation, the component value stands on its own.
+
+    Worked example:
+      §68(a) = min(§68(a)(1), §68(a)(2)) = min($65.76, $48,000) = $65.76
+      Claim: "§68(a)(2) prescribes a reduction of $48,000"
+      Rule-output for §68(a)(2): $48,000  → ENTAILMENT
+      (The fact that §68(a)(1) is the binding minimum at the §68(a)
+      aggregate does NOT change the §68(a)(2) component value.)
+
+    RULE 2 — NUMERIC VALUE CLAIMS
+    Claim asserts "value V under §X".
+    Both the value and the subsection must match.
+      If rule-output value equals V (after rounding to whole units)
+         AND rule-output subsection equals §X → ENTAILMENT
+      If either differs → CONTRADICTION
+
+    The subsection part of the claim is load-bearing. A claim of
+    "$44,789 under §1(a)(iii)" is CONTRADICTION when the rule-output
+    is "$44,788.82 under §1(a)(iv)" — even though the dollar figures
+    are nearly identical. The subsection mismatch is itself sufficient
+    to defeat entailment.
+
+    Numeric tolerance: dollar amounts and percentages match when equal
+    after rounding to whole units (dollars, percent). $44,788.82 matches
+    a claim of $44,789. $442,984.08 matches a claim of $442,985.
+    Differences greater than one unit after rounding are not matches.
+
+    RULE 3 — INDETERMINATE (revised v7)
+    INDETERMINATE has a narrower scope than "the narrative doesn't
+    state the fact". SARA Binary uses a CLOSED-WORLD reasoning
+    convention: facts not stated in the narrative are FALSE for the
+    purpose of evaluating predicates that depend on them.
+
+    Apply INDETERMINATE only when ALL of the following hold:
+      (a) investigate explicitly reported it could not derive a
+          rule-output (finding is empty, N/A, or null);
+      (b) the missing fact is genuinely ambiguous (the narrative
+          contains a structural defect like truncation, dangling
+          markers, or contradictory facts); OR
+          investigate's retry/recovery mechanism failed three times.
+
+    Apply CONTRADICTION (not INDETERMINATE) when:
+      (a) the narrative is silent on a fact the rule requires AND
+      (b) that silence means the predicate is unsupportable under
+          closed-world reasoning. The claim does not follow because
+          the supporting fact is absent — that IS a contradiction
+          of the claim, under the benchmark's reasoning convention.
+
+    Apply ENTAILMENT under closed-world ONLY when the predicate's
+    required facts are affirmatively present in the narrative AND
+    investigate derived the rule-output successfully.
+
+    Worked example:
+      Narrative: "Alice has a son, Bob, who satisfies §152(c)(1)
+                  for 2015."
+      Claim: "Bob is a dependent of Alice for 2014."
+      Closed-world reading: the narrative says nothing about 2014.
+      Therefore the predicate "Bob is a dependent for 2014" is
+      unsupported. Disposition: CONTRADICTION (not INDETERMINATE).
+      The fact that supports the claim is ABSENT, which under
+      closed-world semantics means the claim is false.
+
+    INDETERMINATE remains reserved for cases where the system itself
+    could not produce a determination — retrieve truncation, parse
+    failures, or genuinely unparseable narratives. It is NOT used
+    when investigate produced a finding that the supporting facts
+    are absent — that finding maps to CONTRADICTION.
+
+    INSTITUTIONAL NOTE: This closed-world convention is specific to
+    benchmark evaluation under SARA Binary. In real institutional
+    decision domains (prior auth, loan modification), absence of
+    evidence is NOT evidence of absence — those domains use
+    open-world semantics, and INDETERMINATE / REMAND dispositions
+    handle missing facts appropriately. The SARA convention is a
+    formal-semantics artifact, not a deployment posture.
+
+  ─── WARRANT REQUIREMENT ────────────────────────────────────────────
+  The warrant field is mandatory. It is the explicit logical bridge.
+  Structure:
+    "Investigate's rule-output is <value> under <subsection>. The
+    claim asserts <value> under <subsection>. <Comparison result>.
+    Therefore the disposition is <recommended_action>."
+
+  Empty warrants are structurally invalid and will be flagged by
+  governance as UNWARRANTED_RECOMMENDATION.
+
+  ─── CONFIDENCE CALIBRATION ─────────────────────────────────────────
+  - Clean run (verify conforms, all hypotheses definite, comparison
+    unambiguous): confidence 0.85-1.0
+  - Verify raised violations that did not affect the comparison:
+    confidence 0.65-0.85
+  - Verify raised critical violations (R3 statute grounding or R4
+    fact grounding failures): cap confidence at 0.5
+  - INDETERMINATE: confidence 0.40-0.60 (reflects the indeterminate
+    nature, not low quality)
+
+determination_requirements: |
+  Render the determination artifact for this entailment case.
+
+  The disposition has been committed by deliberate_disposition. Your
+  job is to render it, not to re-evaluate.
+
+  Read deliberate_disposition.recommended_action and use it verbatim
+  as the disposition field in the artifact. Build primary_reasoning
+  from deliberate's warrant. Cite the subsections and facts from
+  investigate. Do not introduce a different disposition. Do not
+  introduce a different rule-output. Do not substitute your own
+  comparison for deliberate's.
+
+  Artifact must be a JSON object with these fields:
+    disposition:           verbatim from
+                           deliberate_disposition.recommended_action
+                           ("ENTAILMENT" | "CONTRADICTION" |
+                           "INDETERMINATE")
+    primary_reasoning:     one paragraph based on deliberate's warrant:
+                           the rule-output, the claim's asserted value,
+                           the comparison result, the disposition
+    claim_comparison:      explicit rule-output vs claim's asserted
+                           value, including the subsection part
+    subsections_cited:     list of subsection identifiers cited by
+                           investigate
+    case_facts_cited:      list of case facts cited by investigate
+    verify_violations:     list of violations from verify, if any
+                           (empty list if none)
+
+determination_constraints: |
+  - disposition is exactly "ENTAILMENT", "CONTRADICTION", or
+    "INDETERMINATE" — no other values, no parentheticals
+  - disposition MUST equal deliberate_disposition.recommended_action
+    verbatim; generate is the renderer, not the decider
+  - every identifier in subsections_cited must have been cited in
+    investigate, verify, or deliberate step outputs (no fresh citations)
+  - every fact in case_facts_cited must have been cited in
+    retrieve_case_facts or investigate (no invented facts)
+  - primary_reasoning references at least one subsection identifier
+    and at least one case fact, and reflects deliberate's warrant
+  - confidence reflects how cleanly the artifact tracks the upstream
+    findings — not a re-evaluation of the underlying claim
+
+# ── Governance policy ───────────────────────────────────────────────────────
+# Used by govern to determine the tier and disposition.
+
+governance_policy: |
+  SARA Binary statutory entailment determination. The disposition has
+  legal implications. Apply governance accordingly.
+
+  ─── OUTPUT FORMAT FOR TIER FIELDS ───────────────────────────────────
+  The output schema requires lowercase tier strings:
+    tier_applied:                                      "auto" | "spot_check" | "gate" | "hold"
+    accountability_chain.governance_decisions[].tier:  "auto" | "spot_check" | "gate" | "hold"
+    accountability_chain.final_tier:                   "auto" | "spot_check" | "gate" | "hold"
+    work_order.governance_tier (if non-null):          "auto" | "spot_check" | "gate" | "hold"
+  Use lowercase. "AUTO" / "Auto" / any other casing fails validation.
+
+  ─── TIER POLICY (uppercase in prose, lowercase in output) ───────────
+  Evaluate the conditions in order. Apply the FIRST tier whose
+  conditions match the resolved workflow-state values.
+
+  Apply HOLD (emit "hold") when (structural failure):
+    - verify_conforms == false AND any verify violation has
+      severity == "critical" with rule == "R3" or "R4"
+      (a hallucinated subsection or invented fact in the chain), OR
+    - retrieve_case_facts emitted "retrieve_incomplete" flag with
+      a "completeness_warning" — the narrative was structurally
+      truncated and downstream reasoning cannot be trusted
+
+  Apply GATE (emit "gate") when (substantive escalation):
+    - deliberate_warrant is empty or missing (UNWARRANTED_RECOMMENDATION
+      cross-step coherence flag), OR
+    - investigate_confidence < 0.60, OR
+    - deliberate_confidence < 0.55, OR
+    - challenge_survives == false (challenge identified a vulnerability
+      in the epistemic basis of the disposition; in workflow mode
+      without reflect, govern is the only place this signal can be
+      acted on — escalate for human review of whether the vulnerability
+      actually attacks the determination's basis)
+
+  Apply SPOT_CHECK (emit "spot_check") when (moderate uncertainty):
+    - deliberate_confidence is in [0.55, 0.75], OR
+    - deliberate_disposition == "INDETERMINATE"
+
+  Apply AUTO (emit "auto") otherwise (clean run):
+    - deliberate emitted a clean disposition with a non-empty warrant
+    - investigate, verify, and deliberate confidences all clear their
+      thresholds
+    - challenge_survives == true
+
+  ─── IMPORTANT INTERPRETATION RULES ──────────────────────────────────
+  The disposition is determined by deliberate_disposition.recommended_action,
+  not by generate. Do not infer the disposition from generate's artifact.
+  Generate is a renderer; the disposition source is upstream.
+
+  Do NOT interpret "verify_conforms == false" as meaning the claim is
+  false. verify_conforms tracks whether investigate's reasoning is
+  well-grounded (R3, R4, R5). A claim of CONTRADICTION is a legitimate
+  disposition that can be reached on perfectly conforming reasoning —
+  verify_conforms can be true and the determination still CONTRADICTION.
+
+  The governance decision is about whether the SYSTEM'S REASONING is
+  trustworthy enough to release without human review, not about whether
+  the CLAIM is true.

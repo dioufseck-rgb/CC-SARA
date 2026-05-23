@@ -1,0 +1,19 @@
+{
+  "label": "cc_v7_regression",
+  "started_at": "cc_v7_regression",
+  "n_cases": 1,
+  "n_completed": 0,
+  "tier_distribution": {
+    "gate": 1
+  },
+  "avg_elapsed_s": 161.91,
+  "case_results": [
+    {
+      "case_id": "SARA-S63-C-6-B-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 161.91,
+      "status": "suspended"
+    }
+  ]
+}

@@ -1,0 +1,651 @@
+{
+  "case_id": "SARA-S3301-POS",
+  "source_id": "s3301_pos",
+  "instance_id": "wf_23e9b715835c",
+  "status": "suspended",
+  "error": null,
+  "elapsed_total_s": 136.03,
+  "tier_applied": "gate",
+  "determination": "INDETERMINATE",
+  "ground_truth": "Entailment",
+  "step_records": [
+    {
+      "step_name": "retrieve_question_structure",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 6023.764848709106,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `question_text` source was successfully retrieved and its content allowed for the complete extraction of all specified logical structure fields (subject, tax_year, governing_section, asserted_predicate, asserted_value, asserted_status, and polarity) as per the retrieval specification. No data quality issues were identified.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The question text 'Alice has to pay $27181 in excise tax for the year 2015 under section 3301' was used to extract its logical structure."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "question_text": {
+            "value": "Alice has to pay $27181 in excise tax for the year 2015 under section 3301"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "question_text",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.004291534423828125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "statute_corpus",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_statute",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 9073.758125305176,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `statute_corpus` was successfully retrieved and contains the full text of the relevant sections, \u00a73301 and its cross-referenced section \u00a73306. The primary section was identified from the `question_text`. The cross-references and the purpose of the section were extracted directly from the text of \u00a73301. All required fields in the retrieval specification have been populated completely and accurately.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "Used to identify the primary section 'section 3301'."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "Used to find the text of \u00a73301 and identify its internal structure, cross-references to \u00a73306(a), \u00a73306(b), and \u00a73306(c), and to formulate the notes."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "statute_corpus": {
+            "value": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "statute_corpus",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0040531158447265625,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_case_facts",
+      "primitive": "retrieve",
+      "confidence": 0.8,
+      "elapsed_ms": 8278.39708328247,
+      "output": {
+        "confidence": 0.8,
+        "reasoning": "The `case_narrative` source was successfully retrieved and contained all available information as specified. The extraction process correctly identified and structured the facts related to persons, financial transactions (wages paid), temporal events (years), and employment status. However, several categories (relationships, filing) and specific fields within other categories (e.g., DOB, marital status for persons; gross income, deductions for financial; specific dates for temporal; days worked, type of labor for employment) were not present in the narrative. Since the specification explicitly states 'Do not infer facts not stated', these fields are correctly left empty or omitted. The confidence is 0.8 because the source was fully retrieved and processed, but the content itself did not provide data for all possible fields outlined in the extraction specification.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Extracted facts about Alice's employer status, wages paid, and relevant years."
+          }
+        ],
+        "evidence_missing": [
+          {
+            "source": "case_narrative",
+            "description": "Information regarding Alice's DOB, marital status, relationships, residence, gross income, deductions, other payments, specific event dates (beyond years), day-counts for FUTA tests, filing status, days worked, or type of labor was not present in the narrative."
+          }
+        ],
+        "resource_requests": [],
+        "data": {
+          "case_narrative": {
+            "value": "Alice is an employer under section 3306(a) for the year 2015 and 2016, and she has paid $453009 in total wages in 2015, and $443870 in 2016."
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "case_narrative",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0021457672119140625,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "statute_corpus",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": "deterministic"
+      }
+    },
+    {
+      "step_name": "investigate_rule_application",
+      "primitive": "investigate",
+      "confidence": 0.5,
+      "elapsed_ms": 37465.001583099365,
+      "output": {
+        "confidence": 0.5,
+        "reasoning": "STEP 1: EXTRACT KEY DATA POINTS\n- Tax Year: 2015\n- Governing Statute: \u00a7 3301\n- Taxpayer Status: Employer under \u00a7 3306(a) for 2015.\n- Total Wages Paid in 2015: $453,009\n- Tax Rate (\u00a7 3301): 6 percent\n- Tax Base Definition (\u00a7 3301 & \u00a7 3306(b)): 'total wages (as defined in section 3306(b))'\n- Wage Base Limit (\u00a7 3306(b)(1)): Taxable wages exclude remuneration paid to an individual by an employer after the first $7,000 in a calendar year.\n- Asserted Tax in Claim: $27,181\n\nSTEP 2: FORM HYPOTHESES\n1. The statutory predicates for imposing the \u00a7 3301 excise tax on Alice for 2015 are met.\n2. The correct tax calculation is 6% of the total wages paid ($453,009), which supports the claim's asserted value of $27,181.\n3. The correct tax calculation requires per-employee wage data to apply the $7,000 wage base limit from \u00a7 3306(b)(1), and this data is missing, making the rule-output indeterminate.\n\nSTEP 3: TEST EACH HYPOTHESIS\n- Hypothesis 1: The predicates of \u00a7 3301 are: being an 'employer (as defined in section 3306(a))' and paying 'wages (as defined in section 3306(b))' during a calendar year. The case narrative explicitly states Alice is an 'employer under section 3306(a) for the year 2015' and 'paid $453009 in total wages in 2015'. Therefore, the predicates are met and Alice is subject to the tax. This hypothesis is supported.\n\n- Hypothesis 2: This hypothesis calculates the tax as $453,009 * 0.06 = $27,180.54, which rounds to the asserted $27,181. However, this calculation ignores the definition of the tax base in \u00a7 3301, which cross-references \u00a7 3306(b). \u00a7 3306(b)(1) explicitly limits the taxable 'wages' for each employee to the first $7,000. Applying the tax rate to the total payroll is a misapplication of the statute. This hypothesis is rejected.\n\n- Hypothesis 3: This hypothesis posits that the correct tax base is the sum of each employee's wages up to the $7,000 limit. The provided facts only give the aggregate payroll of $453,009, not the number of employees or their individual wages. Without this breakdown, it is impossible to calculate the correct taxable wage base. For example, if Alice had one employee, the tax base would be $7,000 and the tax $420. If she had 70 employees all earning over $7,000, the tax base would be 70 * $7,000 = $490,000 and the tax $29,400. The correct amount cannot be determined. This hypothesis is supported.\n\nSTEP 4: STATE YOUR FINDING\nBased on the testing, the rule-output is indeterminate. The claim's value is based on a legally incorrect calculation. The correct calculation cannot be performed without knowing the wages paid to each of Alice's individual employees.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Alice is an employer under section 3306(a) for the year 2015."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Alice paid $453009 in total wages in 2015."
+          },
+          {
+            "source": "question_text",
+            "description": "The claim asserts an excise tax of $27181 for 2015 under section 3301."
+          },
+          {
+            "source": "authority",
+            "description": "\u00a7 3301 imposes an excise tax equal to 6 percent of the total wages (as defined in section 3306(b))."
+          },
+          {
+            "source": "authority",
+            "description": "\u00a7 3306(b)(1) excludes from the definition of 'wages' remuneration paid to an individual by an employer during any calendar year after the first $7,000."
+          }
+        ],
+        "evidence_missing": [
+          {
+            "source": "2015 Payroll Records for Alice",
+            "description": "A breakdown of total wages paid to each individual employee for the 2015 calendar year is required. This information is necessary to calculate the correct taxable wage base by summing each employee's wages up to the $7,000 statutory limit, as mandated by \u00a7 3306(b)(1)."
+          }
+        ],
+        "resource_requests": [],
+        "finding": "The rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate based on the provided facts. While \u00a7 3301 imposes a 6% tax, the tax base is defined by \u00a7 3306(b), which limits taxable wages to the first $7,000 paid to each individual employee. The case narrative provides only the total wages paid ($453,009), not the per-employee wage breakdown required to apply this limit. The claim's asserted value of $27,181 appears to be based on an incorrect calculation that applies the 6% rate to the total wages ($453,009 * 0.06 = $27,180.54), ignoring the statutory per-employee wage base limit.",
+        "hypotheses_tested": [
+          {
+            "hypothesis": "The statutory predicates for imposing the \u00a7 3301 excise tax on Alice for 2015 are met.",
+            "status": "supported",
+            "evidence_for": [
+              "Case narrative states 'Alice is an employer under section 3306(a) for the year 2015'.",
+              "Case narrative states Alice 'paid $453009 in total wages in 2015'."
+            ],
+            "evidence_against": [],
+            "reasoning": "The case facts directly satisfy the requirements of \u00a7 3301 for Alice to be an employer who paid wages in the relevant calendar year."
+          },
+          {
+            "hypothesis": "The excise tax is $27,181, calculated as 6% of the total wages of $453,009.",
+            "status": "rejected",
+            "evidence_for": [
+              "The calculation $453,009 * 0.06 equals $27,180.54, which rounds to the asserted claim value."
+            ],
+            "evidence_against": [
+              "\u00a7 3301 defines the tax base as 'wages (as defined in section 3306(b))'.",
+              "\u00a7 3306(b)(1) limits taxable wages to the first $7,000 paid to each individual employee."
+            ],
+            "reasoning": "This calculation method is contrary to the explicit statutory definition of the tax base, which is not total payroll but payroll capped at $7,000 per employee."
+          },
+          {
+            "hypothesis": "The correct rule-output for the \u00a7 3301 excise tax is indeterminate because per-employee wage data is not provided.",
+            "status": "supported",
+            "evidence_for": [
+              "\u00a7 3306(b)(1) establishes a per-employee wage base limit of $7,000.",
+              "The case narrative provides only an aggregate total wage figure ($453,009)."
+            ],
+            "evidence_against": [],
+            "reasoning": "Calculating the correct tax base requires summing the wages of each employee up to the $7,000 cap. This is impossible without a per-employee breakdown of the total wages."
+          }
+        ],
+        "recommended_actions": [
+          "Obtain Alice's 2015 payroll records that detail the specific wages paid to each individual employee."
+        ],
+        "evidence_flags": [
+          "missing_data_for_calculation",
+          "incorrect_calculation_in_claim"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 0.1
+      }
+    },
+    {
+      "step_name": "verify_claim_comparison",
+      "primitive": "verify",
+      "confidence": 1.0,
+      "elapsed_ms": 14791.209936141968,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The verification process checked five rules. R1 found a major violation because the claim's numeric predicate ($27181) does not match the investigation's status-type output ('indeterminate'). R2 passed, as the mismatch in value is an expected outcome of a contradiction, not a verification failure. R3 passed because the cited statutes, \u00a73301 and \u00a73306(b), are present in the provided authority text. R4 passed because the cited fact about total wages ($453,009) is present in the case narrative. R5 passed because the finding of indeterminacy is supported by an evidence flag ('missing_data_for_calculation'), fulfilling the disclosure requirement. Since there are no critical violations, the overall result conforms.",
+        "evidence_used": [
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate..."
+          },
+          {
+            "source": "question_text",
+            "description": "Alice has to pay $27181 in excise tax for the year 2015 under section 3301"
+          },
+          {
+            "source": "RAW AUTHORITY",
+            "description": "Presence of \u00a73301 and \u00a73306(b)."
+          },
+          {
+            "source": "RAW CASE NARRATIVE",
+            "description": "Presence of fact: 'paid $453009 in total wages in 2015'."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "conforms": true,
+        "violations": [
+          {
+            "rule": "R1",
+            "description": "The claim asserts a numeric value ($27181), but the investigation's derived rule-output is a status ('indeterminate'). The types do not match.",
+            "severity": "major",
+            "location": "investigate_rule_application.Finding"
+          }
+        ],
+        "rules_checked": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "deliberate_disposition",
+      "primitive": "deliberate",
+      "confidence": 0.5,
+      "elapsed_ms": 9792.506456375122,
+      "output": {
+        "confidence": 0.5,
+        "reasoning": "The deliberation followed the decision rules by first identifying the rule-output from the investigation step. The rule-output was explicitly stated as 'indeterminate' due to missing per-employee wage data, which is a critical fact for calculating the tax base under the cited statute. This directly triggered Rule 3 for INDETERMINATE dispositions, leading to the recommended action.",
+        "evidence_used": [
+          {
+            "source": "investigate_rule_application.finding",
+            "description": "Established that the rule-output for the excise tax is indeterminate due to missing per-employee wage data required by \u00a7 3306(b)."
+          },
+          {
+            "source": "investigate_rule_application.Hypothesis: The correct rule-output for the \u00a7 3301 excise tax is indeterminate because per-e",
+            "description": "Supported the conclusion that the rule-output is indeterminate."
+          },
+          {
+            "source": "verify_claim_comparison.Violation [major]",
+            "description": "Noted that the claim asserts a numeric value while the rule-output is a status, consistent with an indeterminate finding."
+          },
+          {
+            "source": "investigate_rule_application.Confidence",
+            "description": "Provided the confidence score for the investigation step, which aligns with the expected range for an INDETERMINATE disposition."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "situation_summary": "The claim asserts that Alice has to pay $27181 in excise tax for the year 2015 under section 3301. The investigation found that the rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate. This is because \u00a7 3301 imposes a 6% tax, but the tax base is defined by \u00a7 3306(b), which limits taxable wages to the first $7,000 paid to each individual employee. The case narrative only provides total wages ($453,009 for 2015) and not per-employee wages, which are necessary to calculate the tax base. One hypothesis, 'The correct rule-output for the \u00a7 3301 excise tax is indeterminate because per-e', was supported. The verification step noted a major violation: the claim asserts a numeric value, but the investigation's derived rule-output is a status (indeterminate).",
+        "evaluation_criteria": "According to Rule 3, INDETERMINATE is used only when investigate explicitly reported that a fact the rule depends on is absent from the narrative. It is not used when investigate derived a rule-output that simply differs from the claim, which would be CONTRADICTION. A claim asserting a numeric value under a specific section requires both the value and the subsection to match the rule-output for ENTAILMENT.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": false,
+            "rationale": "The rule-output is 'indeterminate', not a specific numeric value matching the claim. Therefore, the claim cannot be entailed."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": false,
+            "rationale": "While the claim's numeric value does not match the indeterminate rule-output, the investigation explicitly stated that the rule-output is indeterminate due to missing facts (per-employee wages). The decision rule specifies that INDETERMINATE should be used in such cases, not CONTRADICTION."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": true,
+            "rationale": "The `investigate_rule_application.finding` explicitly states that the rule-output is 'indeterminate based on the provided facts' because 'The case narrative provides only total wages, not per-employee wages,' which is a fact the rule depends on for calculating the tax base under \u00a7 3306(b). This directly aligns with Rule 3 for using INDETERMINATE."
+          }
+        ],
+        "recommended_action": "INDETERMINATE",
+        "warrant": "Investigate's rule-output is indeterminate because a fact the rule depends on (per-employee wages for the \u00a7 3306(b) tax base) is absent from the narrative. The claim asserts a numeric value ($27181) under section 3301. Since the rule-output is indeterminate due to missing facts, the disposition is INDETERMINATE.",
+        "confidence_basis": "The confidence is based on the explicit finding from `investigate_rule_application` that the rule-output is indeterminate due to missing data, which directly maps to the INDETERMINATE disposition rule. The `verify_claim_comparison` also supports this by noting the mismatch between the claim's numeric value and the indeterminate status of the rule-output.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "generate_determination",
+      "primitive": "generate",
+      "confidence": 1.0,
+      "elapsed_ms": 17545.13907432556,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The artifact was generated by directly extracting the disposition from `deliberate_disposition.recommended_action`, formulating the primary reasoning based on `deliberate_disposition.warrant` and `investigate_rule_application.Finding`, and populating other fields from `question_text`, `case_narrative`, `investigate_rule_application`, and `verify_claim_comparison`. All constraints, including verbatim disposition and proper citation of subsections and case facts, were meticulously checked and satisfied.",
+        "evidence_used": [
+          {
+            "source": "deliberate_disposition",
+            "description": "recommended_action: INDETERMINATE"
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "warrant: Investigate's rule-output is indeterminate because a fact the rule depends on (per-employee wages for the \u00a7 3306(b) tax base) is absent from the narra"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate based on the provided facts. While \u00a7 3301 imposes a 6% tax, the tax base is defined by \u00a7 3306(b), which limits taxable wages to the first $7,000 paid to each individual employee. The case narrative provides only"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Evidence flags: ['missing_data_for_calculation', 'incorrect_calculation_in_claim']"
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Violation: The claim asserts a numeric value ($27181), but the investigation's derived rule-output is a status"
+          },
+          {
+            "source": "question_text",
+            "description": "Alice has to pay $27181 in excise tax for the year 2015 under section 3301"
+          },
+          {
+            "source": "case_narrative",
+            "description": "Alice is an employer under section 3306(a) for the year 2015 and 2016, and she has paid $453009 in total wages in 2015"
+          }
+        ],
+        "evidence_missing": [
+          {
+            "source": "case_narrative",
+            "description": "Per-employee wages for the year 2015, required to calculate the \u00a7 3306(b) tax base."
+          }
+        ],
+        "resource_requests": [],
+        "artifact": {
+          "disposition": "INDETERMINATE",
+          "primary_reasoning": "The disposition is INDETERMINATE because the calculation of the excise tax under \u00a7 3301 requires specific per-employee wage data, which is absent from the provided case narrative. While Alice is identified as an employer under \u00a7 3306(a) for 2015 and paid $453,009 in total wages, the tax base for \u00a7 3301 is limited by \u00a7 3306(b) to the first $7,000 paid to each individual employee. Without this detailed per-employee wage information, the exact taxable wages cannot be determined, rendering the rule-output for the excise tax indeterminate.",
+          "claim_comparison": "The claim asserts Alice has to pay $27,181 in excise tax for the year 2015 under section 3301. The investigation's derived rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate based on the provided facts.",
+          "subsections_cited": [
+            "3301",
+            "3306(a)",
+            "3306(b)"
+          ],
+          "case_facts_cited": [
+            "Alice is an employer under section 3306(a) for the year 2015",
+            "Alice paid $453009 in total wages in 2015",
+            "The claim asserts Alice has to pay $27181 in excise tax for the year 2015 under section 3301"
+          ],
+          "verify_violations": [
+            "The claim asserts a numeric value ($27181), but the investigation's derived rule-output is a status"
+          ]
+        },
+        "format": "json",
+        "constraints_checked": [
+          {
+            "constraint": "disposition is exactly \"ENTAILMENT\", \"CONTRADICTION\", or \"INDETERMINATE\"",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "disposition MUST equal deliberate_disposition.recommended_action verbatim",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "every identifier in subsections_cited must have been cited in investigate, verify, or deliberate step outputs",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "every fact in case_facts_cited must have been cited in retrieve_case_facts or investigate",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "primary_reasoning references at least one subsection identifier and at least one case fact, and reflects deliberate's warrant",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "confidence reflects how cleanly the artifact tracks the upstream findings",
+            "satisfied": true,
+            "notes": "Confidence is 1.0 as the rendering directly follows upstream instructions and data."
+          }
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "challenge_exception_check",
+      "primitive": "challenge",
+      "confidence": 1.0,
+      "elapsed_ms": 22231.24623298645,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "FACT-CHECK: The input to challenge does not contain any claims to fact-check; it is a restatement of the case data. The case data itself is taken as ground truth for the analysis. TREND-CHECK: There are no trend claims in the input. ADVERSARIAL: The core of the prior determination is that the FUTA excise tax under \u00a7 3301 cannot be calculated without per-employee wage data, due to the $7,000 wage base cap per employee defined in \u00a7 3306(b)(1). My review of the provided statutory text confirms this. There are no exceptions, cross-references, or alternative calculation methods within \u00a7 3301 or \u00a7 3306 that would allow for a determinate calculation using only the total wages figure provided in the narrative. Other subsections, such as the various exclusions from 'wages' in \u00a7 3306(b) and 'employment' in \u00a7 3306(c), would require even more specific facts, further supporting the conclusion that the outcome is indeterminate. The prior reasoning correctly identified the dispositive rule and the missing fact. DETERMINATION: The input survives because the prior analysis is sound and no overlooked provisions that would change the outcome were found in the provided authority.",
+        "evidence_used": [
+          {
+            "source": "\u00a73301. Rate of tax",
+            "description": "Confirmed that the tax rate is 6% of 'total wages (as defined in section 3306(b))'."
+          },
+          {
+            "source": "\u00a73306. Definitions",
+            "description": "Confirmed in \u00a73306(b)(1) that the taxable wage base is capped at the first $7,000 paid to each individual employee, making the total wage figure insufficient for calculation."
+          },
+          {
+            "source": "Case Narrative",
+            "description": "Confirmed that the narrative provides only total wages ($453,009) and lacks the per-employee breakdown required by \u00a73306(b)(1)."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "survives": true,
+        "vulnerabilities": [],
+        "strengths": [
+          "The original analysis correctly identified that the tax base for the \u00a7 3301 excise tax is defined by \u00a7 3306(b).",
+          "The original analysis correctly identified the \u00a7 3306(b)(1) rule, which limits taxable wages to the first $7,000 per employee, as the reason why the calculation is indeterminate without per-employee wage data."
+        ],
+        "overall_assessment": "The prior determination of INDETERMINATE is robust and well-supported by the provided statutory authority. A thorough review found no exceptions or alternative rules that would change this outcome based on the limited facts in the case narrative.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "govern_disposition",
+      "primitive": "govern",
+      "confidence": 1.0,
+      "elapsed_ms": 9936.928987503052,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The governance policy was applied sequentially. The 'HOLD' tier conditions were not met as verify_conforms is True. The 'GATE' tier conditions were met because investigate_confidence (0.5) is less than 0.60 and deliberate_confidence (0.5) is less than 0.55. Therefore, the 'GATE' tier is applied, requiring escalation for human review. Although the deliberate_disposition is 'INDETERMINATE', which is a condition for 'SPOT_CHECK', the 'GATE' tier takes precedence due to the lower confidence values.",
+        "evidence_used": [
+          {
+            "source": "investigate_confidence",
+            "description": "Established confidence in the investigation step (0.5)."
+          },
+          {
+            "source": "deliberate_confidence",
+            "description": "Established confidence in the deliberation step (0.5)."
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "Established the recommended action from deliberation ('INDETERMINATE')."
+          },
+          {
+            "source": "deliberate_warrant",
+            "description": "Provided the reasoning for the deliberate disposition."
+          },
+          {
+            "source": "verify_conforms",
+            "description": "Confirmed that the reasoning conforms to structural rules (True)."
+          },
+          {
+            "source": "challenge_survives",
+            "description": "Confirmed that the challenge step did not identify vulnerabilities (True)."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "tier_applied": "gate",
+        "tier_rationale": "The GATE tier is applied because the investigate_confidence (0.5) is below the 0.60 threshold and the deliberate_confidence (0.5) is below the 0.55 threshold, as per the governance policy.",
+        "disposition": "escalate",
+        "work_order": {
+          "work_type": "human_review",
+          "target": "governance_review_queue",
+          "instructions": "Review the determination for case SARA-S3301-POS. The investigation resulted in an INDETERMINATE disposition due to missing per-employee wage data for \u00a7 3306(b) tax base calculation. Investigate confidence (0.5) and deliberate confidence (0.5) are below the GATE thresholds. Confirm the INDETERMINATE disposition and the reasoning.",
+          "inputs": {
+            "case_id": "SARA-S3301-POS",
+            "question_text": "Alice has to pay $27181 in excise tax for the year 2015 under section 3301",
+            "investigate_confidence": 0.5,
+            "deliberate_confidence": 0.5,
+            "deliberate_disposition": "INDETERMINATE",
+            "deliberate_warrant": "Investigate's rule-output is indeterminate because a fact the rule depends on (per-employee wages for the \u00a7 3306(b) tax base) is absent from the narrative. The claim asserts a numeric value ($27181) under section 3301. Since the rule-output is indeterminate due to missing facts, the disposition is INDETERMINATE."
+          },
+          "governance_tier": "gate",
+          "sla": null,
+          "versioned_contract": ""
+        },
+        "escalation_target": "governance_review_queue",
+        "resumption_condition": null,
+        "accountability_chain": {
+          "decision_instance_id": "SARA-S3301-POS-GOVERN-20260512",
+          "governance_decisions": [
+            {
+              "step": "govern",
+              "tier": "gate",
+              "rationale": "Investigate confidence (0.5) is below 0.60 and deliberate confidence (0.5) is below 0.55, triggering the GATE tier.",
+              "timestamp": "2026-05-12T00:00:00Z"
+            }
+          ],
+          "final_tier": "gate",
+          "audit_timestamp": "2026-05-12T00:00:00Z"
+        }
+      }
+    }
+  ],
+  "result_summary": {
+    "step_count": 9,
+    "steps": [
+      {
+        "step_name": "retrieve_question_structure",
+        "primitive": "retrieve",
+        "sources": [
+          "question_text"
+        ]
+      },
+      {
+        "step_name": "retrieve_statute",
+        "primitive": "retrieve",
+        "sources": [
+          "statute_corpus"
+        ]
+      },
+      {
+        "step_name": "retrieve_case_facts",
+        "primitive": "retrieve",
+        "sources": [
+          "case_narrative"
+        ]
+      },
+      {
+        "step_name": "investigate_rule_application",
+        "primitive": "investigate",
+        "finding": "The rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate based on the provided facts. While \u00a7 3301 imposes a 6% tax, the tax base is defined by \u00a7 3306(b), which limits taxable wages to the first $7,000 paid to each individual employee. The case narrative provides only the total wages paid ($453,009), not the per-employee wage breakdown required to apply this limit. The claim's asserted value of $27,181 appears to be based on an incorrect calculation that applies t",
+        "confidence": 0.5,
+        "evidence_flags": [
+          "missing_data_for_calculation",
+          "incorrect_calculation_in_claim"
+        ],
+        "missing_evidence": []
+      },
+      {
+        "step_name": "verify_claim_comparison",
+        "primitive": "verify",
+        "conforms": true,
+        "violations": 1
+      },
+      {
+        "step_name": "deliberate_disposition",
+        "primitive": "deliberate",
+        "recommended_action": "INDETERMINATE",
+        "warrant": "Investigate's rule-output is indeterminate because a fact the rule depends on (per-employee wages for the \u00a7 3306(b) tax base) is absent from the narrative. The claim asserts a numeric value ($27181) under section 3301. Since the rule-output is indeterminate due to missing facts, the disposition is INDETERMINATE.",
+        "situation_summary": "The claim asserts that Alice has to pay $27181 in excise tax for the year 2015 under section 3301. The investigation found that the rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate. This is because \u00a7 3301 imposes a 6% tax, but the tax base is defined by \u00a7 3306(b), which limits taxable wages to the first $7,000 paid to each individual employee. The case narrative only provides total wages ($453,009 for 2015) and not per-employee wages, which are necessary to ca",
+        "confidence_basis": "The confidence is based on the explicit finding from `investigate_rule_application` that the rule-output is indeterminate due to missing data, which directly maps to the INDETERMINATE disposition rule. The `verify_claim_comparison` also supports this by noting the mismatch between the claim's numeric value and the indeterminate status of the rule-output.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": false,
+            "rationale": "The rule-output is 'indeterminate', not a specific numeric value matching the claim. Therefore, the claim cannot be entailed."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": false,
+            "rationale": "While the claim's numeric value does not match the indeterminate rule-output, the investigation explicitly stated that the rule-output is indeterminate due to missing facts (per-employee wages). The decision rule specifies that INDETERMINATE should be used in such cases, not CONTRADICTION."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": true,
+            "rationale": "The `investigate_rule_application.finding` explicitly states that the rule-output is 'indeterminate based on the provided facts' because 'The case narrative provides only total wages, not per-employee wages,' which is a fact the rule depends on for calculating the tax base under \u00a7 3306(b). This directly aligns with Rule 3 for using INDETERMINATE."
+          }
+        ],
+        "confidence": 0.5
+      },
+      {
+        "step_name": "generate_determination",
+        "primitive": "generate",
+        "artifact_preview": "{'disposition': 'INDETERMINATE', 'primary_reasoning': 'The disposition is INDETERMINATE because the calculation of the excise tax under \u00a7 3301 requires specific per-employee wage data, which is absent from the provided case narrative. While Alice is identified as an employer under \u00a7 3306(a) for 2015",
+        "artifact": {
+          "disposition": "INDETERMINATE",
+          "primary_reasoning": "The disposition is INDETERMINATE because the calculation of the excise tax under \u00a7 3301 requires specific per-employee wage data, which is absent from the provided case narrative. While Alice is identified as an employer under \u00a7 3306(a) for 2015 and paid $453,009 in total wages, the tax base for \u00a7 3301 is limited by \u00a7 3306(b) to the first $7,000 paid to each individual employee. Without this detailed per-employee wage information, the exact taxable wages cannot be determined, rendering the rule-output for the excise tax indeterminate.",
+          "claim_comparison": "The claim asserts Alice has to pay $27,181 in excise tax for the year 2015 under section 3301. The investigation's derived rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate based on the provided facts.",
+          "subsections_cited": [
+            "3301",
+            "3306(a)",
+            "3306(b)"
+          ],
+          "case_facts_cited": [
+            "Alice is an employer under section 3306(a) for the year 2015",
+            "Alice paid $453009 in total wages in 2015",
+            "The claim asserts Alice has to pay $27181 in excise tax for the year 2015 under section 3301"
+          ],
+          "verify_violations": [
+            "The claim asserts a numeric value ($27181), but the investigation's derived rule-output is a status"
+          ]
+        },
+        "confidence": 1.0
+      },
+      {
+        "step_name": "challenge_exception_check",
+        "primitive": "challenge",
+        "survives": true,
+        "vulnerabilities": 0
+      },
+      {
+        "step_name": "govern_disposition",
+        "primitive": "govern",
+        "tier_applied": "gate",
+        "disposition": "escalate",
+        "tier_rationale": "The GATE tier is applied because the investigate_confidence (0.5) is below the 0.60 threshold and the deliberate_confidence (0.5) is below the 0.55 threshold, as per the governance policy.",
+        "has_work_order": true,
+        "escalation_target": "governance_review_queue",
+        "confidence": 1.0
+      }
+    ],
+    "input": {
+      "case_id": "SARA-S3301-POS",
+      "question_text": "Alice has to pay $27181 in excise tax for the year 2015 under section 3301",
+      "statute_corpus": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n",
+      "case_narrative": "Alice is an employer under section 3306(a) for the year 2015 and 2016, and she has paid $453009 in total wages in 2015, and $443870 in 2016."
+    },
+    "disposition": "INDETERMINATE",
+    "determination": "{'disposition': 'INDETERMINATE', 'primary_reasoning': 'The disposition is INDETERMINATE because the calculation of the excise tax under \u00a7 3301 requires specific per-employee wage data, which is absent from the provided case narrative. While Alice is identified as an employer under \u00a7 3306(a) for 2015 and paid $453,009 in total wages, the tax base for \u00a7 3301 is limited by \u00a7 3306(b) to the first $7,000 paid to each individual employee. Without this detailed per-employee wage information, the exact taxable wages cannot be determined, rendering the rule-output for the excise tax indeterminate.', 'claim_comparison': \"The claim asserts Alice has to pay $27,181 in excise tax for the year 2015 under section 3301. The investigation's derived rule-output for the excise tax Alice must pay for 2015 under \u00a7 3301 is indeterminate based on the provided facts.\", 'subsections_cited': ['3301', '3306(a)', '3306(b)'], 'case_facts_cited': ['Alice is an employer under section 3306(a) for the year 2015', 'Alice paid $453009 in total wages in 2015', 'The claim asserts Alice has to pay $27181 in excise tax for the year 2015 under section 3301'], 'verify_violations': [\"The claim asserts a numeric value ($27181), but the investigation's derived rule-output is a status\"]}"
+  }
+}

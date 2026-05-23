@@ -1,0 +1,19 @@
+{
+  "label": "cc_dev_batch_n5",
+  "started_at": "cc_dev_batch_n5",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "gate": 1
+  },
+  "avg_elapsed_s": 114.25,
+  "case_results": [
+    {
+      "case_id": "SARA-S152-B-2-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 114.25,
+      "status": "suspended"
+    }
+  ]
+}

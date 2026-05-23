@@ -1,0 +1,608 @@
+{
+  "label": "baseline_test_n100",
+  "n_cases": 100,
+  "n_completed": 100,
+  "avg_elapsed_s": 11.1919,
+  "case_results": [
+    {
+      "case_id": "SARA-S1-A-2-IV-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.82,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-A-2-IV-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.42,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-A-2-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 13.79,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-A-2-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.6,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-A-2-V-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.31,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-A-2-V-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.62,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-B-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.29,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-B-I-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.01,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 8.21,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.22,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-C-III-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 8.6,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-C-III-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 13.18,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-C-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 14.11,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-C-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 9.44,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-D-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 9.82,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-D-I-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.34,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-D-II-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 14.41,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-D-II-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 9.74,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-D-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 16.51,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S1-D-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.21,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S151-D-1-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.82,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S151-D-1-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 9.23,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S151-D-3-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 6.23,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S151-D-3-A-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 9.93,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S151-D-5-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 5.92,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S151-D-5-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.21,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 5.85,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-A-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.71,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-C-2-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 5.9,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-C-2-A-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 4.88,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-1-D-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 16.11,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-1-D-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 32.0,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 4.86,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-A-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.58,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-C-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 6.33,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-C-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.1,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-G-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 8.36,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-G-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.8,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-H-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.08,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S152-D-2-H-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 11.01,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-A-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 20.89,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-A-1-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 15.53,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.01,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-I-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 16.19,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-II-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 33.69,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-II-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 20.47,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 53.55,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 25.97,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-II-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 17.38,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-II-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 17.86,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-3-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.66,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S2-B-3-A-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.25,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3301-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 26.31,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3301-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 17.31,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-A-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 10.66,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-A-1-B-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 9.31,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-A-3-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 8.44,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-A-3-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 14.96,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-B-2-C-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 9.48,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-B-2-C-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.0,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 15.66,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-1-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 19.15,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-10-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 6.74,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-10-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.7,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-11-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.13,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-11-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 5.13,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-16-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 5.6,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-16-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.39,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-6-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 5.08,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-6-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.79,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-7-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 8.52,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-7-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.4,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 15.69,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S3306-C-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 10.98,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 14.13,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 11.51,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 12.31,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-I-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 10.41,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-II-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 10.37,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-II-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.87,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-6-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.46,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-6-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.64,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-6-D-NEG",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.76,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-6-D-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 4.63,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-7-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 6.18,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-C-7-I-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 5.95,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-F-1-A-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 6.72,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-F-1-A-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.12,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-F-2-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 14.03,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S63-F-2-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 13.43,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S68-A-2-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 9.23,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S68-A-2-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.87,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S68-B-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.33,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S68-B-1-B-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.22,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S68-B-1-C-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 10.16,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S68-B-1-C-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 6.47,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S7703-A-1-NEG",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 15.7,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S7703-A-1-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 8.83,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S7703-B-2-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 18.86,
+      "status": "ok"
+    },
+    {
+      "case_id": "SARA-S7703-B-2-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 10.56,
+      "status": "ok"
+    }
+  ]
+}

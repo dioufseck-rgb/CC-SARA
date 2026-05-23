@@ -1,0 +1,10 @@
+{
+  "case_id": "SARA-S63-C-6-D-POS",
+  "source_id": "s63_c_6_D_pos",
+  "elapsed_s": 4.63,
+  "determination": "ENTAILMENT",
+  "status": "ok",
+  "ground_truth": "Entailment",
+  "raw_response": "1.  **Identify the IRC section(s) the claim references.**\n    The claim references Section 63(c)(6)(D).\n\n2.  **Identify the case facts relevant to those section(s).**\n    The relevant fact is: \"From 1973 to 2019, the Walter Brown Family Trust II was considered to be a business trust.\" The claim is specifically for the year 1999.\n\n3.  **Apply the section(s) to the facts and derive the rule's output.**\n    Section 63(c)(6) states: \"Certain individuals, etc., not eligible for standard deduction. In the case of- ... (D) an estate or trust, common trust fund, or partnership, the standard deduction shall be zero.\"\n    The Walter Brown Family Trust II is explicitly stated to be a \"business trust.\" A \"business trust\" is a type of trust. Therefore, the Walter Brown Family Trust II falls under the category of \"trust\" as specified in Section 63(c)(6)(D).\n\n4.  **Compare the rule's output to the claim's assertion.**\n    The rule states that Section 63(c)(6)(D) applies to \"an estate or trust.\" Since the Walter Brown Family Trust II is a trust, this section applies to it. The claim asserts that \"Section 63(c)(6)(D) applies to the Walter Brown Family Trust II for 1999.\" This matches the rule's output.\n\n5.  **Consider any subsection exceptions or cross-references that could change the result.**\n    There are no exceptions within Section 63(c)(6) or other provided sections that would exclude a \"business trust\" from being considered a \"trust\" for the purpose of this subsection. The timeframe (1999) falls within the period the trust was considered a business trust (1973-2019).\n\n6.  **Conclude with your determination.**\n    The statute clearly states that Section 63(c)(6)(D) applies to a \"trust.\" The facts state that the Walter Brown Family Trust II is a \"business trust,\" which is a type of trust. Therefore, Section 63(c)(6)(D) applies to it.\n\nAnswer: ENTAILMENT",
+  "prompt_chars": 28356
+}

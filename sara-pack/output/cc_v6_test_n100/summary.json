@@ -1,0 +1,714 @@
+{
+  "label": "cc_v6_test_n100",
+  "started_at": "cc_v6_test_n100",
+  "n_cases": 100,
+  "n_completed": 90,
+  "tier_distribution": {
+    "auto": 69,
+    "gate": 28,
+    "spot_check": 3
+  },
+  "avg_elapsed_s": 142.6637,
+  "case_results": [
+    {
+      "case_id": "SARA-S1-A-2-IV-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 133.7,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-A-2-IV-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 125.63,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-A-2-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 143.5,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-A-2-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 132.27,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-A-2-V-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 132.48,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-A-2-V-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 140.16,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-B-I-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 152.14,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-B-I-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 134.18,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 180.42,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S1-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 151.52,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-C-III-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 141.52,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-C-III-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 126.16,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-C-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 146.02,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-C-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 134.19,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-D-I-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 154.43,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-D-I-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 142.81,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-D-II-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 163.14,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S1-D-II-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 132.75,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-D-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 149.65,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S1-D-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 136.45,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S151-D-1-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 149.52,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S151-D-1-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 188.99,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S151-D-3-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 140.18,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S151-D-3-A-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 131.89,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S151-D-5-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 125.28,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S151-D-5-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 122.83,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-A-NEG",
+      "determination": "INDETERMINATE",
+      "tier_applied": "spot_check",
+      "elapsed_s": 178.14,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-A-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 135.5,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S152-C-2-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 116.88,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-C-2-A-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 121.1,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-1-D-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 160.95,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-1-D-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 166.82,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S152-D-2-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 123.9,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S152-D-2-A-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 118.25,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-2-C-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 143.21,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-2-C-POS",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 130.25,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-2-G-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 114.0,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-2-G-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 152.9,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-2-H-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 131.2,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S152-D-2-H-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 141.75,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S2-A-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 154.63,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-A-1-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 175.13,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-I-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 146.3,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-I-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 129.09,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-II-NEG",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 151.17,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-II-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 192.16,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 191.38,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-I-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 198.28,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-II-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 150.43,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-1-A-II-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 148.89,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-3-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 139.4,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S2-B-3-A-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 120.99,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3301-NEG",
+      "determination": null,
+      "tier_applied": "auto",
+      "elapsed_s": 95.85,
+      "status": "failed"
+    },
+    {
+      "case_id": "SARA-S3301-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 136.03,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S3306-A-1-B-NEG",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 146.11,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S3306-A-1-B-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 179.59,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S3306-A-3-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 131.1,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-A-3-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 179.92,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S3306-B-2-C-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 126.14,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-B-2-C-POS",
+      "determination": null,
+      "tier_applied": "auto",
+      "elapsed_s": 88.35,
+      "status": "failed"
+    },
+    {
+      "case_id": "SARA-S3306-C-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 213.38,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S3306-C-1-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 141.42,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S3306-C-10-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 133.86,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-10-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 138.55,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-11-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 115.0,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-11-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 103.44,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-16-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 128.94,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-16-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 127.24,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-6-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 106.42,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-6-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 108.29,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-7-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 113.0,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-7-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 114.82,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 143.68,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S3306-C-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "spot_check",
+      "elapsed_s": 169.48,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 159.66,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 164.09,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-I-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 148.04,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-I-POS",
+      "determination": "CONTRADICTION",
+      "tier_applied": "spot_check",
+      "elapsed_s": 159.53,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-II-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 150.44,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-2-A-II-POS",
+      "determination": "INDETERMINATE",
+      "tier_applied": "gate",
+      "elapsed_s": 186.35,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S63-C-6-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 122.17,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-6-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 121.2,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-6-D-NEG",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 128.15,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-6-D-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 126.98,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-C-7-I-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 135.13,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S63-C-7-I-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 128.33,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-F-1-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 141.16,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S63-F-1-A-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 165.28,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-F-2-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 158.52,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S63-F-2-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 148.83,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S68-A-2-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 176.95,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S68-A-2-POS",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 150.59,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S68-B-1-B-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 145.8,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S68-B-1-B-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 116.87,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S68-B-1-C-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 131.03,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S68-B-1-C-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 140.85,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S7703-A-1-NEG",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 141.1,
+      "status": "suspended"
+    },
+    {
+      "case_id": "SARA-S7703-A-1-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "auto",
+      "elapsed_s": 143.73,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S7703-B-2-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 122.27,
+      "status": "completed"
+    },
+    {
+      "case_id": "SARA-S7703-B-2-POS",
+      "determination": "ENTAILMENT",
+      "tier_applied": "gate",
+      "elapsed_s": 168.2,
+      "status": "suspended"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "label": "baseline_hard_batch_n8",
+  "n_cases": 1,
+  "n_completed": 1,
+  "avg_elapsed_s": 7.85,
+  "case_results": [
+    {
+      "case_id": "SARA-S3306-C-10-A-I-NEG",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 7.85,
+      "status": "ok"
+    }
+  ]
+}

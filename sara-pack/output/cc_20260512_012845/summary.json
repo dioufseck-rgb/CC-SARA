@@ -1,0 +1,19 @@
+{
+  "label": "cc_20260512_012845",
+  "started_at": "cc_20260512_012845",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "auto": 1
+  },
+  "avg_elapsed_s": 130.41,
+  "case_results": [
+    {
+      "case_id": "SARA-S151-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 130.41,
+      "status": "completed"
+    }
+  ]
+}

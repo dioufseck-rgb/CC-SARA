@@ -1,0 +1,19 @@
+{
+  "label": "cc_v6_sanity",
+  "started_at": "cc_v6_sanity",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "auto": 1
+  },
+  "avg_elapsed_s": 149.95,
+  "case_results": [
+    {
+      "case_id": "SARA-S151-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "auto",
+      "elapsed_s": 149.95,
+      "status": "completed"
+    }
+  ]
+}

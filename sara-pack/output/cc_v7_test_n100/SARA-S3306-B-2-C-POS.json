@@ -1,0 +1,606 @@
+{
+  "case_id": "SARA-S3306-B-2-C-POS",
+  "source_id": "s3306_b_2_C_pos",
+  "instance_id": "wf_367820330f6c",
+  "status": "completed",
+  "error": null,
+  "elapsed_total_s": 144.07,
+  "tier_applied": "auto",
+  "determination": "CONTRADICTION",
+  "ground_truth": "Entailment",
+  "step_records": [
+    {
+      "step_name": "retrieve_question_structure",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 4574.515581130981,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `question_text` source was successfully retrieved and contains all the necessary information to extract the specified logical structure. All fields required by the retrieval specification could be parsed from the question text.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The full question text 'Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017' was used to extract all specified fields."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "question_text": {
+            "value": "Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "question_text",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.002384185791015625,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "statute_corpus",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": "deterministic: Retrieve all required sources. Skip conditional sources unless their conditions are met."
+      }
+    },
+    {
+      "step_name": "retrieve_statute",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 8838.436365127563,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `statute_corpus` was successfully retrieved and contained all necessary sections and subsections to identify the primary authority, its relevant subsections, and direct cross-references as per the retrieval specification. The information is complete and consistent.",
+        "evidence_used": [
+          {
+            "source": "statute_corpus",
+            "description": "Retrieved the full text of relevant IRC sections, including \u00a73306, \u00a73301, and their subsections, allowing for the identification of the primary section, specific subsections, and direct cross-references."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "statute_corpus": {
+            "value": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n"
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "statute_corpus",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0019073486328125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "case_narrative",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "retrieve_case_facts",
+      "primitive": "retrieve",
+      "confidence": 1.0,
+      "elapsed_ms": 17332.188844680786,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The `case_narrative` source was successfully retrieved and its content was processed according to the extraction specification. The narrative is structurally complete, ending with terminal punctuation and containing no incomplete markers or list/table indicators. All required categories for structured data extraction were considered, and facts were extracted with their original wording preserved in 'quote' fields. No data quality issues were observed.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "The full narrative text: 'Alice has paid $45252 to Bob for work done in the year 2017. In 2017, Alice has also paid $9832 into a retirement fund for Bob, and $5322 into life insurance for Bob.' was retrieved and used for structured fact extraction."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "data": {
+          "case_narrative": {
+            "value": "Alice has paid $45252 to Bob for work done in the year 2017. In 2017, Alice has also paid $9832 into a retirement fund for Bob, and $5322 into life insurance for Bob."
+          }
+        },
+        "sources_queried": [
+          {
+            "source": "case_narrative",
+            "status": "success",
+            "data": null,
+            "error": null,
+            "latency_ms": 0.0019073486328125,
+            "freshness": null
+          }
+        ],
+        "sources_skipped": [
+          "case_id",
+          "question_text",
+          "statute_corpus",
+          "calculate_settlement"
+        ],
+        "retrieval_plan": ""
+      }
+    },
+    {
+      "step_name": "investigate_rule_application",
+      "primitive": "investigate",
+      "confidence": 0.9,
+      "elapsed_ms": 27570.14012336731,
+      "output": {
+        "confidence": 0.9,
+        "reasoning": "STEP 1: EXTRACT KEY DATA POINTS\n- Payment amount: $5,322\n- Payment purpose: Into a life insurance fund for Bob\n- Payer: Alice\n- Payee's employee: Bob\n- Year: 2017\n- Statutory Authority: \u00a7 3306(b)(2)(C)\n- Statutory Predicates for \u00a7 3306(b)(2) exclusion:\n  1. A payment made to, or on behalf of, an employee.\n  2. Made under a plan or system established by an employer.\n  3. The plan makes provision for employees generally or for a class of employees.\n  4. The payment is on account of sickness, accident disability, or death.\n\nSTEP 2: FORM HYPOTHESES\nBased on the statutory predicates, the following hypotheses must be tested:\n1. The $5,322 payment was made on behalf of an employee.\n2. The payment was made under a plan or system established by the employer (Alice).\n3. The plan or system provides for employees generally or a class of employees.\n4. The payment was made on account of death.\n\nSTEP 3: TEST EACH HYPOTHESIS AGAINST THE EXTRACTED DATA\n- Hypothesis 1 (Payment for employee): The case narrative states Alice paid \"$5322 into life insurance for Bob.\" This directly supports the hypothesis that the payment was made on behalf of an employee.\n- Hypothesis 2 (Under a plan/system): The narrative mentions a \"life insurance fund,\" which implies a plan. However, it does not explicitly state that this is a \"plan or system established by an employer.\" This could be an ad-hoc arrangement.\n- Hypothesis 3 (For employees generally): The narrative only mentions payments for Bob. There is no information about other employees or whether the plan covers a class of employees or employees generally.\n- Hypothesis 4 (On account of death): The payment was for \"life insurance.\" Life insurance payments are made on account of death, which satisfies the requirement of \u00a7 3306(b)(2)(C).\n\nSTEP 4: STATE YOUR FINDING\nTwo of the four required predicates for the \u00a7 3306(b)(2) exclusion are met (payment for an employee, on account of death). However, two crucial predicates are not supported by the available facts: whether the payment was under an established plan and whether that plan covers employees generally or a class of employees. Therefore, it is indeterminate whether \u00a7 3306(b)(2)(C) applies. The derived rule-output for the predicate 'applies' is 'indeterminate'.",
+        "evidence_used": [
+          {
+            "source": "case_narrative",
+            "description": "Alice has paid... $5322 into life insurance for Bob."
+          },
+          {
+            "source": "statute_corpus",
+            "description": "\u00a7 3306(b)(2): 'the amount of any payment... made to, or on behalf of, an employee... under a plan or system established by an employer which makes provision for his employees generally... or for a class or classes of his employees... on account of... (C) death;'"
+          }
+        ],
+        "evidence_missing": [
+          {
+            "source": "Employer records or plan documents",
+            "description": "To determine if the 'life insurance fund' constitutes a 'plan or system established by an employer' as required by \u00a7 3306(b)(2)."
+          },
+          {
+            "source": "Employer records or plan documents",
+            "description": "To determine if the plan makes provision for 'employees generally' or a 'class or classes of employees', or if it only covers a single individual, Bob."
+          }
+        ],
+        "resource_requests": [],
+        "finding": "The applicability of Section 3306(b)(2)(C) to the $5,322 life insurance payment is indeterminate. While the payment was made on behalf of an employee (Bob) and was on account of death (life insurance), the case facts do not establish whether the payment was made under a 'plan or system' that provides for 'employees generally' or a 'class of employees', as required by the statute.",
+        "hypotheses_tested": [
+          {
+            "hypothesis": "The $5,322 payment was made to, or on behalf of, an employee.",
+            "status": "supported",
+            "evidence_for": [
+              "Alice has... paid $5322 into life insurance for Bob."
+            ],
+            "evidence_against": [],
+            "reasoning": "The case narrative explicitly states the payment was made by Alice for her employee, Bob."
+          },
+          {
+            "hypothesis": "The payment was made under a plan or system established by the employer.",
+            "status": "inconclusive",
+            "evidence_for": [
+              "The payment was made into a 'life insurance fund', which suggests a formal arrangement."
+            ],
+            "evidence_against": [
+              "The narrative does not explicitly state the fund is part of a 'plan or system established by an employer' as required by the statute."
+            ],
+            "reasoning": "The evidence is insufficient to confirm if the 'fund' meets the statutory definition of a 'plan or system'."
+          },
+          {
+            "hypothesis": "The plan or system provides for employees generally or a class of employees.",
+            "status": "inconclusive",
+            "evidence_for": [],
+            "evidence_against": [
+              "The narrative only mentions a payment for a single employee, Bob."
+            ],
+            "reasoning": "There are no facts to determine if the plan covers anyone other than Bob. This is a required element of \u00a7 3306(b)(2)."
+          },
+          {
+            "hypothesis": "The payment was made on account of death.",
+            "status": "supported",
+            "evidence_for": [
+              "The payment was made into a 'life insurance fund'."
+            ],
+            "evidence_against": [],
+            "reasoning": "Life insurance is, by definition, a provision on account of death, which directly satisfies the condition in \u00a7 3306(b)(2)(C)."
+          }
+        ],
+        "recommended_actions": [
+          "Request documentation related to the life insurance fund to verify if it is an established plan and to identify the scope of its coverage (i.e., which employees are covered)."
+        ],
+        "evidence_flags": [
+          "missing_plan_details"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "verify_claim_comparison",
+      "primitive": "verify",
+      "confidence": 1.0,
+      "elapsed_ms": 17918.26319694519,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The verification process confirmed that the investigation step's reasoning is sound and well-grounded. R1 (Type Match) passed because the 'indeterminate' finding correctly addresses the applicability question. R2 (Value/State Match) passed, noting a non-violating mismatch between the claim's assertion of applicability and the finding of indeterminacy. R3 (Statute Grounding) passed as the cited section, \u00a73306(b)(2)(C), is present in the provided authority text. R4 (Fact Grounding) passed because the facts about the life insurance payment are directly supported by the case narrative. R5 (Indeterminacy Disclosure) passed because the indeterminate hypotheses about a 'plan or system' correctly correspond to the 'missing_plan_details' evidence flag.",
+        "evidence_used": [
+          {
+            "source": "SUBJECT TO VERIFY",
+            "description": "Finding: The applicability of Section 3306(b)(2)(C) ... is indeterminate. Hypotheses: ...under a plan or system... -> INCONCLUSIVE. Evidence flags: ['missing_plan_details']"
+          },
+          {
+            "source": "RAW AUTHORITY",
+            "description": "\u00a73306(b) ... term 'wages' ... shall not include- (2) the amount of any payment ... under a plan or system established by an employer ... on account of- (C) death;"
+          },
+          {
+            "source": "RAW CASE NARRATIVE",
+            "description": "In 2017, Alice has also paid ... $5322 into life insurance for Bob."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "conforms": true,
+        "violations": [],
+        "rules_checked": [
+          "R1",
+          "R2",
+          "R3",
+          "R4",
+          "R5"
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "deliberate_disposition",
+      "primitive": "deliberate",
+      "confidence": 0.95,
+      "elapsed_ms": 12936.919212341309,
+      "output": {
+        "confidence": 0.95,
+        "reasoning": "The deliberation followed the SARA Binary decision rules, specifically Rule 1 for applicability claims and Rule 3 for distinguishing between CONTRADICTION and INDETERMINATE in a closed-world reasoning context. The absence of facts required for the rule to apply, as identified by the investigation, directly leads to a CONTRADICTION under these rules.",
+        "evidence_used": [
+          {
+            "source": "question_text",
+            "description": "The claim being evaluated: 'Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017'."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Details of payments made by Alice, including $5322 into life insurance for Bob in 2017."
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding that the applicability of Section 3306(b)(2)(C) is indeterminate due to missing facts regarding a 'plan or system'. Specifically, 'Hypothesis: The payment was made under a plan or system established by the employer. -> HypothesisStatus.INCONCLUSIVE' and 'Hypothesis: The plan or system provides for employees generally or a class of employees. -> HypothesisStatus.INCONCLUSIVE' with evidence flag 'missing_plan_details'."
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Confirmed that the claim conforms and all rules passed, indicating no structural issues with the claim itself."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "situation_summary": "The question asks whether Section 3306(b)(2)(C) applies to a $5,322 payment Alice made to a life insurance fund for Bob in 2017. The investigation found that while the payment was made to an employee and was for life insurance (on account of death), the case narrative does not provide facts establishing whether the payment was made under a 'plan or system' established by the employer that provides for employees generally or a class of employees. Consequently, the applicability of Section 3306(b)(2)(C) was deemed indeterminate by the investigation due to these missing details.",
+        "evaluation_criteria": "For applicability claims, if the rule-output value is TRUE, the disposition is ENTAILMENT. If the rule-output value is FALSE, the disposition is CONTRADICTION. Under SARA Binary's closed-world reasoning convention, if the narrative is silent on a fact the rule requires, and that silence means the predicate is unsupportable, the disposition is CONTRADICTION. INDETERMINATE is reserved for cases where the system could not derive a rule-output due to structural defects in the narrative or system failures, not merely missing facts.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": false,
+            "rationale": "The investigate_rule_application step explicitly stated that the applicability of Section 3306(b)(2)(C) is 'indeterminate' and identified missing facts regarding a 'plan or system'. It did not conclude that the section applies (TRUE)."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": true,
+            "rationale": "The investigate_rule_application step found that key facts required for Section 3306(b)(2)(C) to apply (specifically, details about a 'plan or system') are absent from the case narrative. Under the SARA Binary closed-world reasoning convention, the absence of supporting facts means the claim that the section applies does not follow. Therefore, the claim is contradicted."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "While investigate_rule_application's finding uses the term 'indeterminate', the SARA Binary decision rule for INDETERMINATE (Rule 3) specifies it is not to be used when the narrative is merely silent on a fact. Instead, if the narrative is silent on a required fact, and that silence means the predicate is unsupportable under closed-world reasoning, the disposition is CONTRADICTION. The narrative here is silent, not structurally defective or ambiguous in a way that prevents a determination."
+          }
+        ],
+        "recommended_action": "CONTRADICTION",
+        "warrant": "Investigate's rule-output is that the applicability of Section 3306(b)(2)(C) to the payment is indeterminate because the case facts do not establish whether the payment was made under a 'plan or system'. The claim asserts that Section 3306(b)(2)(C) applies. Under the SARA Binary closed-world reasoning convention, the absence of facts required to support the claim means the claim does not follow. Therefore, the disposition is CONTRADICTION.",
+        "confidence_basis": "The confidence is based on the clear finding from investigate_rule_application regarding missing facts and the explicit guidance in Rule 3 of the decision protocol for SARA Binary, which dictates CONTRADICTION when facts are absent under closed-world reasoning. The verify_claim_comparison step also confirms the claim structure is valid.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "generate_determination",
+      "primitive": "generate",
+      "confidence": 1.0,
+      "elapsed_ms": 13221.700668334961,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The artifact was generated by directly extracting the disposition from `deliberate_disposition.recommended_action` and constructing the `primary_reasoning` based on `deliberate_disposition.warrant` and `investigate_rule_application` findings, ensuring it referenced the specified subsection and case fact. `claim_comparison`, `subsections_cited`, `case_facts_cited`, and `verify_violations` were populated verbatim or directly derived from the respective workflow steps.",
+        "evidence_used": [
+          {
+            "source": "deliberate_disposition",
+            "description": "recommended_action: CONTRADICTION"
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "warrant: Investigate's rule-output is that the applicability of Section 3306(b)(2)(C) to the payment is indeterminate because the case facts do not establish w"
+          },
+          {
+            "source": "question_text",
+            "description": "Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Finding: The applicability of Section 3306(b)(2)(C) to the $5,322 life insurance payment is indeterminate. While the payment was made on behalf of an employee (Bob) and was on account of death (life insurance), the case facts do not establish whether the payment was made under a 'plan or system' that provide"
+          },
+          {
+            "source": "investigate_rule_application",
+            "description": "Evidence flags: ['missing_plan_details']"
+          },
+          {
+            "source": "case_narrative",
+            "description": "Alice has also paid $5322 into life insurance for Bob."
+          },
+          {
+            "source": "verify_claim_comparison",
+            "description": "Conforms: True"
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "artifact": {
+          "disposition": "CONTRADICTION",
+          "primary_reasoning": "The claim asserts that Section 3306(b)(2)(C) applies to the $5,322 payment Alice made to the life insurance fund for Bob in 2017. However, the investigation determined that the applicability of Section 3306(b)(2)(C) to this payment is indeterminate. This is because the case facts, specifically regarding the $5,322 payment Alice made, do not establish whether the payment was made under a 'plan or system' as required by the section, leading to a finding of 'missing_plan_details'. Therefore, the claim that the section applies is contradicted by the indeterminate finding.",
+          "claim_comparison": "The claim states that Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017. The rule-output from the investigation found that the applicability of Section 3306(b)(2)(C) to the $5,322 life insurance payment is indeterminate.",
+          "subsections_cited": [
+            "Section 3306(b)(2)(C)"
+          ],
+          "case_facts_cited": [
+            "Alice has also paid $5322 into life insurance for Bob."
+          ],
+          "verify_violations": []
+        },
+        "format": "json",
+        "constraints_checked": [
+          {
+            "constraint": "disposition is exactly \"ENTAILMENT\", \"CONTRADICTION\", or \"INDETERMINATE\"",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "disposition MUST equal deliberate_disposition.recommended_action verbatim",
+            "satisfied": true,
+            "notes": "Disposition is 'CONTRADICTION' as per deliberate_disposition."
+          },
+          {
+            "constraint": "every identifier in subsections_cited must have been cited in investigate, verify, or deliberate step outputs",
+            "satisfied": true,
+            "notes": "Section 3306(b)(2)(C) is cited in question_text and investigate_rule_application."
+          },
+          {
+            "constraint": "every fact in case_facts_cited must have been cited in retrieve_case_facts or investigate",
+            "satisfied": true,
+            "notes": "The $5322 payment fact is from case_narrative and investigate_rule_application."
+          },
+          {
+            "constraint": "primary_reasoning references at least one subsection identifier and at least one case fact, and reflects deliberate's warrant",
+            "satisfied": true,
+            "notes": "References 'Section 3306(b)(2)(C)' and '$5,322 payment Alice made to the life insurance fund for Bob in 2017', and explains the indeterminate finding as per the warrant."
+          },
+          {
+            "constraint": "confidence reflects how cleanly the artifact tracks the upstream findings",
+            "satisfied": true,
+            "notes": "Confidence is 1.0 as all information is directly extracted or derived from upstream steps."
+          },
+          {
+            "constraint": "Artifact must be a JSON object",
+            "satisfied": true,
+            "notes": ""
+          },
+          {
+            "constraint": "No challenge outputs to scan (not present in context)",
+            "satisfied": true,
+            "notes": ""
+          }
+        ],
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "challenge_exception_check",
+      "primitive": "challenge",
+      "confidence": 1.0,
+      "elapsed_ms": 31911.561250686646,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "FACT-CHECK: The prior reasoning is based on the output of the 'investigate' step, which concluded that the applicability of Section 3306(b)(2)(C) is indeterminate. This conclusion rests on the fact that the case narrative does not mention a 'plan or system' under which the life insurance payment was made, a key requirement of the statute. The narrative states Alice paid '$5322 into life insurance for Bob' in 2017. The statute, \u00a73306(b)(2), requires a payment 'under a plan or system established by an employer which makes provision for his employees generally... or for a class or classes of his employees'. The absence of this fact in the narrative makes the 'indeterminate' finding correct. All factual premises of the prior reasoning are CONFIRMED against the source narrative and statute. TREND-CHECK: No trend claims were made. ADVERSARIAL: A thorough review of the provided statutory authority, particularly \u00a73306, was conducted to find any exceptions or alternative provisions that could override the 'plan or system' requirement of \u00a73306(b)(2). No such provisions were found. Other exceptions to 'wages' under \u00a73306(b) and exceptions to 'employment' under \u00a73306(c) are not triggered by the facts present in the case narrative. The initial analysis appears robust. DETERMINATION: The input survives because its reasoning is sound, factually grounded in the provided case narrative, and correctly applies the statute. The adversarial review found no overlooked exceptions or cross-references in the provided authority that would change the outcome.",
+        "evidence_used": [
+          {
+            "source": "RAW AUTHORITY \u00a73306(b)",
+            "description": "Reviewed all exceptions to the definition of 'wages' to confirm none applied or altered the requirements of \u00a73306(b)(2)."
+          },
+          {
+            "source": "RAW AUTHORITY \u00a73306(c)",
+            "description": "Reviewed all exceptions to the definition of 'employment' to ensure none were triggered by the case facts."
+          },
+          {
+            "source": "case_narrative",
+            "description": "Confirmed that the narrative contains no facts establishing the existence of a 'plan or system' for employee benefits."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "survives": true,
+        "vulnerabilities": [],
+        "strengths": [
+          "The prior reasoning correctly identifies the dispositive legal test from \u00a73306(b)(2), specifically the requirement for a 'plan or system'.",
+          "The analysis accurately pinpoints the factual gap in the case narrative\u2014the absence of any mention of a plan\u2014which correctly leads to an 'indeterminate' conclusion about the statute's applicability.",
+          "The final disposition of 'CONTRADICTION' is a logical consequence of the indeterminate finding versus the question's positive assertion."
+        ],
+        "overall_assessment": "The prior reasoning is sound and complete. It correctly applies the statutory requirements of \u00a73306(b)(2)(C) to the available facts and correctly identifies that a key element ('plan or system') is missing from the narrative, making a definitive conclusion impossible. The adversarial review of the provided legal text did not uncover any exceptions or alternative rules that would alter this assessment.",
+        "reasoning_quality": 1.0,
+        "outcome_certainty": 1.0
+      }
+    },
+    {
+      "step_name": "govern_disposition",
+      "primitive": "govern",
+      "confidence": 1.0,
+      "elapsed_ms": 8939.572095870972,
+      "output": {
+        "confidence": 1.0,
+        "reasoning": "The workflow's epistemic state shows no critical issues. Investigate confidence (0.9) and deliberate confidence (0.95) are both above their respective thresholds. Verify_conforms is true, and challenge_survives is true. The deliberate warrant is present and coherent with the recommended action of CONTRADICTION. No conditions for HOLD, GATE, or SPOT_CHECK tiers were met. Therefore, the AUTO tier is applied, and the disposition is to proceed.",
+        "evidence_used": [
+          {
+            "source": "verify_conforms",
+            "description": "Confirmed no critical structural violations in reasoning."
+          },
+          {
+            "source": "deliberate_disposition",
+            "description": "The recommended action is CONTRADICTION."
+          },
+          {
+            "source": "deliberate_warrant",
+            "description": "The justification for the recommended action is present and clear."
+          },
+          {
+            "source": "deliberate_confidence",
+            "description": "Confidence in the deliberate step is 0.95, exceeding the 0.55 threshold."
+          },
+          {
+            "source": "investigate_confidence",
+            "description": "Confidence in the investigation step is 0.9, exceeding the 0.60 threshold."
+          },
+          {
+            "source": "challenge_survives",
+            "description": "The challenge step found no vulnerabilities in the disposition's epistemic basis."
+          }
+        ],
+        "evidence_missing": [],
+        "resource_requests": [],
+        "tier_applied": "auto",
+        "tier_rationale": "All confidence scores are high and meet the thresholds for AUTO. No critical violations or epistemic flags were identified. The challenge step confirmed the reasoning's soundness.",
+        "disposition": "proceed",
+        "work_order": null,
+        "escalation_target": null,
+        "resumption_condition": null,
+        "accountability_chain": {
+          "decision_instance_id": "SARA-S3306-B-2-C-POS-govern-20260512",
+          "governance_decisions": [
+            {
+              "step": "govern",
+              "tier": "auto",
+              "rationale": "All conditions for AUTO tier were met.",
+              "timestamp": "2026-05-12T00:00:00Z"
+            }
+          ],
+          "final_tier": "auto",
+          "audit_timestamp": "2026-05-12T00:00:00Z"
+        }
+      }
+    }
+  ],
+  "result_summary": {
+    "step_count": 9,
+    "steps": [
+      {
+        "step_name": "retrieve_question_structure",
+        "primitive": "retrieve",
+        "sources": [
+          "question_text"
+        ]
+      },
+      {
+        "step_name": "retrieve_statute",
+        "primitive": "retrieve",
+        "sources": [
+          "statute_corpus"
+        ]
+      },
+      {
+        "step_name": "retrieve_case_facts",
+        "primitive": "retrieve",
+        "sources": [
+          "case_narrative"
+        ]
+      },
+      {
+        "step_name": "investigate_rule_application",
+        "primitive": "investigate",
+        "finding": "The applicability of Section 3306(b)(2)(C) to the $5,322 life insurance payment is indeterminate. While the payment was made on behalf of an employee (Bob) and was on account of death (life insurance), the case facts do not establish whether the payment was made under a 'plan or system' that provides for 'employees generally' or a 'class of employees', as required by the statute.",
+        "confidence": 0.9,
+        "evidence_flags": [
+          "missing_plan_details"
+        ],
+        "missing_evidence": []
+      },
+      {
+        "step_name": "verify_claim_comparison",
+        "primitive": "verify",
+        "conforms": true,
+        "violations": 0
+      },
+      {
+        "step_name": "deliberate_disposition",
+        "primitive": "deliberate",
+        "recommended_action": "CONTRADICTION",
+        "warrant": "Investigate's rule-output is that the applicability of Section 3306(b)(2)(C) to the payment is indeterminate because the case facts do not establish whether the payment was made under a 'plan or system'. The claim asserts that Section 3306(b)(2)(C) applies. Under the SARA Binary closed-world reasoning convention, the absence of facts required to support the claim means the claim does not follow. Therefore, the disposition is CONTRADICTION.",
+        "situation_summary": "The question asks whether Section 3306(b)(2)(C) applies to a $5,322 payment Alice made to a life insurance fund for Bob in 2017. The investigation found that while the payment was made to an employee and was for life insurance (on account of death), the case narrative does not provide facts establishing whether the payment was made under a 'plan or system' established by the employer that provides for employees generally or a class of employees. Consequently, the applicability of Section 3306(b)",
+        "confidence_basis": "The confidence is based on the clear finding from investigate_rule_application regarding missing facts and the explicit guidance in Rule 3 of the decision protocol for SARA Binary, which dictates CONTRADICTION when facts are absent under closed-world reasoning. The verify_claim_comparison step also confirms the claim structure is valid.",
+        "options_considered": [
+          {
+            "action": "ENTAILMENT",
+            "viable": false,
+            "rationale": "The investigate_rule_application step explicitly stated that the applicability of Section 3306(b)(2)(C) is 'indeterminate' and identified missing facts regarding a 'plan or system'. It did not conclude that the section applies (TRUE)."
+          },
+          {
+            "action": "CONTRADICTION",
+            "viable": true,
+            "rationale": "The investigate_rule_application step found that key facts required for Section 3306(b)(2)(C) to apply (specifically, details about a 'plan or system') are absent from the case narrative. Under the SARA Binary closed-world reasoning convention, the absence of supporting facts means the claim that the section applies does not follow. Therefore, the claim is contradicted."
+          },
+          {
+            "action": "INDETERMINATE",
+            "viable": false,
+            "rationale": "While investigate_rule_application's finding uses the term 'indeterminate', the SARA Binary decision rule for INDETERMINATE (Rule 3) specifies it is not to be used when the narrative is merely silent on a fact. Instead, if the narrative is silent on a required fact, and that silence means the predicate is unsupportable under closed-world reasoning, the disposition is CONTRADICTION. The narrative here is silent, not structurally defective or ambiguous in a way that prevents a determination."
+          }
+        ],
+        "confidence": 0.95
+      },
+      {
+        "step_name": "generate_determination",
+        "primitive": "generate",
+        "artifact_preview": "{'disposition': 'CONTRADICTION', 'primary_reasoning': \"The claim asserts that Section 3306(b)(2)(C) applies to the $5,322 payment Alice made to the life insurance fund for Bob in 2017. However, the investigation determined that the applicability of Section 3306(b)(2)(C) to this payment is indetermin",
+        "artifact": {
+          "disposition": "CONTRADICTION",
+          "primary_reasoning": "The claim asserts that Section 3306(b)(2)(C) applies to the $5,322 payment Alice made to the life insurance fund for Bob in 2017. However, the investigation determined that the applicability of Section 3306(b)(2)(C) to this payment is indeterminate. This is because the case facts, specifically regarding the $5,322 payment Alice made, do not establish whether the payment was made under a 'plan or system' as required by the section, leading to a finding of 'missing_plan_details'. Therefore, the claim that the section applies is contradicted by the indeterminate finding.",
+          "claim_comparison": "The claim states that Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017. The rule-output from the investigation found that the applicability of Section 3306(b)(2)(C) to the $5,322 life insurance payment is indeterminate.",
+          "subsections_cited": [
+            "Section 3306(b)(2)(C)"
+          ],
+          "case_facts_cited": [
+            "Alice has also paid $5322 into life insurance for Bob."
+          ],
+          "verify_violations": []
+        },
+        "confidence": 1.0
+      },
+      {
+        "step_name": "challenge_exception_check",
+        "primitive": "challenge",
+        "survives": true,
+        "vulnerabilities": 0
+      },
+      {
+        "step_name": "govern_disposition",
+        "primitive": "govern",
+        "tier_applied": "auto",
+        "disposition": "proceed",
+        "tier_rationale": "All confidence scores are high and meet the thresholds for AUTO. No critical violations or epistemic flags were identified. The challenge step confirmed the reasoning's soundness.",
+        "has_work_order": false,
+        "escalation_target": null,
+        "confidence": 1.0
+      }
+    ],
+    "input": {
+      "case_id": "SARA-S3306-B-2-C-POS",
+      "question_text": "Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017",
+      "statute_corpus": "\u00a71. Tax imposed\n\n(a) Married individuals filing joint returns and surviving spouses\n\nThere is hereby imposed on the taxable income of-\n\n    (1) every married individual (as defined in section 7703) who makes a single return jointly with his spouse, and\n\n    (2) every surviving spouse (as defined in section 2(a)),\n\na tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $36,900;\n    (ii) $5,535, plus 28% of the excess over $36,900 if the taxable income is over $36,900 but not over $89,150;\n    (iii) $20,165, plus 31% of the excess over $89,150 if the taxable income is over $89,150 but not over $140,000;\n    (iv) $35,928.50, plus 36% of the excess over $140,000 if the taxable income is over $140,000 but not over $250,000;\n    (v) $75,528.50, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(b) Heads of households\n\nThere is hereby imposed on the taxable income of every head of a household (as defined in section 2(b)) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $29,600;\n    (ii) $4,440, plus 28% of the excess over $29,600 if the taxable income is over $29,600 but not over $76,400;\n    (iii) $17,544, plus 31% of the excess over $76,400 if the taxable income is over $76,400 but not over $127,500;\n    (iv) $33,385, plus 36% of the excess over $127,500 if the taxable income is over $127,500 but not over $250,000;\n    (v) $77,485, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(c) Unmarried individuals (other than surviving spouses and heads of households)\n\nThere is hereby imposed on the taxable income of every individual (other than a surviving spouse as defined in section 2(a) or the head of a household as defined in section 2(b)) who is not a married individual (as defined in section 7703) a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $22,100;\n    (ii) $3,315, plus 28% of the excess over $22,100 if the taxable income is over $22,100 but not over $53,500;\n    (iii) $12,107, plus 31% of the excess over $53,500 if the taxable income is over $53,500 but not over $115,000;\n    (iv) $31,172, plus 36% of the excess over $115,000 if the taxable income is over $115,000 but not over $250,000;\n    (v) $79,772, plus 39.6% of the excess over $250,000 if the taxable income is over $250,000.\n\n(d) Married individuals filing separate returns\n\nThere is hereby imposed on the taxable income of every married individual (as defined in section 7703) who does not make a single return jointly with his spouse, a tax determined in accordance with the following:\n\n    (i) 15% of taxable income if the taxable income is not over $18,450;\n    (ii) $2,767.50, plus 28% of the excess over $18,450 if the taxable income is over $18,450 but not over $44,575;\n    (iii) $10,082.50, plus 31% of the excess over $44,575 if the taxable income is over $44,575 but not over $70,000;\n    (iv) $17,964.25, plus 36% of the excess over $70,000 if the taxable income is over $70,000 but not over $125,000;\n    (v) $37,764.25, plus 39.6% of the excess over $125,000 if the taxable income is over $125,000\n\n\n\u00a72. Definitions and special rules\n\n(a) Definition of surviving spouse\n\n    (1) In general\n\n    For purposes of section 1, the term \"surviving spouse\" means a taxpayer-\n\n        (A) whose spouse died during either of the two years immediately preceding the taxable year, and\n\n        (B) who maintains as his home a household which constitutes for the taxable year the principal place of abode (as a member of such household) of a dependent (i) who (within the meaning of section 152) is a son, stepson, daughter, or stepdaughter of the taxpayer, and (ii) with respect to whom the taxpayer is entitled to a deduction for the taxable year under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Limitations\n\n    Notwithstanding paragraph (1), for purposes of section 1 a taxpayer shall not be considered to be a surviving spouse-\n\n        (A) if the taxpayer has remarried at any time before the close of the taxable year, or\n\n        (B) unless, for the taxpayer's taxable year during which his spouse died, a joint return could have been made. A husband and wife may make a single return jointly of income taxes, even though one of the spouses has neither gross income nor deductions, except that no joint return shall be made if either the husband or wife at any time during the taxable year is a nonresident alien.\n\n(b) Definition of head of household\n\n    (1) In general\n\n    An individual shall be considered a head of a household if, and only if, such individual is not married at the close of his taxable year, is not a surviving spouse (as defined in subsection (a)), and either-\n\n        (A) maintains as his home a household which constitutes for more than one-half of such taxable year the principal place of abode, as a member of such household, of-\n\n            (i) a qualifying child of the individual (as defined in section 152(c)), but not if such child-\n\n                (I) is married at the close of the taxpayer's taxable year, and\n\n                (II) is not a dependent of such individual by reason of section 152(b)(2) or\n\n            (ii) any other person who is a dependent of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such person under section 151, or\n\n        (B) maintains a household which constitutes for such taxable year the principal place of abode of the father or mother of the taxpayer, if the taxpayer is entitled to a deduction for the taxable year for such father or mother under section 151.\n\n    For purposes of this paragraph, an individual shall be considered as maintaining a household only if over half of the cost of maintaining the household during the taxable year is furnished by such individual.\n\n    (2) Determination of status\n\n    Notwithstanding paragraph (1),\n\n        (A) an individual who is legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married;\n\n        (B) a taxpayer shall be considered as not married at the close of his taxable year if at any time during the taxable year his spouse is a nonresident alien; and\n\n        (C) a taxpayer shall be considered as married at the close of his taxable year if his spouse (other than a spouse described in subparagraph (B)) died during the taxable year.\n\n    (3) Limitations\n\n    Notwithstanding paragraph (1), for purposes of this subtitle a taxpayer shall not be considered to be a head of a household-\n\n        (A) if at any time during the taxable year he is a nonresident alien; or\n\n        (B) by reason of an individual who would not be a dependent for the taxable year but for subparagraph (H) of section 152(d)(2).\n\n\n\u00a763. Taxable income defined\n\n(a) In general\n\nExcept as provided in subsection (b), for purposes of this subtitle, the term \"taxable income\" means gross income minus the deductions allowed by this chapter (other than the standard deduction).\n\n(b) Individuals who do not itemize their deductions\n\nIn the case of an individual who does not elect to itemize his deductions for the taxable year, for purposes of this subtitle, the term \"taxable income\" means adjusted gross income, minus-\n\n    (1) the standard deduction, and\n\n    (2) the deduction for personal exemptions provided in section 151.\n\n(c) Standard deduction\n\nFor purposes of this subtitle-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"standard deduction\" means the sum of-\n\n        (A) the basic standard deduction, and\n\n        (B) the additional standard deduction.\n\n    (2) Basic standard deduction\n\n    For purposes of paragraph (1), the basic standard deduction is-\n\n        (A) 200 percent of the dollar amount in effect under subparagraph (C) for the taxable year in the case of-\n\n            (i) a joint return, or\n\n            (ii) a surviving spouse (as defined in section 2(a)),\n\n        (B) $4,400 in the case of a head of household (as defined in section 2(b)), or\n\n        (C) $3,000 in any other case.\n\n    (3) Additional standard deduction for aged and blind\n\n    For purposes of paragraph (1), the additional standard deduction is the sum of each additional amount to which the taxpayer is entitled under subsection (f).\n\n    (5) Limitation on basic standard deduction in the case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under section 151 is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the basic standard deduction applicable to such individual for such individual's taxable year shall not exceed the greater of-\n\n        (A) $500, or\n\n        (B) the sum of $250 and such individual's earned income.\n\n    (6) Certain individuals, etc., not eligible for standard deduction\n\n    In the case of-\n\n        (A) a married individual filing a separate return where either spouse itemizes deductions,\n\n        (B) a nonresident alien individual, or\n\n        (D) an estate or trust, common trust fund, or partnership,\n\n    the standard deduction shall be zero.\n\n    (7) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026-\n\n    Paragraph (2) shall be applied-\n\n        (i) by substituting \"$18,000\" for \"$4,400\" in subparagraph (B), and\n\n        (ii) by substituting \"$12,000\" for \"$3,000\" in subparagraph (C).\n\n(d) Itemized deductions\n\nFor purposes of this subtitle, the term \"itemized deductions\" means the deductions allowable under this chapter other than-\n\n    (1) the deductions allowable in arriving at adjusted gross income, and\n\n    (2) the deduction for personal exemptions provided by section 151.\n\n(f) Aged or blind additional amounts\n\n    (1) Additional amounts for the aged\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he has attained age 65 before the close of his taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse has attained age 65 before the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    (2) Additional amount for blind\n\n    The taxpayer shall be entitled to an additional amount of $600-\n\n        (A) for himself if he is blind at the close of the taxable year, and\n\n        (B) for the spouse of the taxpayer if the spouse is blind as of the close of the taxable year and an additional exemption is allowable to the taxpayer for such spouse under section 151(b).\n\n    For purposes of subparagraph (B), if the spouse dies during the taxable year the determination of whether such spouse is blind shall be made as of the time of such death.\n\n    (3) Higher amount for certain unmarried individuals\n\n    In the case of an individual who is not married and is not a surviving spouse, paragraphs (1) and (2) shall be applied by substituting \"$750\" for \"$600\".\n\n(g) Marital status\n\nFor purposes of this section, marital status shall be determined under section 7703.\n\n\n\u00a768. Overall limitation on itemized deductions\n\n(a) General rule\n\nIn the case of an individual whose adjusted gross income exceeds the applicable amount, the amount of the itemized deductions otherwise allowable for the taxable year shall be reduced by the lesser of-\n\n    (1) 3 percent of the excess of adjusted gross income over the applicable amount, or\n\n    (2) 80 percent of the amount of the itemized deductions otherwise allowable for such taxable year.\n\n(b) Applicable amount\n\n    (1) In general\n\n    For purposes of this section, the term \"applicable amount\" means-\n\n        (A) $300,000 in the case of a joint return or a surviving spouse (as defined in section 2(a)),\n\n        (B) $275,000 in the case of a head of household (as defined in section 2(b)),\n\n        (C) $250,000 in the case of an individual who is not married and who is not a surviving spouse or head of household, and\n\n        (D) 1/2 the amount applicable under subparagraph (A) in the case of a married individual filing a separate return.\n\n    For purposes of this paragraph, marital status shall be determined under section 7703.\n\n(f) Section not to apply\n\nThis section shall not apply to any taxable year beginning after December 31, 2017, and before January 1, 2026.\n\n\n\u00a7151. Allowance of deductions for personal exemptions\n\n(a) Allowance of deductions\n\nIn the case of an individual, the exemptions provided by this section shall be allowed as deductions in computing taxable income.\n\n(b) Taxpayer and spouse\n\nAn exemption of the exemption amount for the taxpayer; and an additional exemption of the exemption amount for the spouse of the taxpayer if a joint return is not made by the taxpayer and his spouse, and if the spouse, for the calendar year in which the taxable year of the taxpayer begins, has no gross income and is not the dependent of another taxpayer.\n\n(c) Additional exemption for dependents\n\nAn exemption of the exemption amount for each individual who is a dependent (as defined in section 152) of the taxpayer for the taxable year.\n\n(d) Exemption amount\n\nFor purposes of this section-\n\n    (1) In general\n\n    Except as otherwise provided in this subsection, the term \"exemption amount\" means $2,000.\n\n    (2) Exemption amount disallowed in case of certain dependents\n\n    In the case of an individual with respect to whom a deduction under this section is allowable to another taxpayer for a taxable year beginning in the calendar year in which the individual's taxable year begins, the exemption amount applicable to such individual for such individual's taxable year shall be zero.\n\n    (3) Phaseout\n\n        (A) In general\n\n        In the case of any taxpayer whose adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b), the exemption amount shall be reduced by the applicable percentage.\n\n        (B) Applicable percentage\n\n        For purposes of subparagraph (A), the term \"applicable percentage\" means 2 percentage points for each $2,500 (or fraction thereof) by which the taxpayer's adjusted gross income for the taxable year exceeds the applicable amount in effect under section 68(b). In the case of a married individual filing a separate return, the preceding sentence shall be applied by substituting \"$1,250\" for \"$2,500\". In no event shall the applicable percentage exceed 100 percent.\n\n    (5) Special rules for taxable years 2018 through 2025\n\n    In the case of a taxable year beginning after December 31, 2017, and before January 1, 2026, the term \"exemption amount\" means zero.\n\n\n\u00a7152. Dependent defined\n\n(a) In general\n\nFor purposes of this subtitle, the term \"dependent\" means-\n\n    (1) a qualifying child, or\n\n    (2) a qualifying relative.\n\n(b) Exceptions\n\nFor purposes of this section-\n\n    (1) Dependents ineligible\n\n    If an individual is a dependent of a taxpayer for any taxable year of such taxpayer beginning in a calendar year, such individual shall be treated as having no dependents for any taxable year of such individual beginning in such calendar year.\n\n    (2) Married dependents\n\n    An individual shall not be treated as a dependent of a taxpayer under subsection (a) if such individual has made a joint return with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n(c) Qualifying child\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying child\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has the same principal place of abode as the taxpayer for more than one-half of such taxable year,\n\n        (C) who meets the age requirements of paragraph (3), and\n\n        (E) who has not filed a joint return (other than only for a claim of refund) with the individual's spouse for the taxable year beginning in the calendar year in which the taxable year of the taxpayer begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if such individual is-\n\n        (A) a child of the taxpayer or a descendant of such a child, or\n\n        (B) a brother, sister, stepbrother, or stepsister of the taxpayer or a descendant of any such relative.\n\n    (3) Age requirements\n\n    For purposes of paragraph (1)(C), an individual meets the requirements of this paragraph if such individual is younger than the taxpayer claiming such individual as a qualifying child and is less than 25 years old at the end of the taxable year.\n\n(d) Qualifying relative\n\nFor purposes of this section-\n\n    (1) In general\n\n    The term \"qualifying relative\" means, with respect to any taxpayer for any taxable year, an individual-\n\n        (A) who bears a relationship to the taxpayer described in paragraph (2),\n\n        (B) who has no income for the calendar year in which such taxable year begins, and\n\n        (D) who is not a qualifying child of such taxpayer or of any other taxpayer for any taxable year beginning in the calendar year in which such taxable year begins.\n\n    (2) Relationship\n\n    For purposes of paragraph (1)(A), an individual bears a relationship to the taxpayer described in this paragraph if the individual is any of the following with respect to the taxpayer:\n\n        (A) A child or a descendant of a child.\n\n        (B) A brother, sister, stepbrother, or stepsister.\n\n        (C) The father or mother, or an ancestor of either.\n\n        (D) A stepfather or stepmother.\n\n        (E) A son or daughter of a brother or sister of the taxpayer.\n\n        (F) A brother or sister of the father or mother of the taxpayer.\n\n        (G) A son-in-law, daughter-in-law, father-in-law, mother-in-law, brother-in-law, or sister-in-law.\n\n        (H) An individual (other than an individual who at any time during the taxable year was the spouse, determined without regard to section 7703, of the taxpayer) who, for the taxable year of the taxpayer, has the same principal place of abode as the taxpayer and is a member of the taxpayer's household.\n\n\n\u00a73301. Rate of tax\n\nThere is hereby imposed on every employer (as defined in section 3306(a)) for each calendar year an excise tax, with respect to having individuals in his employ, equal to 6 percent of the total wages (as defined in section 3306(b)) paid by such employer during the calendar year with respect to employment (as defined in section 3306(c)).\n\n\u00a73306. Definitions\n\n(a) Employer\n\n    (1) In general\n\n    The term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $1,500 or more, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least one individual in employment for some portion of the day.\n\n    For purposes of this paragraph, there shall not be taken into account any wages paid to, or employment of, an employee performing domestic services referred to in paragraph (3).\n\n    (2) Agricultural labor\n\n    In the case of agricultural labor, the term \"employer\" means, with respect to any calendar year, any person who-\n\n        (A) during the calendar year or the preceding calendar year paid wages of $20,000 or more for agricultural labor, or\n\n        (B) on each of some 10 days during the calendar year or during the preceding calendar year, each day being in a different calendar week, employed at least 5 individuals in employment in agricultural labor for some portion of the day.\n\n    (3) Domestic service\n\n    In the case of domestic service in a private home, local college club, or local chapter of a college fraternity or sorority, the term \"employer\" means, with respect to any calendar year, any person who during the calendar year or the preceding calendar year paid wages in cash of $1,000 or more for such service.\n\n    (4) Special rule\n\n    A person treated as an employer under paragraph (3) shall not be treated as an employer with respect to wages paid for any service other than domestic service referred to in paragraph (3) unless such person is treated as an employer under paragraph (1) or (2) with respect to such other service.\n\n(b) Wages\n\nFor purposes of this chapter, the term \"wages\" means all remuneration for employment, including the cash value of all remuneration (including benefits) paid in any medium other than cash; except that such term shall not include-\n\n    (1) that part of the remuneration which, after remuneration (other than remuneration referred to in the succeeding paragraphs of this subsection) equal to $7,000 with respect to employment has been paid to an individual by an employer during any calendar year, is paid to such individual by such employer during such calendar year;\n\n    (2) the amount of any payment (including any amount paid by an employer for insurance or annuities, or into a fund, to provide for any such payment) made to, or on behalf of, an employee or any of his dependents under a plan or system established by an employer which makes provision for his employees generally (or for his employees generally and their dependents) or for a class or classes of his employees (or for a class or classes of his employees and their dependents), on account of-\n\n        (A) sickness or accident disability, or\n\n        (C) death;\n\n    (7) remuneration paid in any medium other than cash to an employee for service not in the course of the employer's trade or business;\n\n    (10) any payment or series of payments by an employer to an employee or any of his dependents which is paid-\n\n        (A) upon or after the termination of an employee's employment relationship because of (i) death, or (ii) retirement for disability, and\n\n        (B) under a plan established by the employer which makes provision for his employees generally or a class or classes of his employees (or for such employees or class or classes of employees and their dependents),\n\n    other than any such payment or series of payments which would have been paid if the employee's employment relationship had not been so terminated;\n\n    (11) remuneration for agricultural labor paid in any medium other than cash;\n\n    (15) any payment made by an employer to a survivor or the estate of a former employee after the calendar year in which such employee died;\n\n(c) Employment\n\nFor purposes of this chapter, the term \"employment\" means any service, of whatever nature,\n\n    (A) performed by an employee for the person employing him, irrespective of the citizenship or residence of either, within the United States, and\n\n    (B) performed outside the United States (except in a contiguous country with which the United States has an agreement relating to unemployment compensation) by a citizen of the United States as an employee of an American employer, except-\n\n    (1) agricultural labor unless-\n\n        (A) such labor is performed for a person who-\n\n            (i) during the calendar year or the preceding calendar year paid remuneration in cash of $20,000 or more to individuals employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)), or\n\n            (ii) on each of some 10 days during the calendar year or the preceding calendar year, each day being in a different calendar week, employed in agricultural labor (including labor performed by an alien referred to in subparagraph (B)) for some portion of the day (whether or not at the same moment of time) 5 or more individuals; and\n\n        (B) such labor is not agricultural labor performed by an individual who is an alien admitted to the United States to perform agricultural labor pursuant to sections 214(c) and 101(a)(15)(H) of the Immigration and Nationality Act.\n\n    (2) domestic service in a private home, local college club, or local chapter of a college fraternity or sorority unless performed for a person who paid cash remuneration of $1,000 or more to individuals employed in such domestic service in the calendar year or the preceding calendar year;\n\n    (5) \n\n        (A) service performed by an individual in the employ of his son, daughter, or spouse;\n\n        (B) service performed by a child under the age of 21 in the employ of his father or mother;\n\n    (6) service performed in the employ of the United States Government\n\n    (7) service performed in the employ of a State, or any political subdivision thereof.\n\n    (10)\n\n        (A) service performed in the employ of a school, college, or university, if such service is performed\n\n            (i) by a student who is enrolled and is regularly attending classes at such school, college, or university, or\n\n            (ii) by the spouse of such a student, or\n\n        (B) service performed in the employ of a hospital, if such service is performed by a patient of such hospital;\n\n    (11) service performed in the employ of a foreign government (including service as a consular or other officer or employee or a nondiplomatic representative);\n\n    (13) service performed as a student nurse in the employ of a hospital or a nurses' training school by an individual who is enrolled and is regularly attending classes in a nurses' training school;\n\n    (16) service performed in the employ of an international organization;\n\n    (21) service performed by a person committed to a penal institution.\n\n\n\u00a77703. Determination of marital status\n\n(a) General rule\n\n    (1) the determination of whether an individual is married shall be made as of the close of his taxable year; except that if his spouse dies during his taxable year such determination shall be made as of the time of such death; and\n\n    (2) an individual legally separated from his spouse under a decree of divorce or of separate maintenance shall not be considered as married.\n\n(b) Certain married individuals living apart\n\nFor purposes of those provisions of this title which refer to this subsection, if-\n\n    (1) an individual who is married (within the meaning of subsection (a)) and who files a separate return maintains as his home a household which constitutes for more than one-half of the taxable year the principal place of abode of a child with respect to whom such individual is entitled to a deduction for the taxable year under section 151,\n\n    (2) such individual furnishes over one-half of the cost of maintaining such household during the taxable year, and\n\n    (3) during the last 6 months of the taxable year, such individual's spouse is not a member of such household,\n\nsuch individual shall not be considered as married.\n",
+      "case_narrative": "Alice has paid $45252 to Bob for work done in the year 2017. In 2017, Alice has also paid $9832 into a retirement fund for Bob, and $5322 into life insurance for Bob."
+    },
+    "disposition": "CONTRADICTION",
+    "determination": "{'disposition': 'CONTRADICTION', 'primary_reasoning': \"The claim asserts that Section 3306(b)(2)(C) applies to the $5,322 payment Alice made to the life insurance fund for Bob in 2017. However, the investigation determined that the applicability of Section 3306(b)(2)(C) to this payment is indeterminate. This is because the case facts, specifically regarding the $5,322 payment Alice made, do not establish whether the payment was made under a 'plan or system' as required by the section, leading to a finding of 'missing_plan_details'. Therefore, the claim that the section applies is contradicted by the indeterminate finding.\", 'claim_comparison': 'The claim states that Section 3306(b)(2)(C) applies to the payment Alice made to the life insurance fund for the year 2017. The rule-output from the investigation found that the applicability of Section 3306(b)(2)(C) to the $5,322 life insurance payment is indeterminate.', 'subsections_cited': ['Section 3306(b)(2)(C)'], 'case_facts_cited': ['Alice has also paid $5322 into life insurance for Bob.'], 'verify_violations': []}"
+  }
+}

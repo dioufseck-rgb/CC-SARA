@@ -1,0 +1,14 @@
+{
+  "label": "baseline_2026_05_13",
+  "n_cases": 1,
+  "n_completed": 1,
+  "avg_elapsed_s": 11.41,
+  "case_results": [
+    {
+      "case_id": "SARA-S7703-B-2-POS",
+      "determination": "CONTRADICTION",
+      "elapsed_s": 11.41,
+      "status": "ok"
+    }
+  ]
+}

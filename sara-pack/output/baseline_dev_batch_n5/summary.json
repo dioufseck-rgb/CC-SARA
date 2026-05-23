@@ -1,0 +1,14 @@
+{
+  "label": "baseline_dev_batch_n5",
+  "n_cases": 1,
+  "n_completed": 1,
+  "avg_elapsed_s": 7.62,
+  "case_results": [
+    {
+      "case_id": "SARA-S152-B-2-POS",
+      "determination": "ENTAILMENT",
+      "elapsed_s": 7.62,
+      "status": "ok"
+    }
+  ]
+}

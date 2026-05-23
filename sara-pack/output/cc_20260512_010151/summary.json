@@ -1,0 +1,19 @@
+{
+  "label": "cc_20260512_010151",
+  "started_at": "cc_20260512_010151",
+  "n_cases": 1,
+  "n_completed": 1,
+  "tier_distribution": {
+    "gate": 1
+  },
+  "avg_elapsed_s": 184.86,
+  "case_results": [
+    {
+      "case_id": "SARA-S151-A-NEG",
+      "determination": "CONTRADICTION",
+      "tier_applied": "gate",
+      "elapsed_s": 184.86,
+      "status": "suspended"
+    }
+  ]
+}
